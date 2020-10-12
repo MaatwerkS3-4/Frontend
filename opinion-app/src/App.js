@@ -1,10 +1,11 @@
 import React from "react";
 import "./App.css";
+import CreatePost from "./createPost";
 
 function App() {
   return (
     <div className="App">
-      <h1>[APP GOES HERE]</h1>
+      <CreatePost />
     </div>
   );
 }

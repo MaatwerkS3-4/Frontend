@@ -1,0 +1,18 @@
+#container {
+  width: 100%;
+  height: 100%;
+}
+#create-post-card {
+  height: 30vh;
+  width: 60vh;
+}
+.item {
+  margin-top: 5vh;
+  margin-bottom: 2vh;
+}
+.show {
+  display: block;
+}
+.no-show {
+  display: none;
+}
