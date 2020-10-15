@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./createPost.css";
+import {postPost} from "./apiRequests.js"
 class createPost extends Component {
   constructor(props) {
     super(props);
@@ -13,6 +14,10 @@ class createPost extends Component {
         "De EU",
       ],
       modal: false,
+      post: {
+        userId : "",
+        content : ""
+      }
     };
   }
   handleInputOnChange = (event) => {
@@ -29,7 +34,6 @@ class createPost extends Component {
     }
   };
   handleButtonPress = (event) => {
-    console.log("aaaaa");
     if (this.state.contains) {
       this.toggleModal();
     }
@@ -41,15 +45,15 @@ class createPost extends Component {
       this.setState({ modal: true });
     }
   };
+  createPost = (event) => {
+    postPost(this.state.post);
+  }
   render() {
     return (
       <div id="container">
         <div className="card" id="create-post-card">
           <div className="card-header">create a post</div>
           <div className="card-body">
-            {this.state.contains.toString()}
-            {this.state.modal.toString()}
-            <br />
             What's your opinion about{" "}
             <input
               type="text"
@@ -94,12 +98,12 @@ class createPost extends Component {
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
-              <div className="modal-body"></div>
+              <div className="modal-body">A post about this subject might already exist</div>
               <div className="modal-footer">
                 <button type="button" className="btn btn-primary">
                   Go to duplicate
                 </button>
-                <button type="button" className="btn btn-secondary">
+                <button type="button" className="btn btn-secondary" onClick={this.createPost}>
                   Create anyways
                 </button>
               </div>
