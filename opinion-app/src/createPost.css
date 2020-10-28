@@ -15,3 +15,9 @@
 .no-show {
   display: none;
 }
+.close-button {
+  float: right;
+}
+.title {
+  font-size: larger;
+}
