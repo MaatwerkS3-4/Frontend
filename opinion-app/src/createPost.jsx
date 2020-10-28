@@ -1,30 +1,44 @@
 import React, { Component } from "react";
 import "./createPost.css";
-import {postPost} from "./apiRequests.js"
+import {postPost} from "./apiRequests.js";
+import {getPostBySubString} from "./apiRequests.js";
 class createPost extends Component {
   constructor(props) {
     super(props);
     this.state = {
       contains: false,
       subjects: [
-        "Zwarte Piet",
-        "Klimaatverandering",
-        "De Amerikaanse Verkiezingen",
-        "Nederlands Migratiebeleid",
-        "De EU",
+        {
+          id: 1,
+          subject : "Zwarte Piet"
+        },
+        {
+          id: 2,
+          subject: "Klimaatverandering"},
+        {id : 3, subject : "De Amerikaanse Verkiezingen"},
+        {id: 4, subject : "Nederlands Migratiebeleid"},
+        {id : 5, subject : "De EU"}
       ],
       modal: false,
       post: {
         userId : "",
         content : ""
-      }
+      },
+      showDataList : false,
+      show : false
     };
   }
   handleInputOnChange = (event) => {
+    if (document.getElementById("subject-input").value.length >= 4) {
+      this.setState({showDataList : true});
+    }
+    else {
+      this.setState({showDataList : false});
+    }
     if (
       this.state.subjects.some(
         (elem) =>
-          elem.toUpperCase() ===
+          elem.subject.toUpperCase() ===
           document.getElementById("subject-input").value.toUpperCase()
       )
     ) {
@@ -47,12 +61,27 @@ class createPost extends Component {
   };
   createPost = (event) => {
     postPost(this.state.post);
+  };
+  updateSuggestList = (substring) => {
+    let result;
+    result = getPostBySubString(substring);
+    if (result !== null) {
+      this.setState({subjects : result})
+    }
+  };
+  closeButtonClick = (event) => {
+    this.setState({show : false})
+  }
+  componentWillReceiveProps(nextProps) {
+    if (typeof nextProps.show === "boolean") {
+    this.setState({show : nextProps.show})
+    }
   }
   render() {
     return (
       <div id="container">
-        <div className="card" id="create-post-card">
-          <div className="card-header">create a post</div>
+        <div className={this.state.show ? "show card" : "no-show"} id="create-post-card">
+          <div className="card-header">create a post <button type="button" onClick={this.closeButtonClick}>close</button>     </div>
           <div className="card-body">
             What's your opinion about{" "}
             <input
@@ -63,11 +92,13 @@ class createPost extends Component {
               id="subject-input"
               onInput={this.handleInputOnChange}
             ></input>
+            { this.state.showDataList &&
             <datalist id="dropdown">
               {this.state.subjects.map((subject) => (
-                <option>{subject}</option>
+                <option>{subject.subject}</option>
               ))}
-            </datalist>{" "}
+            </datalist>
+  }{" "}
             <br />
             <button
               type="button"

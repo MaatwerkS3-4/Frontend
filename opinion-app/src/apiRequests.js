@@ -32,3 +32,7 @@ const deleteRequest = async (url, data) => {
 export const postPost = (post) => {
     return postRequest('/post/', post);
 }
+
+export const getPostBySubString = (substring) => {
+    return getRequest('/post/'+substring);
+}
