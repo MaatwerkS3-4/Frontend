@@ -21,8 +21,8 @@ class createPost extends Component {
       ],
       modal: false,
       post: {
-        userId : "",
-        content : ""
+        id : "",
+        subject : ""
       },
       showDataList : false,
       show : false
@@ -64,11 +64,11 @@ class createPost extends Component {
     postPost(this.state.post);
   };
   updateSuggestList = (substring) => {
-    let result;
-    result = getPostBySubString(substring);
-    if (result !== null) {
-      this.setState({subjects : result})
-    }
+    getPostBySubString(substring).then((response) => {
+      if (response !== null) {
+        this.setState({subjects : response})
+      }
+    })
   };
   closeButtonClick = (event) => {
     this.setState({show : false})
