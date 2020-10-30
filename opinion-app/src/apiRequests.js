@@ -30,11 +30,11 @@ const deleteRequest = async (url, data) => {
 };
 
 export const postPost = (post) => {
-    return postRequest('/api/post/', post);
+    console.log(post);
+    
+    return postRequest('post/', post);
 }
 
 export const getPostBySubString = (substring) => {
-    console.log("ben dr");
-    console.log(getRequest('post/partialString/'+substring))
     return getRequest('post/partialString/'+substring);
 }

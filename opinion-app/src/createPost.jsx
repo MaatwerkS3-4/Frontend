@@ -20,10 +20,6 @@ class createPost extends Component {
         {id : 5, subject : "De EU"}
       ],
       modal: false,
-      post: {
-        id : "",
-        subject : ""
-      },
       showDataList : false,
       show : false
     };
@@ -52,6 +48,9 @@ class createPost extends Component {
     if (this.state.contains) {
       this.toggleModal();
     }
+    else {
+      this.makePost();
+    }
   };
   toggleModal = (event) => {
     if (this.state.modal) {
@@ -60,8 +59,13 @@ class createPost extends Component {
       this.setState({ modal: true });
     }
   };
-  createPost = (event) => {
-    postPost(this.state.post);
+  makePost = (event) => {
+    let value = document.getElementById("subject-input").value
+    let post = {
+      id : 5,
+      subject : value
+    }
+    postPost(post);
   };
   updateSuggestList = (substring) => {
     getPostBySubString(substring).then((response) => {
@@ -137,7 +141,7 @@ class createPost extends Component {
                 <button type="button" className="btn btn-primary">
                   Go to duplicate
                 </button>
-                <button type="button" className="btn btn-secondary" onClick={this.createPost}>
+                <button type="button" className="btn btn-secondary" onClick={this.makePost}>
                   Create anyways
                 </button>
               </div>
