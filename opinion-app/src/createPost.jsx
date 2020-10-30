@@ -60,10 +60,14 @@ class createPost extends Component {
     }
   };
   makePost = (event) => {
-    let value = document.getElementById("subject-input").value
+    let value = document.getElementById("subject-input").value.toString()
     let post = {
-      id : 5,
-      subject : value
+      subject : "Tomatoes",
+      user : {
+        id : 1,
+        username : "Potatoman",
+        password : "Yes"
+      }
     }
     postPost(post);
   };

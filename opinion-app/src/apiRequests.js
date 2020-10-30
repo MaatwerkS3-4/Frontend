@@ -1,6 +1,7 @@
 const postRequest = async(url,data) => {
     const requestOptions = {
         method: 'POST',
+        mode: 'cors',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({data})
     };
@@ -32,7 +33,7 @@ const deleteRequest = async (url, data) => {
 export const postPost = (post) => {
     console.log(post);
     
-    return postRequest('post/', post);
+    return postRequest('post', post);
 }
 
 export const getPostBySubString = (substring) => {
