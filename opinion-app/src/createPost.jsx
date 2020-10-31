@@ -73,8 +73,8 @@ class createPost extends Component {
   };
   updateSuggestList = (substring) => {
     getPostBySubString(substring).then((response) => {
-      if (response !== null) {
-        this.setState({subjects : response})
+      if (response.data !== null) {
+        this.setState({subjects : response.data})
       }
     })
   };
