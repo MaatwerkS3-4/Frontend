@@ -27,3 +27,7 @@ export const postPost = (post) => {
 export const getPostBySubString = (substring) => {
     return getRequest('api/post/partialString/'+substring)
 }
+
+export const getAllPosts = () => {
+    return getRequest('api/post/')
+}
