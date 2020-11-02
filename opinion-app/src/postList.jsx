@@ -11,7 +11,9 @@ class PostList extends Component {
         <ul id="post-list">
           {this.state.posts.map((post, index) => (
             <li key={index} className="post-list-item">
-              <span className="subject">{post.subject}</span>{" "}
+              <span className="subject">
+                What do you think about {post.subject}?
+              </span>{" "}
               <span className="username">{post.user.username}</span>
             </li>
           ))}

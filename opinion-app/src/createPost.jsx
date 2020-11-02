@@ -88,7 +88,7 @@ class createPost extends Component {
   }
   render() {
     return (
-      <div id="container">
+      <div id="create-post-container">
         <div
           className={this.state.show ? "show card" : "no-show"}
           id="create-post-card"

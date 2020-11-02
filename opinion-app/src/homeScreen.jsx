@@ -14,7 +14,7 @@ class HomeScreen extends Component {
       <div id="container">
         <nav className="navbar navbar-light bg-light navbar-expand-lg">
           <a className="navbar-brand" href="#">
-            Opinions
+            Viewpoint
           </a>
           <button
             class="navbar-toggler"

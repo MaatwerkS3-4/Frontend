@@ -1,9 +1,9 @@
 #create-post-card {
   height: 40vh;
-  width: 60vw;
+  width: 40vw;
   position: absolute;
-  margin-top: 20vh;
-  margin-left: 30vh;
+  margin-top: 10vh;
+  margin-left: 60vh;
 }
 .item {
   margin-top: 5vh;

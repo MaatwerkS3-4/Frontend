@@ -1,5 +1,6 @@
 #post-list {
   list-style: none;
+  margin-top: 5vh;
 }
 .post-list-item {
   margin-top: 2vh;
