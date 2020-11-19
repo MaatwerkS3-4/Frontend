@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { getAllPosts } from "./apiRequests.js";
 import "./postList.css";
+import {Post} from "./post";
+
 class PostList extends Component {
   state = {
     posts: [],
@@ -11,10 +13,9 @@ class PostList extends Component {
         <ul id="post-list">
           {this.state.posts.map((post, index) => (
             <li key={index} className="post-list-item">
-              <span className="subject">
-                What do you think about {post.subject}?
-              </span>{" "}
-              <span className="username">{post.user.username}</span>
+
+              <Post id = {post.id} subject = {post.subject} user = {post.user} thisPost = {post}/>
+
             </li>
           ))}
         </ul>
@@ -23,8 +24,8 @@ class PostList extends Component {
   }
   componentDidMount() {
     getAllPosts().then((response) => {
-      if (response != undefined && response.data != null) {
-        console.log(response.data);
+      if (response !== undefined && response.data != null) {
+
         this.setState({ posts: response.data });
       }
     });

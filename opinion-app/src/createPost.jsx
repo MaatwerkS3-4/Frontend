@@ -117,14 +117,7 @@ class createPost extends Component {
           </div>
           <div className="card-body">
             What's your opinion about{" "}
-            <input
-              type="text"
-              list="dropdown"
-              placeholder="[subject]"
-              className="item"
-              id="subject-input"
-              onInput={this.handleInputOnChange}
-            ></input>
+            <input type="text" list="dropdown" placeholder="[subject]" className="item" id="subject-input" onInput={this.handleInputOnChange}/>
             {this.state.showDataList && (
               <datalist id="dropdown">
                 {this.state.subjects.map((subject) => (
