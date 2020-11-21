@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import { getAllPosts } from "../../services/apiservice.js";
-import "./discussionlist.styles.css";
+import { getAllPosts } from "../../services/api-service.js";
+import "./discussion-list.styles.css";
 
-class DiscussionlistComponent extends Component {
+class DiscussionListComponent extends Component {
   state = {
     posts: [],
   };
@@ -31,4 +31,4 @@ class DiscussionlistComponent extends Component {
   }
 }
 
-export default DiscussionlistComponent;
+export default DiscussionListComponent;

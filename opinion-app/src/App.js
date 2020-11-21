@@ -1,12 +1,11 @@
 import React, {Component} from "react";
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'; 
 import "./App.css";
-import HomePage from "./pages/homepage/homepage.component.jsx";
-import Discussions from "./pages/discussionslist/discussionlist.component.jsx";
-import DiscussionDetail from "./pages/discussiondetail/discussiondetail.component.jsx";
-
-import CreatePost from "./components/creatediscussion/creatediscussion.component";
-import {NavBar} from "./components/navbar/navbar.component.jsx";
+import HomePage from "./pages/home/home.component.jsx";
+import DiscussionsPage from "./pages/discussions-list/discussion-list.component.jsx";
+import DiscussionDetailPage from "./pages/discussion-detail/discussion-detail.component.jsx";
+import CreatePost from "./components/create-discussion/create-discussion.component";
+import {NavBar} from "./components/navigation-bar/navigation-bar.component.jsx";
 
 
 class App extends Component{
@@ -30,8 +29,8 @@ class App extends Component{
             <NavBar handleCreateDiscussion={this.handleCreateDiscussion} />
             <Switch>
               <Route exact path='/' component={HomePage} />
-              <Route exact path='/discussions' component={Discussions} />
-              <Route path='/discussions/:discussionId' component={DiscussionDetail} />
+              <Route exact path='/discussions' component={DiscussionsPage} />
+              <Route path='/discussions/:discussionId' component={DiscussionDetailPage} />
             </Switch>
             <CreatePost show={this.state.showCreateDiscussion}/>
           </div>

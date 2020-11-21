@@ -1,7 +1,7 @@
 import React, {Component} from "react";
-import "./discussiondetail.styles.css";
+import "./discussion-detail.styles.css";
 
-class DiscussiondetailComponent extends Component{
+class DiscussionDetailComponent extends Component{
 
     constructor(props, context) {
         super(props, context);
@@ -20,5 +20,5 @@ class DiscussiondetailComponent extends Component{
     }
 }
 
-export default DiscussiondetailComponent;
+export default DiscussionDetailComponent;
 

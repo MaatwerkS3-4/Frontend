@@ -1,5 +1,5 @@
 import React from "react";
-import "./navbar.styles";
+import "./navigation-bar.styles";
 
 export const NavBar = ({handleCreateDiscussion}) => {
     return(
