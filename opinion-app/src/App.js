@@ -30,7 +30,7 @@ class App extends Component{
             <Switch>
               <Route exact path='/' component={HomePage} />
               <Route path='/discussions/:criteria?' component={DiscussionsPage} />
-              <Route path='/discussion/:discussionId' component={DiscussionDetailPage} />
+              <Route path='/discussion/:id' component={DiscussionDetailPage} />
             </Switch>
             <CreatePost show={this.state.showCreateDiscussion}/>
           </div>

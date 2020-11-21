@@ -25,6 +25,7 @@ class DiscussionOverviewComponent extends Component {
 
   handleSelectedItem = (id) =>{
     console.log(`Clicked item with id ${id}`);
+    this.props.history.push(`/discussion/${id}`);
   }
 
   render() {
