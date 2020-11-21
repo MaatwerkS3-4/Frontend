@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import CreatePost from "./createPost.jsx";
-import PostList from "./postList.jsx";
-import "./homeScreen.css";
-class HomeScreen extends Component {
+import CreatePost from "../../components/creatediscussion/creatediscussion.component.jsx";
+import DiscussionlistComponent from "../discussionslist/discussionlist.component.jsx";
+import "./homepage.styles.css";
+
+class HomepageComponent extends Component {
   state = {
     showCreatePost: false,
   };
@@ -53,7 +54,7 @@ class HomeScreen extends Component {
           </form>
         </nav>
         <div id="content">
-          <PostList></PostList>
+          <DiscussionlistComponent></DiscussionlistComponent>
         </div>
         <CreatePost show={this.state.showCreatePost}></CreatePost>
       </div>
@@ -61,4 +62,4 @@ class HomeScreen extends Component {
   }
 }
 
-export default HomeScreen;
+export default HomepageComponent;

@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import "./createPost.css";
-import { postPost } from "./apiRequests.js";
-import { getPostBySubString } from "./apiRequests.js";
-class createPost extends Component {
+import "./creatediscussion.styles.css";
+import { postPost } from "../../services/apiservice.js";
+import { getPostBySubString } from "../../services/apiservice.js";
+class creatediscussionComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -185,4 +185,4 @@ class createPost extends Component {
   }
 }
 
-export default createPost;
+export default creatediscussionComponent;
