@@ -88,7 +88,7 @@ class createDiscussionComponent extends Component {
   }
   render() {
     return (
-      <div id="container">
+      <div id="create-post-container">
         <div
           className={this.state.show ? "show card" : "no-show"}
           id="create-post-card"
@@ -117,14 +117,7 @@ class createDiscussionComponent extends Component {
           </div>
           <div className="card-body">
             What's your opinion about{" "}
-            <input
-              type="text"
-              list="dropdown"
-              placeholder="[subject]"
-              className="item"
-              id="subject-input"
-              onInput={this.handleInputOnChange}
-            ></input>
+            <input type="text" list="dropdown" placeholder="[subject]" className="item" id="subject-input" onInput={this.handleInputOnChange}/>
             {this.state.showDataList && (
               <datalist id="dropdown">
                 {this.state.subjects.map((subject) => (
