@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { getAllPosts } from "../../services/apiservice.js";
 import "./discussionlist.styles.css";
+
 class DiscussionlistComponent extends Component {
   state = {
     posts: [],
@@ -19,6 +20,7 @@ class DiscussionlistComponent extends Component {
       </div>
     );
   }
+
   componentDidMount() {
     getAllPosts().then((response) => {
       if (response != undefined && response.data != null) {
