@@ -15,6 +15,7 @@ class HomeComponent extends Component {
 
     handleSearchPress = (e) => {
         console.log(`handle search press button pressed: ${this.state.searchField}`);
+        this.props.history.push(`/discussions/${this.state.searchField}`);
     }
 
     handleInputChange = (e) => {

@@ -29,8 +29,8 @@ class App extends Component{
             <NavBar handleCreateDiscussion={this.handleCreateDiscussion} />
             <Switch>
               <Route exact path='/' component={HomePage} />
-              <Route exact path='/discussions' component={DiscussionsPage} />
-              <Route path='/discussions/:discussionId' component={DiscussionDetailPage} />
+              <Route path='/discussions/:criteria?' component={DiscussionsPage} />
+              <Route path='/discussion/:discussionId' component={DiscussionDetailPage} />
             </Switch>
             <CreatePost show={this.state.showCreateDiscussion}/>
           </div>
