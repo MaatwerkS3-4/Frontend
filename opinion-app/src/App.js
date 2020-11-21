@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'; 
 import "./App.css";
 import HomePage from "./pages/home/home.component.jsx";
-import DiscussionsPage from "./pages/discussions-list/discussion-list.component.jsx";
+import DiscussionsPage from "./pages/discussion-overview/discussion-overview.component.jsx";
 import DiscussionDetailPage from "./pages/discussion-detail/discussion-detail.component.jsx";
 import CreatePost from "./components/create-discussion/create-discussion.component";
 import {NavBar} from "./components/navigation-bar/navigation-bar.component.jsx";
