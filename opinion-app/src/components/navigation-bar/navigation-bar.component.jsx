@@ -21,13 +21,8 @@ export const NavBar = ({handleCreateDiscussion}) => {
             <div id="navbarNav" className="collapse navbar-collapse">
                 <ul className="navbar-nav">
                     <li className="nav-item">
-                        <a href="#" className="nav-link active">
+                        <a href={"/"} className="nav-link active">
                             Home
-                        </a>
-                    </li>
-                    <li className="nav-item">
-                        <a href="#" className="nav-link disabled">
-                            Popular
                         </a>
                     </li>
                 </ul>
