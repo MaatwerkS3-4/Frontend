@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import "./postList.css";
+import "./discussion-comment.styles.css";
 
-export class Comment extends Component{
+export class DiscussionCommentComponent extends Component{
     constructor(props){
         super(props);
         this.state = {

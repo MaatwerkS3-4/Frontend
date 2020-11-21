@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./createPost.css";
-import { postComment } from "./apiRequests.js";
+import { postComment } from "./services/api-service";
 
 class CreateComment extends Component {
     constructor(props) {
@@ -45,6 +45,7 @@ class CreateComment extends Component {
             this.setState({ show: !this.state.show });
         }
     }
+
     render() {
         return (
             <div id="create-post-container">

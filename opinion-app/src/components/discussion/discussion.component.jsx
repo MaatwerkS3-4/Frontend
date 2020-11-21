@@ -1,20 +1,18 @@
-import React, { Component } from "react";
-import "./postList.css";
-import {Comment} from "./comment";
-import {getPostComments} from "./apiRequests";
-import CreateComment from "./createComment";
+import React, {Component} from "react";
+import "./discussion.styles.css";
+import {DiscussionCommentComponent} from "../discussion-comment/discussion-comment.component";
+import {getPostComments} from "../../services/api-service";
+import CreateComment from "../../createComment";
 
-export class Post extends Component{
-    constructor(props){
+export class DiscussionComponent extends Component {
+    constructor(props) {
         super(props);
         this.state = {
             id: props.id,
             subject: props.subject,
             user: props.user,
             comments: [],
-
             thisPost: props.thisPost,
-
             showCreateComment: false,
         }
     }
@@ -22,32 +20,29 @@ export class Post extends Component{
     componentDidMount() {
         getPostComments(this.state.id).then((response) => {
             if (response !== undefined && response.data != null) {
-
                 this.setState({comments: response.data});
             }
-
         });
     }
 
     renderComments() {
-        if(this.state.comments.length !== 0){
-            return(
-            this.state.comments.map((comment, index) => (
-                <li key={index} className="post-list-item">
-                    <Comment content = {comment.content} user = {comment.user}/>
-                </li>
-            ))
+        if (this.state.comments.length !== 0) {
+            return (
+                this.state.comments.map((comment, index) => (
+                    <li key={index} className="post-list-item">
+                        <DiscussionCommentComponent content={comment.content} user={comment.user}/>
+                    </li>
+                ))
             )
         }
     }
 
     handleButtonPress = () => {
-        this.setState({ showCreateComment: !this.state.showCreateComment });
+        this.setState({showCreateComment: !this.state.showCreateComment});
     }
 
     render() {
-        return(
-
+        return (
             <div>
                 <span className="subject">
                 What do you think about {this.state.subject}?
@@ -64,7 +59,7 @@ export class Post extends Component{
                 >
                     Comment
                 </button>
-                <CreateComment parentPost = {this.state.thisPost} show={this.state.showCreateComment}/>
+                <CreateComment parentPost={this.state.thisPost} show={this.state.showCreateComment}/>
             </div>
 
         )
