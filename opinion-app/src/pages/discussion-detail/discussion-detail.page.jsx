@@ -19,15 +19,17 @@ class DiscussionDetailPage extends Component{
     }
 
     componentDidMount() {
+        this.props.handleToggleLoading(true);
         getPostComments(this.state.id).then((response) => {
             if (response !== undefined && response.data != null) {
                 this.setState({comments: response.data});
             }
-        });
+        }).finally(this.props.handleToggleLoading(false));
     }
 
     handlePostComment = (comment) =>{
         if(comment !== undefined){
+            this.props.handleToggleLoading(true);
             //Creating new comment object
             console.log("Creating new comment...");
             console.log(comment);
@@ -36,7 +38,7 @@ class DiscussionDetailPage extends Component{
             console.log("Sending comment to backend...");
             postComment(comment).then((result) => {
                 this.addComment(result.data);
-            })
+            }).finally(() => this.props.handleToggleLoading(false));
         }
 
         //Close input popup
