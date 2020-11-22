@@ -16,7 +16,7 @@ class App extends Component {
         this.state = {
             showCreateDiscussion: false,
             discussions: [],
-            selectedDiscussion: {},
+            selectedDiscussion: undefined,
             user: {
                 id: 1,
                 username: "Potatoman",

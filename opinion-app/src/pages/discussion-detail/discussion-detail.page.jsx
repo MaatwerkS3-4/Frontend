@@ -18,6 +18,11 @@ class DiscussionDetailPage extends Component{
         };
     }
 
+    componentDidCatch(error, errorInfo) {
+        console.log("error caught");
+        this.props.history.push("/");
+    }
+
     componentDidMount() {
         this.props.handleToggleLoading(true);
         getPostComments(this.state.id).then((response) => {
@@ -57,25 +62,30 @@ class DiscussionDetailPage extends Component{
     }
 
     render() {
-        const discussion = this.props.selectedDiscussion;
-        console.log(discussion);
-        return (
-            <div>
-                <h1>Discussion detail page for id {discussion.id}</h1>
-                <DiscussionInfo subject={discussion.subject}
-                                username={discussion.user.username}/>
-                <hr/>
-                <ButtonAttention content="Reageer" handleClick={this.handlePostComment} />
-                <hr/>
-                <h2>Opmerkingen</h2>
-                <CommentList comments={this.state.comments} />
-                {this.state.showCreateComment ? <CommentCreate
+        if(this.props.selectedDiscussion === undefined){
+            this.props.history.push("/");
+        }
+        else{
+            const discussion = this.props.selectedDiscussion;
+            console.log(discussion);
+            return (
+                <div>
+                    <h1>Discussion detail page for id {discussion.id}</h1>
+                    <DiscussionInfo subject={discussion.subject}
+                                    username={discussion.user.username}/>
+                    <hr/>
+                    <ButtonAttention content="Reageer" handleClick={this.handlePostComment} />
+                    <hr/>
+                    <h2>Opmerkingen</h2>
+                    <CommentList comments={this.state.comments} />
+                    {this.state.showCreateComment ? <CommentCreate
                         handlePostComment={this.handlePostComment}
                         user={this.props.user}
                         parentDiscussion={discussion}
-                /> : ""}
-            </div>
-        )
+                    /> : ""}
+                </div>
+            )
+        }
     }
 }
 
