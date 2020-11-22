@@ -1,5 +1,5 @@
 import React from "react";
-import "./navigation-bar.styles";
+import "./navigation-bar.styles.css";
 
 export const NavBar = ({handleToggleCreateDiscussion}) => {
     return(
