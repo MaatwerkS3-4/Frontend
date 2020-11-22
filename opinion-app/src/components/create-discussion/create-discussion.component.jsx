@@ -1,7 +1,8 @@
 import React, {Component} from "react";
 import {TextBox} from "../text-box/text-box.component";
 import "./create-discussion.styles.css";
-import {postPost} from "../../services/api-service";
+import {ButtonAttention} from "../button-attention/button-attention.component";
+import {ButtonRegular} from "../button-regular/button-regular.component";
 
 class CreateDiscussionComponent extends Component{
 
@@ -24,14 +25,19 @@ class CreateDiscussionComponent extends Component{
         this.props.handleCreateDiscussion (discussion);
     }
 
+    handleCloseClick = () =>{
+        this.props.handleCreateDiscussion();
+    }
+
     render() {
         return(
             <div className="container">
-                <TextBox tag="Subject"
+                <TextBox tag="Onderwerp"
                          placeholder=""
                          handleInputChange={this.handleSubjectInputChange}
                 />
-                <button onClick={() => this.handleCreateClick()}>Create Discussion</button>
+                <ButtonAttention handleClick={this.handleCreateClick} content="Aanmaken" />
+                <ButtonRegular handleClick={this.handleCloseClick} content="Sluiten" />
             </div>
         )
     }

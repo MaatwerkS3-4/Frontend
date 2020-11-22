@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 import "./discussion-comment.styles.css";
 
 export class DiscussionCommentComponent extends Component{

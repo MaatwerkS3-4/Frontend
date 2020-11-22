@@ -1,6 +1,4 @@
 import React, {Component} from "react";
-import CreatePost from "../../components/create-discussion/create-discussion.component.jsx";
-import DiscussionOverviewComponent from "../discussion-overview/discussion-overview.component.jsx";
 import "./home.styles.css";
 import {SearchBox} from "../../components/search-box/search-box.component";
 

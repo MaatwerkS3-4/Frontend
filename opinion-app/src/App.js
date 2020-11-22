@@ -1,13 +1,12 @@
 import React, {Component} from "react";
-import {BrowserRouter as Router, Route, Link, Switch, Redirect, useHistory} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import "./App.css";
 import HomePage from "./pages/home/home.component.jsx";
 import DiscussionsPage from "./pages/discussion-overview/discussion-overview.component.jsx";
 import DiscussionDetailPage from "./pages/discussion-detail/discussion-detail.component.jsx";
 import {NavBar} from "./components/navigation-bar/navigation-bar.component.jsx";
-import {getAllPosts} from "./services/api-service";
+import {getAllPosts, postPost} from "./services/api.service";
 import CreateDiscussionComponent from "./components/create-discussion/create-discussion.component";
-import {postPost} from "./services/api-service";
 
 class App extends Component{
   constructor(props) {
@@ -40,18 +39,19 @@ class App extends Component{
   };
 
   handleCreateDiscussion = (discussion) =>{
-    console.log(this)
-    //Create new discussion object
-    console.log("Creating new discussion...")
-    console.log(discussion);
+    if(discussion !== undefined){
+      //Create new discussion object
+      console.log("Creating new discussion...")
+      console.log(discussion);
 
-    //Send object to backend
-    console.log("Sending discussion to backend...")
+      //Send object to backend
+      console.log("Sending discussion to backend...")
 
-    postPost(discussion).then((result) => {
-          this.addDiscussion(result.data);
-        }
-    );
+      postPost(discussion).then((result) => {
+            this.addDiscussion(result.data);
+          }
+      );
+    }
 
     //Close input field popup
     console.log("Closing popup...")
@@ -59,9 +59,9 @@ class App extends Component{
   };
 
   addDiscussion = (discussion) =>{
-    const discussions = [...this.state.discussions];
-    discussions.push(discussion);
-    this.setState({discussions: discussions})
+    const newDiscussions = [...this.state.discussions];
+    newDiscussions.push(discussion);
+    this.setState({discussions: newDiscussions});
   }
 
 
@@ -84,6 +84,7 @@ class App extends Component{
               <Route path='/discussion/:id'
                      render={(props) => <DiscussionDetailPage
                          selectedDiscussion={this.state.selectedDiscussion}
+                         user={this.state.user}
                          {...props}/>}/>
             </Switch>
             {this.state.showCreateDiscussion ? <CreateDiscussionComponent

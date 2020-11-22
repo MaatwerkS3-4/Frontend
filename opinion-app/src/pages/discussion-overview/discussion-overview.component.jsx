@@ -1,5 +1,4 @@
-import React, { Component } from "react";
-import { getAllPosts } from "../../services/api-service.js";
+import React, {Component} from "react";
 import "./discussion-overview.styles.css";
 
 import {DiscussionList} from "../../components/discussion-list/discussion-list.component";
@@ -30,6 +29,7 @@ class DiscussionOverviewComponent extends Component {
 
     return (
       <div id="container">
+        {console.log("Rendering overview...")}
         <DiscussionList handleSelectDiscussion={this.props.handleSelectDiscussion}
                         discussions={filteredDiscussions}
                         handleRedirect={this.handleRedirect}
