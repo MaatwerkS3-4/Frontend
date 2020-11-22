@@ -25,7 +25,7 @@ export class DiscussionComponent extends Component {
         });
     }
 
-    renderComments() {
+    renderComments = () =>{
         if (this.state.comments.length !== 0) {
             return (
                 this.state.comments.map((comment, index) => (
@@ -42,7 +42,9 @@ export class DiscussionComponent extends Component {
     }
 
     render() {
+        console.log(this)
         return (
+
             <div>
                 <span className="subject">
                 What do you think about {this.state.subject}?

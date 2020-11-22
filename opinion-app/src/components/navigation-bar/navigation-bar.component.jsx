@@ -1,7 +1,7 @@
 import React from "react";
 import "./navigation-bar.styles";
 
-export const NavBar = ({handleCreateDiscussion}) => {
+export const NavBar = ({handleToggleCreateDiscussion}) => {
     return(
         <nav className="navbar navbar-light bg-light navbar-expand-lg">
             <a className="navbar-brand" href="#">
@@ -32,7 +32,7 @@ export const NavBar = ({handleCreateDiscussion}) => {
                     type="button"
                     className="form-control mr-sm-2"
                     id="create-button"
-                    onClick={handleCreateDiscussion}
+                    onClick={handleToggleCreateDiscussion}
                 >
                     Create Post
                 </button>

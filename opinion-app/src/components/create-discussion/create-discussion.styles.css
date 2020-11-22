@@ -1,23 +1,9 @@
-#create-post-card {
-  height: 40vh;
-  width: 40vw;
+.container{
+  border: 5px solid black;
+  padding: 60px;
+  background-color: lightslategrey;
   position: absolute;
-  margin-top: 10vh;
-  margin-left: 60vh;
-}
-.item {
-  margin-top: 5vh;
-  margin-bottom: 2vh;
-}
-.show {
-  display: block;
-}
-.no-show {
-  display: none;
-}
-.close-button {
-  float: right;
-}
-.title {
-  font-size: larger;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }

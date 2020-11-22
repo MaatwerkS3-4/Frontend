@@ -9,22 +9,12 @@ class DiscussionOverviewComponent extends Component {
     super(props);
 
     this.state = {
-      discussions: [],
-      criteria: props.match.params.criteria
+      criteria: props.match.params.criteria,
+      discussions: props.discussions,
     };
-  }
+  };
 
-  componentDidMount() {
-    getAllPosts().then((response) => {
-      if (response !== undefined && response.data != null) {
-        console.log(response.data);
-        this.setState({ discussions: response.data });
-      }
-    });
-  }
-
-  handleSelectedItem = (id) =>{
-    console.log(`Clicked item with id ${id}`);
+  handleRedirect = (id) =>{
     this.props.history.push(`/discussion/${id}`);
   }
 
@@ -40,8 +30,10 @@ class DiscussionOverviewComponent extends Component {
 
     return (
       <div id="container">
-        <DiscussionList handleItemSelected={this.handleSelectedItem}
-                        discussions={filteredDiscussions}/>
+        <DiscussionList handleSelectDiscussion={this.props.handleSelectDiscussion}
+                        discussions={filteredDiscussions}
+                        handleRedirect={this.handleRedirect}
+        />
       </div>
     );
   }
