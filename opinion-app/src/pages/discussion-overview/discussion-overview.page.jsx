@@ -3,7 +3,7 @@ import "./discussion-overview.styles.css";
 
 import {DiscussionList} from "../../components/discussion-list/discussion-list.component";
 
-class DiscussionOverviewComponent extends Component {
+class DiscussionOverviewPage extends Component {
   constructor(props) {
     super(props);
 
@@ -39,4 +39,4 @@ class DiscussionOverviewComponent extends Component {
   }
 }
 
-export default DiscussionOverviewComponent;
+export default DiscussionOverviewPage;

@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import "./home.styles.css";
 import {SearchBox} from "../../components/search-box/search-box.component";
 
-class HomeComponent extends Component {
+class HomePage extends Component {
     constructor(props) {
         super(props);
 
@@ -32,4 +32,4 @@ class HomeComponent extends Component {
     }
 }
 
-export default HomeComponent;
+export default HomePage;

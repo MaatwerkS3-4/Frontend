@@ -6,7 +6,7 @@ import {CommentList} from "../../components/comment-list/comment-list.component"
 import {ButtonAttention} from "../../components/button-attention/button-attention.component";
 import CommentCreate from "../../components/comment-create/comment-create.component";
 
-class DiscussionDetailComponent extends Component{
+class DiscussionDetailPage extends Component{
 
     constructor(props, context) {
         super(props, context);
@@ -77,5 +77,5 @@ class DiscussionDetailComponent extends Component{
     }
 }
 
-export default DiscussionDetailComponent;
+export default DiscussionDetailPage;
 

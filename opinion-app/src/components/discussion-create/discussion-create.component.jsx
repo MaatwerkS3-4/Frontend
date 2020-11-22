@@ -1,10 +1,10 @@
 import React, {Component} from "react";
 import {TextBox} from "../text-box/text-box.component";
-import "./create-discussion.styles.css";
+import "./discussion-create.styles.css";
 import {ButtonAttention} from "../button-attention/button-attention.component";
 import {ButtonRegular} from "../button-regular/button-regular.component";
 
-class CreateDiscussionComponent extends Component{
+class DiscussionCreateComponent extends Component{
 
     constructor(props, context) {
         super(props, context);
@@ -43,4 +43,4 @@ class CreateDiscussionComponent extends Component{
     }
 }
 
-export default CreateDiscussionComponent;
+export default DiscussionCreateComponent;

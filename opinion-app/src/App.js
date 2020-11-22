@@ -1,12 +1,12 @@
 import React, {Component} from "react";
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import "./App.css";
-import HomePage from "./pages/home/home.component.jsx";
-import DiscussionsPage from "./pages/discussion-overview/discussion-overview.component.jsx";
-import DiscussionDetailPage from "./pages/discussion-detail/discussion-detail.component.jsx";
+import HomePage from "./pages/home/home.page.jsx";
+import DiscussionsPage from "./pages/discussion-overview/discussion-overview.page.jsx";
+import DiscussionDetailPage from "./pages/discussion-detail/discussion-detail.page.jsx";
 import {NavBar} from "./components/navigation-bar/navigation-bar.component.jsx";
 import {getAllPosts, postPost} from "./services/api.service";
-import CreateDiscussionComponent from "./components/create-discussion/create-discussion.component";
+import DiscussionCreate from "./components/discussion-create/discussion-create.component.jsx";
 
 class App extends Component{
   constructor(props) {
@@ -87,7 +87,7 @@ class App extends Component{
                          user={this.state.user}
                          {...props}/>}/>
             </Switch>
-            {this.state.showCreateDiscussion ? <CreateDiscussionComponent
+            {this.state.showCreateDiscussion ? <DiscussionCreate
                 handleCreateDiscussion={this.handleCreateDiscussion}
                 user={this.state.user}/> : ""}
           </div>
