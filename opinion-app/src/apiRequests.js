@@ -5,7 +5,7 @@ const getRequest = (url) => {
         method: 'GET',
         mode: 'cors',
         headers: {
-            'Content-type': 'application/json'
+            'Content-type': 'application/json',
         },
     }).then((response) => {
 
@@ -30,4 +30,12 @@ export const getPostBySubString = (substring) => {
 
 export const getAllPosts = () => {
     return getRequest('api/post/')
+}
+
+export const getPostComments = (postId) => {
+    return getRequest('api/comment/postId/'+postId)
+}
+
+export const postComment = (comment) => {
+    return postRequest('/api/comment', comment)
 }

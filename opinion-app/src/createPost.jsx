@@ -111,9 +111,8 @@ class createPost extends Component {
               placeholder="[subject]"
               className="item"
               id="subject-input"
-              data-testid="subject-input"
               onInput={this.handleInputOnChange}
-            ></input>
+            />
             {this.state.showDataList && (
               <datalist id="dropdown" data-testid="dropdown">
                 {this.state.subjects.map((subject) => (

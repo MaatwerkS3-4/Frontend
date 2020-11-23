@@ -67,9 +67,9 @@ class HomeScreen extends Component {
           </form>
         </nav>
         <div id="content">
-          <PostList></PostList>
+          <PostList/>
         </div>
-        <CreatePost show={this.state.showCreatePost}></CreatePost>
+        <CreatePost show={this.state.showCreatePost}/>
       </div>
     );
   }
