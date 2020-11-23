@@ -1,4 +1,5 @@
-import {AXIOS} from "./http-common"
+import {AXIOS} from "../http-common"
+
 const getRequest = (url) => {
 
     return AXIOS.get(`${url}`, {
