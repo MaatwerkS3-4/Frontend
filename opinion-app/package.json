@@ -5,16 +5,20 @@
   "proxy": "http://localhost:8082",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
+    "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.1.2",
     "axios": "^0.21.0",
     "bootstrap": "^4.5.2",
     "bootstrap-icons": "^1.0.0",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-15": "^1.4.2",
+    "enzyme-adapter-react-16": "^1.15.5",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.3"
+    "react-scripts": "3.4.3",
+    "react-test-renderer": "^17.0.1"
   },
   "scripts": {
     "start": "react-scripts start",

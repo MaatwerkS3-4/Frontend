@@ -7,19 +7,7 @@ class createPost extends Component {
     super(props);
     this.state = {
       contains: false,
-      subjects: [
-        {
-          id: 1,
-          subject: "Zwarte Piet",
-        },
-        {
-          id: 2,
-          subject: "Klimaatverandering",
-        },
-        { id: 3, subject: "De Amerikaanse Verkiezingen" },
-        { id: 4, subject: "Nederlands Migratiebeleid" },
-        { id: 5, subject: "De EU" },
-      ],
+      subjects: [],
       modal: false,
       showDataList: false,
       show: false,
@@ -123,10 +111,11 @@ class createPost extends Component {
               placeholder="[subject]"
               className="item"
               id="subject-input"
+              data-testid="subject-input"
               onInput={this.handleInputOnChange}
             ></input>
             {this.state.showDataList && (
-              <datalist id="dropdown">
+              <datalist id="dropdown" data-testid="dropdown">
                 {this.state.subjects.map((subject) => (
                   <option>{subject.subject}</option>
                 ))}
