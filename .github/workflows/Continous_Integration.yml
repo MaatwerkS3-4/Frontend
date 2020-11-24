@@ -20,4 +20,4 @@ jobs:
     - name: npm install, build, and test
       run: |
         npm install
-        npm run build -f opinion-app/package.json package --file opinion-app\package.json --if-present
+        npm run build --file opinion-app\package.json --if-present
