@@ -1,5 +1,5 @@
 import React from "react";
-import "./discussion-info.styles.css";
+import styles from"./discussion-info.module.css";
 
 export const DiscussionInfo = ({subject, username}) =>{
     return (
@@ -7,7 +7,7 @@ export const DiscussionInfo = ({subject, username}) =>{
             <span className="subject">
                 What do you think about {subject}?
             </span>
-            <span className="username">
+            <span className={styles.username}>
                 {username}
             </span>
         </div>
