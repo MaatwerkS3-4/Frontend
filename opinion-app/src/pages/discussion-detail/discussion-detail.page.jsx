@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import "./discussion-detail.styles.css";
-import { DiscussionInfo } from "../../components/discussion-info/discussion-info.component";
-import { getPostComments, postComment } from "../../services/api.service";
-import { CommentList } from "../../components/comment-list/comment-list.component";
-import { ButtonAttention } from "../../components/button-attention/button-attention.component";
+import React, {Component} from "react";
+import styles from "./discussion-detail.module.css";
+import {DiscussionInfo} from "../../components/discussion-info/discussion-info.component";
+import {getPostComments, postComment} from "../../services/api.service";
+import {CommentList} from "../../components/comment-list/comment-list.component";
+import {ButtonAttention} from "../../components/button-attention/button-attention.component";
 import CommentCreate from "../../components/comment-create/comment-create.component";
 
 class DiscussionDetailPage extends Component {
@@ -17,6 +17,13 @@ class DiscussionDetailPage extends Component {
     };
   }
 
+        this.state = {
+            id: props.match.params.id,
+            comments: [],
+            showCreateComment: false,
+            activeTime: 10
+        };
+    }
   componentDidCatch(error, errorInfo) {
     console.log("error caught");
     this.props.history.push("/");
@@ -97,7 +104,45 @@ class DiscussionDetailPage extends Component {
         </div>
       );
     }
-  }
+
+    handleToggleCreateComment = () => {
+        this.setState({showCreateComment: !this.state.showCreateComment});
+    }
+
+    handleBackToOverviewClick = () => {
+        this.props.history.push(`/discussions`);
+    }
+
+    render() {
+        if(this.props.selectedDiscussion === undefined){
+            this.props.history.push("/");
+        }
+        else{
+            const discussion = this.props.selectedDiscussion;
+            console.log(discussion);
+            return (
+                <div className={styles.text}>
+                    <h1 >Discussion detail page for id {discussion.id}</h1>
+                    <DiscussionInfo subject={discussion.subject}
+                                    username={discussion.user.username}/>
+                    <hr/>
+                    <span className={styles.spanPadding}>{this.state.comments.length} opmerkingen |</span>
+                    <span className={styles.spanPadding}>{this.state.comments.length} deelnemers |</span>
+                    <span className={styles.spanPadding}>{this.state.activeTime} seconden geleden</span>
+
+                    <ButtonAttention content="Reageer" handleClick={this.handlePostComment} />
+                    <button className={styles.overviewButton} onClick={this.handleBackToOverviewClick}>terug naar overzicht</button>
+                    <h2 className={styles.commentsHeader}>Opmerkingen</h2>
+                    <CommentList comments={this.state.comments} />
+                    {this.state.showCreateComment ? <CommentCreate
+                        handlePostComment={this.handlePostComment}
+                        user={this.props.user}
+                        parentDiscussion={discussion}
+                    /> : ""}
+                </div>
+            )
+        }
+    }
 }
 
 export default DiscussionDetailPage;

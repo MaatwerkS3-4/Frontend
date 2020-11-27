@@ -1,8 +1,8 @@
 import React from "react";
-import "./button-attention.styles.css";
+import styles from "./button-attention.module.css";
 
 export const ButtonAttention = ({content, handleClick}) =>{
     return(
-        <button onClick={() => handleClick()}> {content} </button>
+        <button className={styles.button} onClick={() => handleClick()}> {content} </button>
     )
 }

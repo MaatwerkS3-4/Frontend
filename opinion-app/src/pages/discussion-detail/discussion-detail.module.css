@@ -1,0 +1,22 @@
+.text{
+    background-color: white;
+    color: dimgrey;
+    font-family: Arial;
+    text-align: left;
+    padding-left: 20%;
+}
+.spanPadding{
+    padding-left: 10px;
+}
+.overviewButton{
+    position: absolute;
+    left: 70%;
+    background-color: white;
+    border-color: white;
+    border-style: hidden;
+}
+.commentsHeader{
+    font-size: large;
+    font-weight: bold;
+    padding-top: 2%;
+}
