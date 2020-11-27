@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import "./discussion-detail.styles.css";
+import styles from "./discussion-detail.module.css";
 import {DiscussionInfo} from "../../components/discussion-info/discussion-info.component";
 import {getPostComments, postComment} from "../../services/api.service";
 import {CommentList} from "../../components/comment-list/comment-list.component";
@@ -14,7 +14,8 @@ class DiscussionDetailPage extends Component{
         this.state = {
             id: props.match.params.id,
             comments: [],
-            showCreateComment: false
+            showCreateComment: false,
+            activeTime: 10
         };
     }
 
@@ -61,6 +62,10 @@ class DiscussionDetailPage extends Component{
         this.setState({showCreateComment: !this.state.showCreateComment});
     }
 
+    handleBackToOverviewClick = () => {
+        this.props.history.push(`/discussions`);
+    }
+
     render() {
         if(this.props.selectedDiscussion === undefined){
             this.props.history.push("/");
@@ -69,14 +74,18 @@ class DiscussionDetailPage extends Component{
             const discussion = this.props.selectedDiscussion;
             console.log(discussion);
             return (
-                <div>
-                    <h1>Discussion detail page for id {discussion.id}</h1>
+                <div className={styles.text}>
+                    <h1 >Discussion detail page for id {discussion.id}</h1>
                     <DiscussionInfo subject={discussion.subject}
                                     username={discussion.user.username}/>
                     <hr/>
+                    <span className={styles.spanPadding}>{this.state.comments.length} opmerkingen |</span>
+                    <span className={styles.spanPadding}>{this.state.comments.length} deelnemers |</span>
+                    <span className={styles.spanPadding}>{this.state.activeTime} seconden geleden</span>
+
                     <ButtonAttention content="Reageer" handleClick={this.handlePostComment} />
-                    <hr/>
-                    <h2>Opmerkingen</h2>
+                    <button className={styles.overviewButton} onClick={this.handleBackToOverviewClick}>terug naar overzicht</button>
+                    <h2 className={styles.commentsHeader}>Opmerkingen</h2>
                     <CommentList comments={this.state.comments} />
                     {this.state.showCreateComment ? <CommentCreate
                         handlePostComment={this.handlePostComment}
