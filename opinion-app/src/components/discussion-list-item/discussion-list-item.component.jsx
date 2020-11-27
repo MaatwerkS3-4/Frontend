@@ -8,9 +8,13 @@ export const DiscussionListItem = ({ discussion }) => {
         <span className="subject">{discussion.subject}</span>{" "}
       </div>
       <div className="extra-info">
-        <span className="extra-info-item">x Comments</span>
+        <span className="extra-info-item">
+          {discussion.amountOfComments} Comments
+        </span>
         <div className="seperator"></div>
-        <span className="extra-info-item">x Deelnemers</span>
+        <span className="extra-info-item">
+          {discussion.amountOfParticipants} Deelnemers
+        </span>
         <div className="seperator"></div>
         <span className="extra-info-item">x seconden geleden</span>
       </div>
