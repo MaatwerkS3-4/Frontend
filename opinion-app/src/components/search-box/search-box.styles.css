@@ -1,0 +1,16 @@
+.search {
+  width: 25vw;
+  height: 4.5vh;
+  padding: 0.5em;
+  margin: 0.1em 0em;
+  border: 0.1rem solid lightgrey;
+}
+.search-button {
+  height: 4.5vh;
+  width: 2.5vw;
+  padding: 0.5em;
+  margin: 0.1em 0em;
+  background-color: #6f7f92;
+  border: 0.1rem solid lightgrey;
+  border-left: none;
+}
