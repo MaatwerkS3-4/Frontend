@@ -87,29 +87,29 @@ class App extends Component {
                         menuEnabled={!this.state.loading}
                         handleToggleCreateDiscussion={this.handleToggleCreateDiscussion}
                     />
+                    {this.state.loading ?
+                        <LoadOverlay/>
+                        :
+                        <Switch>
+                            <Route exact path='/' component={HomePage}/>
+                            <Route path='/discussions/:criteria?'
+                                   render={(props) => <DiscussionsPage
+                                       discussions={this.state.discussions}
+                                       handleSelectDiscussion={this.handleSelectDiscussion}
+                                       {...props}/>}/>
+                            <Route path='/discussion/:id'
+                                   render={(props) => <DiscussionDetailPage
+                                       selectedDiscussion={this.state.selectedDiscussion}
+                                       user={this.state.user}
+                                       handleToggleLoading={this.handleToggleLoading}
+                                       {...props}/>}/>
+                        </Switch>
+                    }
                     <div className="content-container">
-                        {this.state.loading ?
-                            <LoadOverlay/>
-                            :
-                            <div>
-                                <Switch>
-                                    <Route exact path='/' component={HomePage}/>
-                                    <Route path='/discussions/:criteria?'
-                                           render={(props) => <DiscussionsPage
-                                               discussions={this.state.discussions}
-                                               handleSelectDiscussion={this.handleSelectDiscussion}
-                                               {...props}/>}/>
-                                    <Route path='/discussion/:id'
-                                           render={(props) => <DiscussionDetailPage
-                                               selectedDiscussion={this.state.selectedDiscussion}
-                                               user={this.state.user}
-                                               handleToggleLoading={this.handleToggleLoading}
-                                               {...props}/>}/>
-                                </Switch>
-                                {this.state.showCreateDiscussion ? <DiscussionCreate
-                                    handleCreateDiscussion={this.handleCreateDiscussion}
-                                    user={this.state.user}/> : ""}
-                            </div>}
+                    {this.state.showCreateDiscussion ? <DiscussionCreate
+                        handleCreateDiscussion={this.handleCreateDiscussion}
+                        user={this.state.user}/> : ""}
+
                     </div>
                     <Footer/>
                 </div>

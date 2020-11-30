@@ -24,17 +24,14 @@ class HomePage extends Component {
 
   render() {
     return (
-        <div class="home-container">
-
+        <div className="home-container">
+          <div className="home-title">Wat moet ik vinden van...</div>
+          <SearchBox
+              placeholder="Zoeken..."
+              handleInputChange={this.handleInputChange}
+              handleSearchPress={this.handleSearchPress}
+          />
         </div>
-      // <div id="search-container">
-      //   <span className="title search-title">Wat moet ik vinden van...</span>
-      //   <SearchBox
-      //     placeholder="Zoeken..."
-      //     handleInputChange={this.handleInputChange}
-      //     handleSearchPress={this.handleSearchPress}
-      //   />
-      // </div>
     );
   }
 }

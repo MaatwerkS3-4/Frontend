@@ -8,7 +8,7 @@ export const SearchBox = ({
   handleSearchPress,
 }) => {
   return (
-    <div>
+    <div className="search-container">
       <input
         type="search"
         className="search"
@@ -16,7 +16,7 @@ export const SearchBox = ({
         placeholder={placeholder}
       />
       <button onClick={handleSearchPress} className="search-button">
-        <FaSearch color="white" size={20} />
+        <FaSearch className="search-button-icon"/>
       </button>
     </div>
   );
