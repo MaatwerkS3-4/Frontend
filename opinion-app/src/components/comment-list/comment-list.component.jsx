@@ -4,12 +4,10 @@ import {CommentListItem} from "../comment-list-item/comment-list-item.component"
 
 export const CommentList = ({comments}) => {
     return (
-        <ul id="post-list">
-            {comments.map((c, index) => (
-                <li key={index}>
-                    <CommentListItem content={c.content} username={c.user.username} />
-                </li>
+        <div className="comment-list-container">
+            {comments.map((c) => (
+                <CommentListItem content={c.content} username={c.user.username} />
             ))}
-        </ul>
+        </div>
     );
 }

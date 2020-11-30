@@ -1,5 +1,6 @@
 import React from "react";
 import "./discussion-list-item.styles.css";
+import {DiscussionInfo} from "../discussion-info/discussion-info.component";
 
 export const DiscussionListItem = ({discussion, handleSelectDiscussion, handleRedirect}) => {
     return (
@@ -11,11 +12,7 @@ export const DiscussionListItem = ({discussion, handleSelectDiscussion, handleRe
             <div className="info-main">
                 {discussion.subject}
             </div>
-            <div className="info-extra">
-                <div>{discussion.amountOfComments} Opmerkingen</div>
-                <div>{discussion.amountOfParticipants} Deelnemers</div>
-                <div>x seconden geleden</div>
-            </div>
+            <DiscussionInfo discussion={discussion}/>
         </div>
     );
 };

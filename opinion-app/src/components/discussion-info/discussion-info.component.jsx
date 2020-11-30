@@ -1,15 +1,12 @@
-import React from "react";
-import styles from"./discussion-info.module.css";
+ import React from "react";
+import "./discussion-info.styles.css";
 
-export const DiscussionInfo = ({subject, username}) =>{
-    return (
-        <div>
-            <span className="subject">
-                What do you think about {subject}?
-            </span>
-            <span className={styles.username}>
-                {username}
-            </span>
+export const DiscussionInfo = ({discussion}) =>{
+    return(
+        <div className="discussion-info-container">
+            <div>{discussion.amountOfComments} Opmerkingen</div>
+            <div>{discussion.amountOfParticipants} Deelnemers</div>
+            <div>x seconden geleden</div>
         </div>
     )
 }

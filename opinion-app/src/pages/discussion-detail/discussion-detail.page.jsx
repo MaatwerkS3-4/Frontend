@@ -1,10 +1,11 @@
 import React, {Component} from "react";
-import styles from "./discussion-detail.module.css";
+import "./discussion-detail.styles.css";
 import {DiscussionInfo} from "../../components/discussion-info/discussion-info.component";
 import {getPostComments, postComment} from "../../services/api.service";
 import {CommentList} from "../../components/comment-list/comment-list.component";
 import {ButtonAttention} from "../../components/button/button-attention/button-attention.component";
 import CommentCreate from "../../components/comment-create/comment-create.component";
+import {ButtonRegular} from "../../components/button/button-regular/button-regular.component";
 
 class DiscussionDetailPage extends Component {
     constructor(props, context) {
@@ -32,7 +33,7 @@ class DiscussionDetailPage extends Component {
                 }
             })
             .finally(this.props.handleToggleLoading(false));
-    }
+    };
 
     handlePostComment = (comment) => {
         if (comment !== undefined) {
@@ -71,35 +72,35 @@ class DiscussionDetailPage extends Component {
     };
 
     render() {
-        if (this.props.selectedDiscussion === undefined) {
+        const discussion = this.props.selectedDiscussion;
+        if(discussion === undefined){
             this.props.history.push("/");
             return null;
-        } else {
-            const discussion = this.props.selectedDiscussion;
-            console.log(discussion);
-            return (
-                <div className={styles.text}>
-                    <DiscussionInfo subject={discussion.subject}
-                                    username={discussion.username}/>
-                    <hr/>
-                    <span className={styles.spanPadding}>{this.state.comments.length} opmerkingen |</span>
-                    <span className={styles.spanPadding}>{this.state.comments.length} deelnemers |</span>
-                    <span className={styles.spanPadding}>{this.state.activeTime} seconden geleden</span>
-
-                    <ButtonAttention content="Reageer" handleClick={this.handlePostComment}/>
-                    <button className={styles.overviewButton} onClick={this.handleBackToOverviewClick}>terug naar
-                        overzicht
-                    </button>
-                    <h2 className={styles.commentsHeader}>Opmerkingen</h2>
-                    <CommentList comments={this.state.comments}/>
-                    {this.state.showCreateComment ? <CommentCreate
-                        handlePostComment={this.handlePostComment}
-                        user={this.props.user}
-                        parentDiscussion={discussion}
-                    /> : ""}
-                </div>
-            )
         }
+        return (
+            <div className="discussion-detail-container">
+                <div className="discussion-info">
+                    <div className="discussion-title">
+                        {discussion.subject}
+                    </div>
+                    <div className="discussion-content">
+                        Nog te implementeren...
+                    </div>
+                    <DiscussionInfo discussion={discussion}/>
+                    <div className="discussion-options">
+                        <ButtonRegular handleOnClick={this.handleBackToOverviewClick} text="terug naar overzicht"/>
+                        <ButtonAttention handleOnClick={this.handlePostComment} text="Opmerking plaatsen"/>
+                    </div>
+                </div>
+                {/*<CommentList comments={discussion.comments}/>*/}
+                {this.state.showCreateComment ? <CommentCreate
+                    handlePostComment={this.handlePostComment}
+                    user={this.props.user}
+                    parentDiscussion={discussion}
+                /> : ""}
+            </div>
+        )
     }
 }
+
 export default DiscussionDetailPage;

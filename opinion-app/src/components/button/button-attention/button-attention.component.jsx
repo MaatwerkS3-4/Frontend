@@ -4,6 +4,6 @@ import "../button.styles.css";
 
 export const ButtonAttention = ({text, handleOnClick}) =>{
     return(
-        <button className="button-attention" onClick={handleOnClick}>{text}</button>
+        <button className="button-attention" onClick={() => handleOnClick()}>{text}</button>
     )
 }

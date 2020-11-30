@@ -38,8 +38,8 @@ class CommentCreate extends Component {
                 <TextBox tag="Bericht"
                          placeholder=""
                          handleInputChange={this.handleContentInputChange}/>
-                <ButtonAttention handleClick={this.handlePostClick} content="Plaatsen" />
-                <ButtonRegular  handleClick={this.handleCloseClick} content="Sluiten" />
+                <ButtonAttention handleOnClick={this.handlePostClick} text="Plaatsen" />
+                <ButtonRegular  handleOnClick={this.handleCloseClick} text="Sluiten" />
             </div>
         )
     }

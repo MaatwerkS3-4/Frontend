@@ -18,23 +18,3 @@
   font-size: 20px;
   font-weight: bold;
 }
-
-.info-extra{
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-}
-
-.info-extra > div{
-  padding: 5px 15px 5px 15px;
-  border-right: #D4D4D4 solid 1px;
-}
-
-.info-extra > div:first-child{
-  padding-left: 0;
-}
-
-.info-extra > div:last-child{
-  padding-right: 0;
-  border-right: none;
-}

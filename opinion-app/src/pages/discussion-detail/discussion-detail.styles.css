@@ -1,0 +1,35 @@
+.discussion-detail-container{
+    width: 80%;
+    min-width: 1000px;
+    height: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    overflow: hidden;
+    text-align: left;
+    margin-top: 20px;
+    font-family: Arial;
+}
+.discussion-info{
+    width: 100%;
+}
+
+.discussion-title{
+    width: 100%;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.discussion-content{
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border-bottom: #7F7F7F solid 1px;
+}
+
+.discussion-options{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
