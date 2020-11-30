@@ -36,8 +36,8 @@ class DiscussionCreateComponent extends Component{
                          placeholder=""
                          handleInputChange={this.handleSubjectInputChange}
                 />
-                <ButtonAttention handleClick={this.handleCreateClick} content="Aanmaken" />
-                <ButtonRegular handleClick={this.handleCloseClick} content="Sluiten" />
+                <ButtonAttention handleOnClick={this.handleCreateClick} text="Aanmaken" />
+                <ButtonRegular handleOnClick={this.handleCloseClick} text="Sluiten" />
             </div>
         )
     }
