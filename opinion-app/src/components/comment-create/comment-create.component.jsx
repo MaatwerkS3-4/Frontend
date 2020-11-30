@@ -1,8 +1,8 @@
 import React, {Component} from "react";
 import "./comment-create.styles.css";
 import {TextBox} from "../text-box/text-box.component";
-import {ButtonAttention} from "../button-attention/button-attention.component";
-import {ButtonRegular} from "../button-regular/button-regular.component";
+import {ButtonAttention} from "../button/button-attention/button-attention.component";
+import {ButtonRegular} from "../button/button-regular/button-regular.component";
 
 class CommentCreate extends Component {
 
