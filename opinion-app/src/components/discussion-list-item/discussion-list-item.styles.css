@@ -1,30 +1,40 @@
-.subject {
-  font-size: x-large;
-  float: left;
+.discussion-list-item-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-bottom: 5px;
+  width:100%;
+  height: auto;
+  text-align: left;
+  font-family: Arial;
 }
-.username {
-  margin-right: 2vw;
+
+.discussion-list-item-container:hover{
+  cursor: pointer;
 }
-.main-info {
-  display: inline-block;
+
+.info-main{
   width: 100%;
+  font-size: 20px;
+  font-weight: bold;
 }
-.extra-info {
-  display: inline-block;
-  width: 100%;
-  font-size: medium;
+
+.info-extra{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
 }
-#post-list {
-  list-style: none;
-  margin-top: 5vh;
+
+.info-extra > div{
+  padding: 5px 15px 5px 15px;
+  border-right: #D4D4D4 solid 1px;
 }
-.extra-info-item {
-  float: left;
+
+.info-extra > div:first-child{
+  padding-left: 0;
 }
-.seperator {
-  float: left;
-  margin-left: 1vw;
-  margin-right: 1vw;
-  height: 2vh;
-  border-left: 0.13rem solid darkgrey;
+
+.info-extra > div:last-child{
+  padding-right: 0;
+  border-right: none;
 }

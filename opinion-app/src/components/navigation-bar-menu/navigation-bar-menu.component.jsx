@@ -7,10 +7,8 @@ import {ButtonRegular} from "../button/button-regular/button-regular.component";
 export const NavBarMenu = ({handleToggleCreateDiscussion}) =>{
     return(
         <div className="menu-container">
-            <ButtonAttention text="Create discussion" handleOnClick={() => handleToggleCreateDiscussion()}/>
-            <ButtonRegular text="test regular" handleOnClick={() => console.log("button press")}/>
-            <ButtonRegular text="test regular" handleOnClick={() => console.log("button press")}/>
-            <ButtonRegular text="test regular" handleOnClick={() => console.log("button press")}/>
+            <ButtonAttention text="inloggen" handleOnClick={() => console.log("login button clicked...")}/>
+            <ButtonRegular text="discussie aanmaken" handleOnClick={() => handleToggleCreateDiscussion()}/>
         </div>
     )
 }

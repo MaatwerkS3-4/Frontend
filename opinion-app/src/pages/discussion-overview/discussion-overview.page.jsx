@@ -28,7 +28,7 @@ class DiscussionOverviewPage extends Component {
     );
 
     return (
-      <div id="container">
+      <div className="discussion-container">
         {console.log("Rendering overview...")}
         <DiscussionList handleSelectDiscussion={this.props.handleSelectDiscussion}
                         discussions={filteredDiscussions}

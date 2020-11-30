@@ -1,1 +1,10 @@
-
+.discussion-container{
+    width: 60%;
+    min-width: 1000px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    overflow: hidden;
+}

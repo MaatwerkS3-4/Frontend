@@ -73,14 +73,14 @@ class DiscussionDetailPage extends Component {
     render() {
         if (this.props.selectedDiscussion === undefined) {
             this.props.history.push("/");
+            return null;
         } else {
             const discussion = this.props.selectedDiscussion;
             console.log(discussion);
             return (
                 <div className={styles.text}>
-                    <h1>Discussion detail page for id {discussion.id}</h1>
                     <DiscussionInfo subject={discussion.subject}
-                                    username={discussion.user.username}/>
+                                    username={discussion.username}/>
                     <hr/>
                     <span className={styles.spanPadding}>{this.state.comments.length} opmerkingen |</span>
                     <span className={styles.spanPadding}>{this.state.comments.length} deelnemers |</span>
