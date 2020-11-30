@@ -4,6 +4,7 @@ footer{
     width: 100vw;
     min-height: 50px;
     height: 5vh;
+    margin-top: 7vh;
     border-top: #D4D4D4 solid 1px;
     background-color: #F9F9F9;
 }
