@@ -1,9 +1,50 @@
-.container{
-  border: 5px solid black;
-  padding: 60px;
-  background-color: lightslategrey;
+.create-container{
+  width: 100%;
+  height: 100%;
+  top:0;
+  left: 0;
+  position: absolute;
+}
+
+.create-discussion-overlay{
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.create-discussion-container{
+  border: none;
+  min-width: 40%;
+  height: auto;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 60px 180px 60px 180px;
+  background-color: #F9F9F9;
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+}
+
+.create-discussion-options{
+  width: 100%;
+  text-align: right;
+}
+
+.create-discussion-container > div{
+  margin-bottom: 20px;
+}
+
+.create-discussion-container > div:first-child{
+  margin-bottom: 10px;
+}
+
+.discussion-title{
+  text-align: left;
+  width: 100%;
+  font-size: 30px;
+  font-weight: bold;
 }
