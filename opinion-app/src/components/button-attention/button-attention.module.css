@@ -1,9 +1,8 @@
-.button{
-    position: relative;
-    left: 45%;
-    background-color: lightslategray;
-    color: white;
-    border-color: lightslategray;
-    padding: 5px;
-    border-radius: 5px;
+.button {
+  position: relative;
+  background-color: lightslategray;
+  color: white;
+  border-color: lightslategray;
+  padding: 5px;
+  border-radius: 5px;
 }

@@ -40,3 +40,7 @@ export const getPostComments = (postId) => {
 export const postComment = (comment) => {
     return postRequest('/api/comment', comment)
 }
+
+export const postUser = (user) => {
+    return postRequest('/api/user', user)
+}

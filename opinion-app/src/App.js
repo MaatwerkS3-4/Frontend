@@ -8,6 +8,7 @@ import {NavBar} from "./components/navigation-bar/navigation-bar.component.jsx";
 import {getAllPosts, postPost} from "./services/api.service";
 import DiscussionCreate from "./components/discussion-create/discussion-create.component.jsx";
 import {LoadOverlay} from "./components/load-overlay/load-overlay.component";
+import Register from "./pages/register/register.page";
 
 class App extends Component {
     constructor(props) {
@@ -78,6 +79,11 @@ class App extends Component {
         this.setState({loading: status});
     }
 
+    handleRegisterClick = () => {
+        console.log("test")
+        this.props.history.push('/register');
+    }
+
     render() {
         return (
             <Router>
@@ -85,7 +91,7 @@ class App extends Component {
                     {this.state.loading ? <LoadOverlay/> :
                         <div>
 
-                            <NavBar handleToggleCreateDiscussion={this.handleToggleCreateDiscussion}/>
+                            <NavBar handleToggleCreateDiscussion={this.handleToggleCreateDiscussion} handleRegisterClick={this.handleRegisterClick}/>
                             <Switch>
                                 <Route exact path='/' component={HomePage}/>
                                 <Route path='/discussions/:criteria?'
@@ -99,6 +105,8 @@ class App extends Component {
                                            user={this.state.user}
                                            handleToggleLoading={this.handleToggleLoading}
                                            {...props}/>}/>
+                                <Route exact path="/register"
+                                        component={Register}/>
                             </Switch>
                             {this.state.showCreateDiscussion ? <DiscussionCreate
                                 handleCreateDiscussion={this.handleCreateDiscussion}
