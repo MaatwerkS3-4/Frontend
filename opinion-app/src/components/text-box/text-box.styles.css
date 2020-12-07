@@ -1,0 +1,36 @@
+.textbox-container{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 55px;
+    font-family: Arial;
+
+}
+.textbox-tag{
+    background-color: #46515D;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px 0 0 5px;
+    white-space: nowrap;
+    padding-right: 20px;
+    padding-left: 20px;
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 15px;
+    letter-spacing: 1px;
+}
+
+.textbox-container > input{
+    width: 100%;
+    height:100%;
+    border-radius: 0 5px 5px 0;
+    border: 1px solid #D4D4D4;
+    border-left: none;
+    font-size: 18px;
+    font-family: Arial;
+    padding-left: 20px;
+    color: #46515D;
+}

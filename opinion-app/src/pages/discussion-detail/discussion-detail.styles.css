@@ -33,3 +33,9 @@
     flex-direction: row;
     justify-content: flex-end;
 }
+
+.discussion-info-extra{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}

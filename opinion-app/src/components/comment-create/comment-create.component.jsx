@@ -34,12 +34,18 @@ class CommentCreate extends Component {
 
     render() {
         return (
-            <div className="container">
-                <TextBox tag="Bericht"
-                         placeholder=""
-                         handleInputChange={this.handleContentInputChange}/>
-                <ButtonAttention handleOnClick={this.handlePostClick} text="Plaatsen" />
-                <ButtonRegular  handleOnClick={this.handleCloseClick} text="Sluiten" />
+            <div className="create-container">
+                <div className="create-comment-container">
+                    <div className="comment-title">title</div>
+                    <TextBox tag="Onderwerp"
+                             placeholder=""
+                             handleInputChange={this.handleContentInputChange}/>
+                    <div className="create-comment-options">
+                        <ButtonRegular  handleOnClick={this.handleCloseClick} text="Sluiten" />
+                        <ButtonAttention handleOnClick={this.handlePostClick} text="Plaatsen" />
+                    </div>
+                </div>
+                <div className="create-comment-overlay" onClick={() => this.handleCloseClick()}/>
             </div>
         )
     }

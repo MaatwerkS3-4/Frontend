@@ -86,11 +86,14 @@ class DiscussionDetailPage extends Component {
                     <div className="discussion-content">
                         Nog te implementeren...
                     </div>
-                    <DiscussionInfo discussion={discussion}/>
-                    <div className="discussion-options">
-                        <ButtonRegular handleOnClick={this.handleBackToOverviewClick} text="terug naar overzicht"/>
-                        <ButtonAttention handleOnClick={this.handlePostComment} text="Opmerking plaatsen"/>
+                    <div className="discussion-info-extra">
+                        <DiscussionInfo discussion={discussion}/>
+                        <div className="discussion-options">
+                            <ButtonRegular handleOnClick={this.handleBackToOverviewClick} text="terug naar overzicht"/>
+                            <ButtonAttention handleOnClick={this.handlePostComment} text="Opmerking plaatsen"/>
+                        </div>
                     </div>
+
                 </div>
                 {/*<CommentList comments={discussion.comments}/>*/}
                 {this.state.showCreateComment ? <CommentCreate

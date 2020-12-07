@@ -3,10 +3,10 @@ import "./text-box.styles.css";
 
 export const TextBox = ({tag, placeholder, handleInputChange}) => {
     return(
-        <div>
-            <p>{tag}</p>
+        <div className="textbox-container">
+            <div className="textbox-tag">{tag}</div>
             <input type='search'
-                   className='search'
+                   className='textbox-field'
                    onChange={handleInputChange}
                    placeholder={placeholder}
             />

@@ -5,15 +5,18 @@
 }
 
 .discussion-info-container > div{
+}
+
+.discussion-info-container > div> span{
     padding: 5px 15px 5px 15px;
     border-right: #D4D4D4 solid 1px;
 }
 
-.discussion-info-container > div:first-child{
+.discussion-info-container > div:first-child > span{
     padding-left: 0;
 }
 
-.discussion-info-container > div:last-child{
+.discussion-info-container > div:last-child > span{
     padding-right: 0;
     border-right: none;
 }

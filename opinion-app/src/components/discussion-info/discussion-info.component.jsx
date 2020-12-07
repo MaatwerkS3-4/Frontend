@@ -4,9 +4,10 @@ import "./discussion-info.styles.css";
 export const DiscussionInfo = ({discussion}) =>{
     return(
         <div className="discussion-info-container">
-            <div>{discussion.amountOfComments} Opmerkingen</div>
-            <div>{discussion.amountOfParticipants} Deelnemers</div>
-            <div>x seconden geleden</div>
+            {/*Wrapped in span to make sure separators are sized properly*/}
+            <div><span>{discussion.amountOfComments} Opmerkingen</span></div>
+            <div><span>{discussion.amountOfParticipants} Deelnemers</span></div>
+            <div><span>x seconden geleden</span></div>
         </div>
     )
 }
