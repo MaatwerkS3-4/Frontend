@@ -14,14 +14,14 @@
 
 .create-comment-container{
     border: none;
-    width: 40%;
+    min-width: 40%;
     height: auto;
     border-radius: 5px;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    padding: 80px 200px 80px 200px;
+    padding: 60px 180px 60px 180px;
     background-color: #F9F9F9;
     position: absolute;
     left: 50%;
@@ -29,7 +29,24 @@
     transform: translate(-50%, -50%);
 }
 
+.create-comment-options{
+    width: 100%;
+    text-align: right;
+}
+
+
+.create-comment-container > div{
+    margin-bottom: 20px;
+}
+
+.create-comment-container > div:first-child{
+    margin-bottom: 10px;
+}
+
 .comment-title{
-    
+    text-align: left;
+    width: 100%;
+    font-size: 30px;
+    font-weight: bold;
 }
 
