@@ -15,15 +15,19 @@ class App extends Component {
         super(props);
 
         this.state = {
-            showCreateDiscussion: false,
-            discussions: [],
-            selectedDiscussion: undefined,
+            //Current user
             user: {
                 id: 1,
                 username: "Potatoman",
                 password: "Yes",
             },
-            loading: true
+            //Overlay status
+            showCreateDiscussion: false,
+            loading: true,
+
+            //Discussions data
+            discussions: [],
+            selectedDiscussion: undefined
         };
     }
 
