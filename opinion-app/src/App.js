@@ -8,7 +8,7 @@ import {Header} from "./components/header/header.component";
 import DiscussionCreate from "./components/discussion-create/discussion-create.component.jsx";
 import {LoadOverlay} from "./components/load-overlay/load-overlay.component";
 import {Footer} from "./components/footer/footer.component";
-import {handleGetAllDiscussionInfos} from "./services/api.service";
+import {handleGetAllDiscussionInfos, handleGetUserById} from "./services/api.service";
 
 class App extends Component {
     constructor(props) {
@@ -17,26 +17,47 @@ class App extends Component {
         this.state = {
             //Current user
             user: {
-                id: 1,
-                username: "Potatoman",
-                password: "Yes",
+                id: undefined,
+                username: undefined,
             },
             //Overlay status
             showCreateDiscussion: false,
             loading: true,
 
             //Discussions data
+            discussionInfos: [],
             discussions: [],
             selectedDiscussion: undefined
         };
     }
 
     componentDidMount() {
-        this.handleToggleLoading(true);
-        handleGetAllDiscussionInfos().then(infos => {
-            console.log("Discussion infos retrieved:");
-            console.log(infos);
-        }).finally(() =>{this.handleToggleLoading(false)});
+        // Set loading to true
+        this.setState({loading: true});
+
+        // Create object for retrieved data
+        const retrievedData = {
+            user: undefined,
+            discussionInfos: []
+        }
+
+        //Retrieve User
+        handleGetUserById(1).then(user =>{
+            retrievedData.user = user;
+        })
+        //Retrieve discussionInfos
+        .then(() => {handleGetAllDiscussionInfos().then(infos => {
+            retrievedData.discussionInfos.push(infos);
+        })})
+        //Set new state
+        .finally(() =>{
+            this.setState({
+                user: retrievedData.user,
+                discussionInfos: retrievedData.discussionInfos,
+                loading: false
+            });
+            console.log(this.state)
+        });
     };
 
     handleSelectDiscussion = (discussion) => {
@@ -51,10 +72,6 @@ class App extends Component {
 
     handleToggleCreateDiscussion = () => {
         this.setState({showCreateDiscussion: !this.state.showCreateDiscussion});
-    }
-
-    handleToggleLoading = (status) => {
-        this.setState({loading: status});
     }
 
     render() {

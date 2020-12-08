@@ -23,3 +23,8 @@ export const handleGetDiscussionInfoById = (discussionId) =>{
     return AXIOS.get(`/discussion_info/id/${discussionId}`)
         .then(res => {return res.data})
 };
+
+export const handleGetUserById = (id) =>{
+    return AXIOS.get(`/users/${id}`)
+        .then(res => {return res.data})
+};
