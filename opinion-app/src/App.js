@@ -5,7 +5,7 @@ import HomePage from "./pages/home/home.page.jsx";
 import DiscussionsPage from "./pages/discussion-overview/discussion-overview.page.jsx";
 import DiscussionDetailPage from "./pages/discussion-detail/discussion-detail.page.jsx";
 import {Header} from "./components/header/header.component";
-import {getAllPosts, postPost} from "./services/api.service";
+import {getAllPosts, getPostComments, postPost} from "./services/api.service";
 import DiscussionCreate from "./components/discussion-create/discussion-create.component.jsx";
 import {LoadOverlay} from "./components/load-overlay/load-overlay.component";
 import {Footer} from "./components/footer/footer.component";
@@ -64,12 +64,12 @@ class App extends Component {
         this.handleToggleCreateDiscussion();
     };
 
+
     addDiscussion = (discussion) => {
         const newDiscussions = [...this.state.discussions];
         newDiscussions.push(discussion);
         this.setState({discussions: newDiscussions});
     }
-
 
     handleToggleCreateDiscussion = () => {
         this.setState({showCreateDiscussion: !this.state.showCreateDiscussion});
