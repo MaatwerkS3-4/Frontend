@@ -1,42 +1,25 @@
 import {AXIOS} from "../http-common"
 
-const getRequest = (url) => {
-
-    return AXIOS.get(`${url}`, {
-        method: 'GET',
-        mode: 'cors',
-        headers: {
-            'Content-type': 'application/json',
-        },
-    }).then((response) => {
-
-        return response;
-    })
-        .catch(e => {
-            console.log(e);
-        });
-};
-const postRequest = (url, data) => {
-        return AXIOS.post(url, data)
+export const handleGetDiscussionById = (id) =>{
+    return AXIOS.get(`/discussion/${id}`)
+        .then(response =>{return response.data});
 };
 
+export const handlePostNewDiscussion = (createDiscussionDTO) =>{
+    return AXIOS.post(`/discussion`, createDiscussionDTO)
+        .then(res =>{ return res.data});
+};
+export const handlePostNewComment = (discussionId, createCommentDTO) =>{
+    return AXIOS.post(`/comment/${discussionId}`, createCommentDTO)
+        .then(res => {return res.data})
+};
 
-export const postPost = (post) => {
-    return postRequest('api/post', post);
-}
+export const handleGetAllDiscussionInfos = () => {
+  return AXIOS.get(`/discussion_info`)
+      .then(res => {return res.data})
+};
 
-export const getPostBySubString = (substring) => {
-    return getRequest('api/post/partialString/'+substring)
-}
-
-export const getAllPosts = () => {
-    return getRequest('api/post/')
-}
-
-export const getPostComments = (postId) => {
-    return getRequest('api/comment/postId/'+postId)
-}
-
-export const postComment = (comment) => {
-    return postRequest('/api/comment', comment)
-}
+export const handleGetDiscussionInfoById = (discussionId) =>{
+    return AXIOS.get(`/discussion_info/id/${discussionId}`)
+        .then(res => {return res.data})
+};

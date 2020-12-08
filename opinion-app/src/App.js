@@ -5,10 +5,10 @@ import HomePage from "./pages/home/home.page.jsx";
 import DiscussionsPage from "./pages/discussion-overview/discussion-overview.page.jsx";
 import DiscussionDetailPage from "./pages/discussion-detail/discussion-detail.page.jsx";
 import {Header} from "./components/header/header.component";
-import {getAllPosts, getPostComments, postPost} from "./services/api.service";
 import DiscussionCreate from "./components/discussion-create/discussion-create.component.jsx";
 import {LoadOverlay} from "./components/load-overlay/load-overlay.component";
 import {Footer} from "./components/footer/footer.component";
+import {handleGetAllDiscussionInfos} from "./services/api.service";
 
 class App extends Component {
     constructor(props) {
@@ -28,13 +28,11 @@ class App extends Component {
     }
 
     componentDidMount() {
-        getAllPosts().then((response) => {
-            if (response !== undefined && response.data != null) {
-                console.log(response.data);
-                this.setState({discussions: response.data});
-                this.handleToggleLoading(false);
-            }
-        });
+        this.handleToggleLoading(true);
+        handleGetAllDiscussionInfos().then(infos => {
+            console.log("Discussion infos retrieved:");
+            console.log(infos);
+        }).finally(() =>{this.handleToggleLoading(false)});
     };
 
     handleSelectDiscussion = (discussion) => {
@@ -43,33 +41,9 @@ class App extends Component {
     };
 
     handleCreateDiscussion = (discussion) => {
-        if (discussion !== undefined) {
-            this.handleToggleLoading(true);
-
-            //Create new discussion object
-            console.log("Creating new discussion...")
-            console.log(discussion);
-
-            //Send object to backend
-            console.log("Sending discussion to backend...")
-
-            postPost(discussion).then((result) => {
-                    this.addDiscussion(result.data);
-                }
-            ).finally(() => this.handleToggleLoading(false));
-        }
-
-        //Close input field popup
-        console.log("Closing popup...")
+        console.log("Handle create discussion called")
         this.handleToggleCreateDiscussion();
     };
-
-
-    addDiscussion = (discussion) => {
-        const newDiscussions = [...this.state.discussions];
-        newDiscussions.push(discussion);
-        this.setState({discussions: newDiscussions});
-    }
 
     handleToggleCreateDiscussion = () => {
         this.setState({showCreateDiscussion: !this.state.showCreateDiscussion});
