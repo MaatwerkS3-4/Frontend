@@ -8,8 +8,7 @@ class DiscussionOverviewPage extends Component {
     super(props);
 
     this.state = {
-      criteria: props.match.params.criteria,
-      discussions: props.discussions,
+
     };
   };
 
@@ -18,12 +17,14 @@ class DiscussionOverviewPage extends Component {
   }
 
   render() {
-    //filter discussion with search criteria
-    let {discussions, criteria} = this.state;
-    if(criteria === undefined){
-      criteria = '';
-    }
-    const filteredDiscussions = discussions.filter(d =>
+    console.log("rendering overview page")
+    console.log(this.state)
+    //Get data passed from previous page
+    const {discussionInfos} = this.props;
+    let criteria = (this.match.params.criteria === undefined) ? '' : this.match.params.criteria;
+
+
+    const filteredDiscussionInfos = discussionInfos.filter(d =>
         d.subject.toLowerCase().includes(criteria.toLowerCase())
     );
 
@@ -31,7 +32,7 @@ class DiscussionOverviewPage extends Component {
       <div className="discussion-container">
         {console.log("Rendering overview...")}
         <DiscussionList handleSelectDiscussion={this.props.handleSelectDiscussion}
-                        discussions={filteredDiscussions}
+                        discussionInfos={filteredDiscussionInfos}
                         handleRedirect={this.handleRedirect}
         />
       </div>

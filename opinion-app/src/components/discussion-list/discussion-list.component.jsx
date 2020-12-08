@@ -3,17 +3,16 @@ import "./discussion-list.styles.css";
 
 import {DiscussionListItem} from "../discussion-list-item/discussion-list-item.component";
 
-export const DiscussionList = ({discussions, handleSelectDiscussion, handleRedirect}) => {
+export const DiscussionList = ({discussionInfos, handleSelectDiscussion, handleRedirect}) => {
     return (
         <div className="discussion-list-container">
-            {discussions.map((d) => (
+            {discussionInfos.map((d) => (
                 <DiscussionListItem
-                    discussion={d}
+                    discussionInfo={d}
                     handleSelectDiscussion={handleSelectDiscussion}
                     handleRedirect={handleRedirect}
                 />
             ))}
-            {console.log(discussions)}
         </div>
         // <ul id="post-list">
         //   {discussions.map((d, index) => (

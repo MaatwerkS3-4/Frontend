@@ -23,6 +23,7 @@ class HomePage extends Component {
   };
 
   render() {
+    console.log("Rendering Homepage...")
     return (
         <div className="home-container">
           <div className="home-title">Wat moet ik vinden van...</div>

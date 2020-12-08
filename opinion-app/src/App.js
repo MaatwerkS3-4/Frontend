@@ -13,52 +13,52 @@ import {handleGetAllDiscussionInfos, handleGetUserById} from "./services/api.ser
 class App extends Component {
     constructor(props) {
         super(props);
-
         this.state = {
             //Current user
             user: {
                 id: undefined,
                 username: undefined,
             },
+
             //Overlay status
             showCreateDiscussion: false,
             loading: true,
 
             //Discussions data
             discussionInfos: [],
-            discussions: [],
-            selectedDiscussion: undefined
+            selectedDiscussion: undefined,
+            searchCriteria: ""
         };
     }
 
-    componentDidMount() {
-        // Set loading to true
-        this.setState({loading: true});
+    shouldComponentUpdate(nextProps, nextState, nextContext) {
+        return !this.state.loading;
+    }
 
-        // Create object for retrieved data
-        const retrievedData = {
-            user: undefined,
-            discussionInfos: []
-        }
-
+    async componentDidMount() {
+        this.handleToggleLoading(true);
         //Retrieve User
         handleGetUserById(1).then(user =>{
-            retrievedData.user = user;
+            this.setState({user: user});
+        }).finally(() => {
+            this.handleToggleLoading(false);
         })
-        //Retrieve discussionInfos
-        .then(() => {handleGetAllDiscussionInfos().then(infos => {
-            retrievedData.discussionInfos.push(infos);
-        })})
-        //Set new state
-        .finally(() =>{
-            this.setState({
-                user: retrievedData.user,
-                discussionInfos: retrievedData.discussionInfos,
-                loading: false
-            });
-            console.log(this.state)
-        });
     };
+
+    handleToggleLoading = (status) => {
+        console.log("Toggling loading status to " + status);
+        if(this.state.loading === status) return;
+
+        this.setState({loading: status});
+        if(status === false){
+            console.log("Forcing update...");
+            this.forceUpdate(() => {console.log("Forced update")});
+        }
+    }
+
+    handleSetSearchCriteria = (criteria) =>{
+        this.state.searchCriteria = criteria;
+    }
 
     handleSelectDiscussion = (discussion) => {
         console.log(discussion);
@@ -75,6 +75,7 @@ class App extends Component {
     }
 
     render() {
+        console.log("Rendering App...");
         return (
             <Router>
                 <div className="App">
@@ -89,7 +90,7 @@ class App extends Component {
                             <Route exact path='/' component={HomePage}/>
                             <Route path='/discussions/:criteria?'
                                    render={(props) => <DiscussionsPage
-                                       discussions={this.state.discussions}
+                                       discussionInfos={this.state.discussionInfos}
                                        handleSelectDiscussion={this.handleSelectDiscussion}
                                        {...props}/>}/>
                             <Route path='/discussion/:id'
