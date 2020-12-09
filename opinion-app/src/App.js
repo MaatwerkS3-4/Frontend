@@ -11,7 +11,7 @@ import {Footer} from "./components/footer/footer.component";
 import {
     handleGetAllDiscussionInfos,
     handleGetDiscussionById,
-    handleGetUserById,
+    handleGetUserById, handlePostNewComment,
     handlePostNewDiscussion
 } from "./services/api.service";
 
@@ -103,6 +103,19 @@ class App extends Component {
             })
     };
 
+    handlePostComment = (content) => {
+        this.handleToggleLoading(true);
+        const createCommentDTO = {
+            content: content,
+            posterId: this.state.user.id
+        }
+
+        handlePostNewComment(this.state.selectedDiscussion.id, createCommentDTO).then(c => {
+            console.log("New comment posted: ", c);
+            this.state.selectedDiscussion.comments.push(c);
+        }).finally(() => {this.handleToggleLoading(false)});
+    }
+
     render() {
         console.log("Rendering App...");
         return (
@@ -129,7 +142,7 @@ class App extends Component {
                                        //find discussion info with selected discussion id
                                        discussionInfo={this.state.discussionInfos.find(c =>
                                            c.id === this.state.selectedDiscussion.id)}
-                                       user={this.state.user}
+                                       handlePostComment={this.handlePostComment}
                                        {...props}/>}/>
                         </Switch>
                     }

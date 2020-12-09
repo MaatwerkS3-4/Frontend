@@ -4,13 +4,13 @@ import {DiscussionInfo} from "../../components/discussion-info/discussion-info.c
 import {ButtonAttention} from "../../components/button/button-attention/button-attention.component";
 import CommentCreate from "../../components/comment-create/comment-create.component";
 import {ButtonRegular} from "../../components/button/button-regular/button-regular.component";
+import {CommentList} from "../../components/comment-list/comment-list.component";
 
 class DiscussionDetailPage extends Component {
     constructor(props, context) {
         super(props, context);
 
         this.state = {
-            comments: [],
             showCreateComment: false,
         };
     }
@@ -18,6 +18,11 @@ class DiscussionDetailPage extends Component {
     componentDidCatch(error, errorInfo) {
         console.log("error caught");
         this.props.history.push("/");
+    }
+
+    handleCreateComment = (content) => {
+        this.handleToggleCreateComment();
+        this.props.handlePostComment(content);
     }
 
     handleToggleCreateComment = () => {
@@ -55,9 +60,9 @@ class DiscussionDetailPage extends Component {
                         </div>
                     </div>
                 </div>
-                {/*<CommentList comments={discussion.comments}/>*/}
+                <CommentList comments={discussion.comments} />
                 {this.state.showCreateComment ? <CommentCreate
-                    handlePostComment={this.handleToggleCreateComment}
+                    handlePostComment={this.handleCreateComment}
                     user={this.props.user}
                     parentDiscussion={discussion}
                 /> : ""}

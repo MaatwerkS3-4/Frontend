@@ -20,13 +20,7 @@ class CommentCreate extends Component {
     }
 
     handlePostClick = () => {
-        const comment = {
-            content: this.state.content,
-            user: this.props.user,
-            post: this.props.parentDiscussion
-        };
-
-        this.props.handlePostComment(comment);
+        this.props.handlePostComment(this.state.content);
     }
 
     handleCloseClick = () => {
