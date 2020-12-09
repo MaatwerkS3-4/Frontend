@@ -7,16 +7,16 @@
 .discussion-info-container > div{
 }
 
-.discussion-info-container > div> span{
+.discussion-info-container > div> div{
     padding: 5px 15px 5px 15px;
     border-right: #D4D4D4 solid 1px;
 }
 
-.discussion-info-container > div:first-child > span{
+.discussion-info-container > div:first-child > div{
     padding-left: 0;
 }
 
-.discussion-info-container > div:last-child > span{
+.discussion-info-container > div:last-child > div{
     padding-right: 0;
     border-right: none;
 }

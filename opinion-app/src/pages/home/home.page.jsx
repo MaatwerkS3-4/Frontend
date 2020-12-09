@@ -18,9 +18,9 @@ class HomePage extends Component {
     this.props.history.push(`/discussions/${this.state.searchField}`);
   };
 
-  handleInputChange = (e) => {
-    this.setState({ searchField: e.target.value });
-  };
+  handleSearchFieldChanged = (event) =>{
+      this.setState({searchField: event.target.value});
+  }
 
   render() {
     console.log("Rendering Homepage...")
@@ -29,7 +29,7 @@ class HomePage extends Component {
           <div className="home-title">Wat moet ik vinden van...</div>
           <SearchBox
               placeholder="Zoeken..."
-              handleInputChange={this.handleInputChange}
+              handleInputChange={this.handleSearchFieldChanged}
               handleSearchPress={this.handleSearchPress}
           />
         </div>

@@ -10,10 +10,8 @@ class DiscussionDetailPage extends Component {
         super(props, context);
 
         this.state = {
-            id: props.match.params.id,
             comments: [],
             showCreateComment: false,
-            activeTime: 10
         };
     }
 
@@ -27,12 +25,15 @@ class DiscussionDetailPage extends Component {
     };
 
     handleBackToOverviewClick = () => {
-        this.props.history.push(`/discussions`);
+        this.props.history.goBack();
     };
 
     render() {
+        const id = this.props.match.params.id;
         const discussion = this.props.selectedDiscussion;
-        if(discussion === undefined){
+        const discussionInfo = this.props.discussionInfo;
+
+        if (discussion === undefined) {
             this.props.history.push("/");
             return null;
         }
@@ -46,7 +47,8 @@ class DiscussionDetailPage extends Component {
                         Nog te implementeren...
                     </div>
                     <div className="discussion-info-extra">
-                        <DiscussionInfo discussion={discussion}/>
+                        <DiscussionInfo participantCount={discussionInfo.numberOfParticipants}
+                                        commentCount={discussionInfo.numberOfComments}/>
                         <div className="discussion-options">
                             <ButtonRegular handleOnClick={this.handleBackToOverviewClick} text="terug naar overzicht"/>
                             <ButtonAttention handleOnClick={this.handleToggleCreateComment} text="Opmerking plaatsen"/>

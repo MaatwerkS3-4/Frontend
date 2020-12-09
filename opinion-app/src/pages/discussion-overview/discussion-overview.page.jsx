@@ -4,40 +4,39 @@ import "./discussion-overview.styles.css";
 import {DiscussionList} from "../../components/discussion-list/discussion-list.component";
 
 class DiscussionOverviewPage extends Component {
-  constructor(props) {
-    super(props);
+    constructor(props) {
+        super(props);
 
-    this.state = {
-
+        this.state = {};
     };
-  };
 
-  handleRedirect = (id) =>{
-    this.props.history.push(`/discussion/${id}`);
-  }
+    handleRedirect = (id) => {
+        this.props.history.push(`/discussion/${id}`);
+    }
 
-  render() {
-    console.log("rendering overview page")
-    console.log(this.state)
-    //Get data passed from previous page
-    const {discussionInfos} = this.props;
-    let criteria = (this.match.params.criteria === undefined) ? '' : this.match.params.criteria;
+    render() {
+        console.log("Rendering overview page")
 
+        //Get data passed from previous page
+        const {discussionInfos} = this.props;
+        let criteria = this.props.match.params.criteria;
+        if (criteria === undefined) criteria = "";
 
-    const filteredDiscussionInfos = discussionInfos.filter(d =>
-        d.subject.toLowerCase().includes(criteria.toLowerCase())
-    );
-
-    return (
-      <div className="discussion-container">
-        {console.log("Rendering overview...")}
-        <DiscussionList handleSelectDiscussion={this.props.handleSelectDiscussion}
-                        discussionInfos={filteredDiscussionInfos}
-                        handleRedirect={this.handleRedirect}
-        />
-      </div>
-    );
-  }
+        return (
+            <div className="discussion-container">
+                <div className="discussion-overview-title">
+                    {(criteria === "") ?
+                        <div>Alle discussies</div> :
+                        <div>Discussies gefilterd voor: <span>{criteria}</span></div>}
+                </div>
+                <DiscussionList handleSelectDiscussion={this.props.handleSelectDiscussion}
+                                discussionInfos={discussionInfos.filter(d =>
+                                    d.subject.toLowerCase().includes(criteria.toLowerCase()))}
+                                handleRedirect={this.handleRedirect}
+                />
+            </div>
+        );
+    }
 }
 
 export default DiscussionOverviewPage;

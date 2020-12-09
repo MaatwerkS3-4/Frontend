@@ -1,13 +1,13 @@
  import React from "react";
 import "./discussion-info.styles.css";
 
-export const DiscussionInfo = ({discussion}) =>{
+export const DiscussionInfo = ({commentCount, participantCount}) =>{
     return(
         <div className="discussion-info-container">
-            {/*Wrapped in span to make sure separators are sized properly*/}
-            <div><span>{discussion.amountOfComments} Opmerkingen</span></div>
-            <div><span>{discussion.amountOfParticipants} Deelnemers</span></div>
-            <div><span>x seconden geleden</span></div>
+            {/*Wrapped in second div to make sure separators are sized properly*/}
+            <div><div><span>{commentCount}</span> Opmerkingen</div></div>
+            <div><div><span>{participantCount}</span> Deelnemers</div></div>
+            <div><div><span>x</span> seconden geleden</div></div>
         </div>
     )
 }

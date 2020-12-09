@@ -11,6 +11,7 @@ export const DiscussionList = ({discussionInfos, handleSelectDiscussion, handleR
                     discussionInfo={d}
                     handleSelectDiscussion={handleSelectDiscussion}
                     handleRedirect={handleRedirect}
+                    key={d.id}
                 />
             ))}
         </div>
