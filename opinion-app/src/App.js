@@ -8,7 +8,12 @@ import {Header} from "./components/header/header.component";
 import DiscussionCreate from "./components/discussion-create/discussion-create.component.jsx";
 import {LoadOverlay} from "./components/load-overlay/load-overlay.component";
 import {Footer} from "./components/footer/footer.component";
-import {handleGetAllDiscussionInfos, handleGetDiscussionById, handleGetUserById} from "./services/api.service";
+import {
+    handleGetAllDiscussionInfos,
+    handleGetDiscussionById,
+    handleGetUserById,
+    handlePostNewDiscussion
+} from "./services/api.service";
 
 class App extends Component {
     constructor(props) {
@@ -45,6 +50,10 @@ class App extends Component {
         }, !status);
     }
 
+    handleToggleCreateDiscussion = () => {
+        this.setState({showCreateDiscussion: !this.state.showCreateDiscussion});
+    }
+
     shouldComponentUpdate(nextProps, nextState, nextContext) {
         return this.state.shouldRender;
     }
@@ -73,14 +82,26 @@ class App extends Component {
         })
     };
 
-    handleCreateDiscussion = (discussion) => {
-        console.log("Handle create discussion called")
+    handleCreateDiscussion = (subject, description) => {
         this.handleToggleCreateDiscussion();
-    };
+        this.handleToggleLoading(true);
+        const createDiscussionDTO = {
+            subject: subject,
+            userId: this.state.user.id
+        }
 
-    handleToggleCreateDiscussion = () => {
-        this.setState({showCreateDiscussion: !this.state.showCreateDiscussion});
-    }
+        handlePostNewDiscussion(createDiscussionDTO).then(d => {
+            console.log("New discussion created:", d)
+        }).then(() => {
+                handleGetAllDiscussionInfos().then(i => {
+                    this.handleSetState({discussionInfos: i})
+                })
+            }
+        )
+            .finally(() => {
+                this.handleToggleLoading(false);
+            })
+    };
 
     render() {
         console.log("Rendering App...");

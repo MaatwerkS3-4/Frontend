@@ -24,11 +24,7 @@ class DiscussionCreateComponent extends Component {
     };
 
     handleCreateClick = () => {
-        const discussion = {
-            subject: this.state.subject,
-            user: this.props.user
-        };
-        this.props.handleCreateDiscussion(discussion);
+        this.props.handleCreateDiscussion(this.state.subject, this.state.description);
     }
 
     handleCloseClick = () => {
