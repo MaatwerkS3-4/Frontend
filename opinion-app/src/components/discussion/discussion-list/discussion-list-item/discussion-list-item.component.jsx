@@ -17,6 +17,7 @@ export const DiscussionListItem = ({discussionInfo, handleSelectDiscussion, hand
             <DiscussionInfo
                 commentCount={discussionInfo.numberOfComments}
                 participantCount={discussionInfo.numberOfParticipants}
+                timeStamp={discussionInfo.timeStamp}
             />
         </div>
     );

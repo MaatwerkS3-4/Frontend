@@ -53,14 +53,15 @@ class DiscussionDetailPage extends Component {
                     </div>
                     <div className="discussion-info-extra">
                         <DiscussionInfo participantCount={discussionInfo.numberOfParticipants}
-                                        commentCount={discussionInfo.numberOfComments}/>
+                                        commentCount={discussionInfo.numberOfComments}
+                                        timeStamp={discussionInfo.timeStamp}/>
                         <div className="discussion-options">
                             <ButtonRegular handleOnClick={this.handleBackToOverviewClick} text="terug naar overzicht"/>
                             <ButtonAttention handleOnClick={this.handleToggleCreateComment} text="Opmerking plaatsen"/>
                         </div>
                     </div>
                 </div>
-                <CommentList comments={discussion.comments} />
+                <CommentList comments={discussion.comments}/>
                 {this.state.showCreateComment ? <CommentCreate
                     handlePostComment={this.handleCreateComment}
                     handleToggleCreateComment={this.handleToggleCreateComment}
