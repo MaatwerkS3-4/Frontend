@@ -63,6 +63,7 @@ class DiscussionDetailPage extends Component {
                 <CommentList comments={discussion.comments} />
                 {this.state.showCreateComment ? <CommentCreate
                     handlePostComment={this.handleCreateComment}
+                    handleToggleCreateComment={this.handleToggleCreateComment}
                     user={this.props.user}
                     parentDiscussion={discussion}
                 /> : ""}

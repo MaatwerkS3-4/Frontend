@@ -24,7 +24,7 @@ class CommentCreate extends Component {
     }
 
     handleCloseClick = () => {
-        this.props.handlePostComment();
+        this.props.handleToggleCreateComment();
     }
 
     render() {
