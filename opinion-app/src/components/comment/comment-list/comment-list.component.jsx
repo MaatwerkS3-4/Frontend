@@ -9,7 +9,8 @@ export const CommentList = ({comments}) => {
                 <CommentListItem
                     key={c.id}
                     content={c.content}
-                    username={c.poster.username} />
+                    username={c.poster.username}
+                timeStamp={c.timeStamp}/>
             ))}
         </div>
     );

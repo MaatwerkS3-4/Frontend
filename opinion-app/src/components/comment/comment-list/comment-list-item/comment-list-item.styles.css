@@ -11,3 +11,26 @@
     height: auto;
     margin-bottom: 5px;
 }
+.comment-list-item-info-container{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: center;
+}
+
+.comment-list-item-info-container > div > div{
+    padding: 5px 15px 5px 15px;
+    border-right: #D4D4D4 solid 1px;
+    width: auto;
+}
+
+.comment-list-item-info-container> div:first-child > div{
+    padding-left: 0;
+}
+
+.comment-list-item-info-container> div:last-child > div{
+    padding-right: 0;
+    border-right: none;
+}
