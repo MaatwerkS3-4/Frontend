@@ -5,7 +5,7 @@ import HomePage from "./pages/home/home.page.jsx";
 import DiscussionsPage from "./pages/discussion-overview/discussion-overview.page.jsx";
 import DiscussionDetailPage from "./pages/discussion-detail/discussion-detail.page.jsx";
 import {Header} from "./components/header/header.component";
-import DiscussionCreate from "./components/discussion-create/discussion-create.component.jsx";
+import DiscussionCreate from "./components/discussion/discussion-create/discussion-create.component.jsx";
 import {LoadOverlay} from "./components/load-overlay/load-overlay.component";
 import {Footer} from "./components/footer/footer.component";
 import {
@@ -14,6 +14,7 @@ import {
     handleGetUserById, handlePostNewComment,
     handlePostNewDiscussion
 } from "./services/api.service";
+import {TestPage} from "./pages/test/test.page";
 
 class App extends Component {
     constructor(props) {
@@ -113,7 +114,9 @@ class App extends Component {
         handlePostNewComment(this.state.selectedDiscussion.id, createCommentDTO).then(c => {
             console.log("New comment posted: ", c);
             this.state.selectedDiscussion.comments.push(c);
-        }).finally(() => {this.handleToggleLoading(false)});
+        }).finally(() => {
+            this.handleToggleLoading(false)
+        });
     }
 
     render() {
@@ -125,32 +128,35 @@ class App extends Component {
                         menuEnabled={!this.state.loading}
                         handleToggleCreateDiscussion={this.handleToggleCreateDiscussion}
                     />
-                    {this.state.loading ?
-                        <LoadOverlay/>
-                        :
-                        <Switch>
-                            <Route exact path='/' component={HomePage}/>
-                            <Route path='/discussions/:criteria?'
-                                   render={(props) => <DiscussionsPage
-                                       //filter discussions for search criteria
-                                       discussionInfos={this.state.discussionInfos}
-                                       handleSelectDiscussion={this.handleSelectDiscussion}
-                                       {...props}/>}/>
-                            <Route path='/discussion/:id'
-                                   render={(props) => <DiscussionDetailPage
-                                       selectedDiscussion={this.state.selectedDiscussion}
-                                       //find discussion info with selected discussion id
-                                       discussionInfo={this.state.discussionInfos.find(c =>
-                                           c.id === this.state.selectedDiscussion.id)}
-                                       handlePostComment={this.handlePostComment}
-                                       {...props}/>}/>
-                        </Switch>
-                    }
+                    <div id="content-container">
+                        {this.state.loading ?
+                            <LoadOverlay/>
+                            :
+                            <Switch>
+                                <Route exact path='/' component={HomePage}/>
+                                <Route path='/discussions/:criteria?'
+                                       render={(props) => <DiscussionsPage
+                                           //filter discussions for search criteria
+                                           discussionInfos={this.state.discussionInfos}
+                                           handleSelectDiscussion={this.handleSelectDiscussion}
+                                           {...props}/>}/>
+                                <Route path='/discussion/:id'
+                                       render={(props) => <DiscussionDetailPage
+                                           selectedDiscussion={this.state.selectedDiscussion}
+                                           //find discussion info with selected discussion id
+                                           discussionInfo={this.state.discussionInfos.find(c =>
+                                               c.id === this.state.selectedDiscussion.id)}
+                                           handlePostComment={this.handlePostComment}
+                                           {...props}/>}/>
+                                <Route exact path={"/test"} component={TestPage}/>
+                            </Switch>
+                        }
+                    </div>
                     <div className="content-container">
                         {this.state.showCreateDiscussion ? <DiscussionCreate
                             handleCreateDiscussion={this.handleCreateDiscussion}
+                            handleToggleCreateDiscussion={this.handleToggleCreateDiscussion}
                             user={this.state.user}/> : ""}
-
                     </div>
                     <Footer/>
                 </div>

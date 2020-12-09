@@ -1,27 +1,20 @@
 header{
-    top: 0;
-    left:0;
-    width: 100vw;
-    min-height: 120px;
-    height: 12vh;
-    border-bottom: #D4D4D4 solid 1px;
-    background-color: #F9F9F9;
+    /** flex settings **/
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-}
-header > div {
-    height: 40%;
-    padding: 20px;
+    justify-content: space-between;
+    align-items: flex-start;
 }
 
-header > .logo{
+header > div{
+    padding: 10pt;
+}
+
+#logo{
     width: auto;
-    background-color: blue;
 }
 
-header > .menu {
-    top: 0;
+#menu{
     width: 100%;
-    background-color: green;
 }

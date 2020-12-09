@@ -1,10 +1,10 @@
 import React, {Component} from "react";
 import "./discussion-detail.styles.css";
-import {DiscussionInfo} from "../../components/discussion-info/discussion-info.component";
-import {ButtonAttention} from "../../components/button/button-attention/button-attention.component";
-import CommentCreate from "../../components/comment-create/comment-create.component";
-import {ButtonRegular} from "../../components/button/button-regular/button-regular.component";
-import {CommentList} from "../../components/comment-list/comment-list.component";
+import {DiscussionInfo} from "../../components/discussion/discussion-info/discussion-info.component";
+import {ButtonAttention} from "../../components/input/button/button-attention/button-attention.component";
+import CommentCreate from "../../components/comment/comment-create/comment-create.component";
+import {ButtonRegular} from "../../components/input/button/button-regular/button-regular.component";
+import {CommentList} from "../../components/comment/comment-list/comment-list.component";
 
 class DiscussionDetailPage extends Component {
     constructor(props, context) {
@@ -45,10 +45,10 @@ class DiscussionDetailPage extends Component {
         return (
             <div className="discussion-detail-container">
                 <div className="discussion-info">
-                    <div className="discussion-title">
+                    <div className="text-title">
                         {discussion.subject}
                     </div>
-                    <div className="discussion-content">
+                    <div className="discussion-content text-body">
                         Nog te implementeren...
                     </div>
                     <div className="discussion-info-extra">

@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import "./discussion-overview.styles.css";
 
-import {DiscussionList} from "../../components/discussion-list/discussion-list.component";
+import {DiscussionList} from "../../components/discussion/discussion-list/discussion-list.component";
 
 class DiscussionOverviewPage extends Component {
     constructor(props) {
@@ -24,10 +24,10 @@ class DiscussionOverviewPage extends Component {
 
         return (
             <div className="discussion-container">
-                <div className="discussion-overview-title">
+                <div className="discussion-overview-title text-title">
                     {(criteria === "") ?
                         <div>Alle discussies</div> :
-                        <div>Discussies gefilterd voor: <span>{criteria}</span></div>}
+                        <div>Discussies gefilterd voor: <span className="text-attention">{criteria}</span></div>}
                 </div>
                 <DiscussionList handleSelectDiscussion={this.props.handleSelectDiscussion}
                                 discussionInfos={discussionInfos.filter(d =>

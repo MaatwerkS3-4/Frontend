@@ -1,0 +1,14 @@
+.textarea-container{
+    width: 100%;
+}
+
+.textarea-container > textarea{
+    border-radius: var(--border-radius);
+    border: var(--border-light);
+    resize: none;
+    height: auto;
+    min-height: 390px;
+    margin: 0;
+    padding: var(--basic-padding);
+    width: calc(100% - var(--basic-padding) * 2 - var(--border-width) * 2);
+}

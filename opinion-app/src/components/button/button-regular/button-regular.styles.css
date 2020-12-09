@@ -1,9 +1,0 @@
-.button-regular{
-    border: none;
-}
-
-.button-regular:hover{
-    color: #B9C1CA;
-    cursor: pointer;
-    background-color: transparent;
-}

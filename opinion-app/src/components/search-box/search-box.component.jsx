@@ -1,6 +1,7 @@
 import React from "react";
 import "./search-box.styles.css";
 import { FaSearch } from "react-icons/fa";
+import {TextBox} from "../input/text-box/text-box.component";
 
 export const SearchBox = ({
   placeholder,
@@ -9,15 +10,13 @@ export const SearchBox = ({
 }) => {
   return (
     <div className="search-container">
-      <input
-        type="search"
-        className="search"
-        onChange={handleInputChange}
-        placeholder={placeholder}
-      />
-      <button onClick={handleSearchPress} className="search-button">
-        <FaSearch className="search-button-icon"/>
-      </button>
+        <TextBox
+            placeholder={placeholder}
+            handleInputChange={handleInputChange}
+        />
+        <button onClick={handleSearchPress} className="center">
+            <FaSearch className="search-button-icon"/>
+        </button>
     </div>
   );
 };

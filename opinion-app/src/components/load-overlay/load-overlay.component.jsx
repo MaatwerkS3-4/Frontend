@@ -3,7 +3,7 @@ import "./load-overlay.styles.css";
 
 export const LoadOverlay = () =>{
     return(
-        <div className="loading-container">
+        <div className="center">
             <div className="lds-ring">
                 <div></div>
                 <div></div>

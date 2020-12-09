@@ -1,19 +1,16 @@
-.home-container{
-  width: 35%;
-  min-width: 650px;
+#home-container{
+  width: 80%;
+  max-width: 700px;
   height: 100%;
+
+  /* offset for footer height to center div */
+  margin-bottom: var(--footer-height);
+
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  margin-bottom: 7vh;
-}
 
-.home-title{
-  text-align: left;
-  width: 100%;
-  margin-bottom: 10px;
-  color:#7F7F7F;
-  font-size: 35px;
-  font-family: Arial;
+  /*Align self in center of main container */
+  align-self: center;
 }

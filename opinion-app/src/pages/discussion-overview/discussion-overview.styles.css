@@ -1,17 +1,7 @@
 .discussion-container{
-    width: 60%;
-    min-width: 1000px;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: flex-start;
     flex-direction: column;
-    overflow: hidden;
-}
-
-.discussion-overview-title{
-    text-align: left;
-    width: 100%;
-    font-size: 30px;
-    font-weight: bold;
 }
