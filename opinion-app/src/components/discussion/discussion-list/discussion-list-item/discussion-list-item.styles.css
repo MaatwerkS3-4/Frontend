@@ -3,9 +3,11 @@
   flex-direction: column;
   justify-content: flex-start;
   margin-bottom: 5px;
-  width:100%;
+  width: calc(100% - var(--basic-padding) - var(--border-width));
   height: auto;
   text-align: left;
+  border-left: var(--border-light);
+  padding-left: var(--basic-padding);
 }
 
 .discussion-list-item-container:hover{

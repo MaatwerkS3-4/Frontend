@@ -3,8 +3,10 @@
     flex-direction: column;
     justify-content: flex-start;
     margin-bottom: 5px;
-    width:100%;
+    width: calc(100% - var(--basic-padding) - var(--border-width));
     height: auto;
+    border-left: var(--border-light);
+    padding-left: var(--basic-padding);
 }
 .comment-content{
     width: 100%;
