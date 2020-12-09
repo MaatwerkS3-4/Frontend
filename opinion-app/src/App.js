@@ -87,6 +87,7 @@ class App extends Component {
         this.handleToggleCreateDiscussion();
         this.handleToggleLoading(true);
         const createDiscussionDTO = {
+            description: description,
             subject: subject,
             userId: this.state.user.id
         }

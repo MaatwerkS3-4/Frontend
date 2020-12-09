@@ -49,7 +49,7 @@ class DiscussionDetailPage extends Component {
                         {discussion.subject}
                     </div>
                     <div className="discussion-content text-body">
-                        Nog te implementeren...
+                        {discussion.description}
                     </div>
                     <div className="discussion-info-extra">
                         <DiscussionInfo participantCount={discussionInfo.numberOfParticipants}
