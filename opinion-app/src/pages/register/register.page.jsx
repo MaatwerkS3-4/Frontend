@@ -20,8 +20,11 @@ class Register extends Component {
       username: this.state.username,
       password: this.state.password,
     };
-    postUser(user).then((token) => {
-      localStorage.setItem("session", token);
+    postUser(user).then((response) => {
+      localStorage.setItem("Session", response.data.jwt);
+      localStorage.setItem("Username", response.data.username);
+      localStorage.setItem("Id", response.data.id);
+      console.log(response.data);
     });
   };
   render() {
@@ -31,10 +34,12 @@ class Register extends Component {
         <TextBox
           placeholder="USERNAME"
           handleInputChange={this.handleUsernameChange}
+          type="text"
         ></TextBox>
         <TextBox
           placeholder="PASSWORD"
           handleInputChange={this.handlePasswordChange}
+          type="password"
         ></TextBox>
         <br></br>
         <ButtonAttention

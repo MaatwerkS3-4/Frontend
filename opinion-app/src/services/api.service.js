@@ -22,15 +22,15 @@ const postRequest = (url, data) => {
 
 
 export const postPost = (post) => {
-    return postRequest('api/post', post);
+    return postRequest('api/discussion', post);
 }
 
 export const getPostBySubString = (substring) => {
-    return getRequest('api/post/partialString/'+substring)
+    return getRequest('api/discussion/partialString/'+substring)
 }
 
 export const getAllPosts = () => {
-    return getRequest('api/post/')
+    return getRequest('api/discussion/')
 }
 
 export const getPostComments = (postId) => {
@@ -42,5 +42,5 @@ export const postComment = (comment) => {
 }
 
 export const postUser = (user) => {
-    return postRequest('/api/user', user)
+    return postRequest('/users', user)
 }

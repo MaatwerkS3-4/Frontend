@@ -30,6 +30,7 @@ class HomePage extends Component {
           placeholder="Zoeken..."
           handleInputChange={this.handleInputChange}
           handleSearchPress={this.handleSearchPress}
+          type="search"
         />
       </div>
     );

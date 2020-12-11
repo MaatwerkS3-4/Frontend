@@ -23,7 +23,7 @@ class App extends Component {
                 username: "Potatoman",
                 password: "Yes",
             },
-            loading: true
+            loading: false
         };
     }
 

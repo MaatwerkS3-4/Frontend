@@ -44,6 +44,14 @@ export const NavBar = ({
           handleClick={handleRegisterClick}
           content="Aanmelden"
         ></ButtonAttention>
+        <button
+          type="button"
+          className="form-control mr-sm-2"
+          id="create-button"
+          onClick={handleToggleCreateDiscussion}
+        >
+          Log In
+        </button>
       </form>
     </nav>
   );
