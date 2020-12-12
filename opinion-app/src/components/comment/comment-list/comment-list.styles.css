@@ -1,12 +1,18 @@
 .comment-list-container{
-    width: 100%;
+    width: auto;
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: left;
     overflow-y: auto;
+    border-left: var(--border-light);
+    padding-left: var(--basic-padding);
 }
 
 .comment-list-container > div{
-    margin-bottom: 30px;
+    margin-top: 30px;
 }
+
+/*.comment-list-container > div:last-child{*/
+/*    margin-bottom: 0;*/
+/*}*/

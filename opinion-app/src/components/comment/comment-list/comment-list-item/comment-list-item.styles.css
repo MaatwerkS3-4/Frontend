@@ -2,14 +2,12 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    margin-bottom: 5px;
-    width: calc(100% - var(--basic-padding) - var(--border-width));
+    width: 100%;
     height: auto;
-    border-left: var(--border-light);
-    padding-left: var(--basic-padding);
 }
 .comment-content{
     width: 100%;
+    max-width: 600px;
     height: auto;
     margin-bottom: 5px;
 }
@@ -35,4 +33,8 @@
 .comment-list-item-info-container> div:last-child > div{
     padding-right: 0;
     border-right: none;
+}
+
+.button-reply > button{
+    height: auto;
 }

@@ -74,6 +74,7 @@
   text-align: center;
   text-decoration: none;
   font-style: italic;
+  word-wrap: break-word;
 }
 
 .text-body-large{
@@ -97,6 +98,7 @@
   line-height: 16pt;
   text-align: left;
   text-decoration: none;
+  word-wrap: break-word;
 }
 
 .text-body-secondary{
@@ -108,6 +110,7 @@
   line-height: 14pt;
   text-align: left;
   text-decoration: none;
+  word-wrap: break-word;
 }
 
 .text-button{

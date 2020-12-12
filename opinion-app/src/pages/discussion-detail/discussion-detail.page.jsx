@@ -12,6 +12,7 @@ class DiscussionDetailPage extends Component {
 
         this.state = {
             showCreateComment: false,
+            parentComment: null
         };
     }
 
@@ -22,11 +23,19 @@ class DiscussionDetailPage extends Component {
 
     handleCreateComment = (content) => {
         this.handleToggleCreateComment();
-        this.props.handlePostComment(content);
+        if(this.state.parentComment === null){
+            this.props.handlePostComment(content);
+        }
+        else{
+            this.props.handlePostReply(this.state.parentComment, content);
+        }
     }
 
-    handleToggleCreateComment = () => {
-        this.setState({showCreateComment: !this.state.showCreateComment});
+    handleToggleCreateComment = (parentComment = null) => {
+        this.setState({
+            showCreateComment: !this.state.showCreateComment,
+            parentComment: parentComment
+        });
     };
 
     handleBackToOverviewClick = () => {
@@ -61,7 +70,14 @@ class DiscussionDetailPage extends Component {
                         </div>
                     </div>
                 </div>
-                <CommentList comments={discussion.comments}/>
+                <div id="discussion-comments-container">
+                    <CommentList
+                        comments={discussion.comments}
+                        handleShowPostReply={this.handleToggleCreateComment}
+                    />
+                </div>
+
+
                 {this.state.showCreateComment ? <CommentCreate
                     handlePostComment={this.handleCreateComment}
                     handleToggleCreateComment={this.handleToggleCreateComment}

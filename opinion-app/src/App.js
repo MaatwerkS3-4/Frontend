@@ -12,7 +12,7 @@ import {
     handleGetAllDiscussionInfos,
     handleGetDiscussionById,
     handleGetUserById, handlePostNewComment,
-    handlePostNewDiscussion
+    handlePostNewDiscussion, handlePostReply
 } from "./services/api.service";
 import {TestPage} from "./pages/test/test.page";
 
@@ -120,6 +120,21 @@ class App extends Component {
         });
     }
 
+    handlePostReply = (parent, content) => {
+        this.handleToggleLoading(true);
+        const createCommentDTO = {
+            content: content,
+            posterId: this.state.user.id
+        }
+
+        handlePostReply(this.state.selectedDiscussion.id, parent.id, createCommentDTO).then(c => {
+            console.log("New comment posted: ", c);
+            parent.replies.push(c);
+        }).finally(() => {
+            this.handleToggleLoading(false)
+        });
+    }
+
     render() {
         console.log("Rendering App...");
         return (
@@ -148,6 +163,7 @@ class App extends Component {
                                            discussionInfo={this.state.discussionInfos.find(c =>
                                                c.id === this.state.selectedDiscussion.id)}
                                            handlePostComment={this.handlePostComment}
+                                           handlePostReply={this.handlePostReply}
                                            {...props}/>}/>
                                 <Route exact path={"/test"} component={TestPage}/>
                             </Switch>

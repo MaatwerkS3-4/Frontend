@@ -17,6 +17,12 @@ export const handlePostNewComment = (discussionId, createCommentDTO) =>{
         .then(res => {return res.data})
 };
 
+export const handlePostReply = (discussionId, parentId, createCommentDTO) => {
+    console.log(`Posting a reply on comment with id ${parentId} on the discussion with id ${discussionId}`, createCommentDTO);
+    return AXIOS.post(`/comment/${discussionId}/reply/${parentId}`, createCommentDTO)
+        .then(res => {return res.data})
+};
+
 export const handleGetAllDiscussionInfos = () => {
     console.log(`Retrieving all discussion infos...`);
     return AXIOS.get(`/discussion_info`)
