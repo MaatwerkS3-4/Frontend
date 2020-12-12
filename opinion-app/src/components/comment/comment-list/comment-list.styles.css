@@ -1,10 +1,9 @@
 .comment-list-container{
     width: auto;
-    height: 100%;
+    height: auto;
     display: flex;
     flex-direction: column;
     justify-content: left;
-    overflow-y: auto;
     border-left: var(--border-light);
     padding-left: var(--basic-padding);
 }
