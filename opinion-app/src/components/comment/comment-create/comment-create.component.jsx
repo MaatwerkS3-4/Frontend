@@ -16,6 +16,7 @@ class CommentCreate extends Component {
     }
 
     handleContentInputChange = (e) => {
+        console.log("char typed:", e.target.value);
         this.setState({content: e.target.value});
     }
 

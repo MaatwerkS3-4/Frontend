@@ -99,6 +99,7 @@
   text-align: left;
   text-decoration: none;
   word-wrap: break-word;
+  white-space: pre-line;
 }
 
 .text-body-secondary{
@@ -111,6 +112,7 @@
   text-align: left;
   text-decoration: none;
   word-wrap: break-word;
+  white-space: pre-line;
 }
 
 .text-button{

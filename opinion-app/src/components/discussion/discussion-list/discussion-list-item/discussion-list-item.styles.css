@@ -6,8 +6,6 @@
   width: calc(100% - var(--basic-padding) - var(--border-width));
   height: auto;
   text-align: left;
-  border-left: var(--border-light);
-  padding-left: var(--basic-padding);
 }
 
 .discussion-list-item-container:hover{
