@@ -46,7 +46,8 @@
   color: var(--color-sec-medium);
   letter-spacing: 0;
   line-height: 40pt;
-  white-space: nowrap;
+  word-wrap: break-word;
+  white-space: pre-line;
   text-align: left;
   text-decoration: none;
 }
@@ -58,7 +59,8 @@
   color: var(--color-sec-medium);
   letter-spacing: 0;
   line-height: 30pt;
-  white-space: nowrap;
+  word-wrap: break-word;
+  white-space: pre-line;
   text-align: left;
   text-decoration: none;
 }
@@ -75,6 +77,7 @@
   text-decoration: none;
   font-style: italic;
   word-wrap: break-word;
+  white-space: pre-line;
 }
 
 .text-body-large{
@@ -84,7 +87,8 @@
   color: var(--color-sec-medium);
   letter-spacing: 0;
   line-height: 16pt;
-  white-space: nowrap;
+  word-wrap: break-word;
+  white-space: pre-line;
   text-align: left;
   text-decoration: none;
 }
