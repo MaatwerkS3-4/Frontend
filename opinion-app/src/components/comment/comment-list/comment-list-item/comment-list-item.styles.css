@@ -37,4 +37,5 @@
 
 .button-reply > button{
     height: auto;
+    color: var(--color-sec-light);
 }
