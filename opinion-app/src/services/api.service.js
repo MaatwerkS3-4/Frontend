@@ -23,25 +23,11 @@ export const handlePostReply = (discussionId, parentId, createCommentDTO) => {
         .then(res => {return res.data})
 };
 
-<<<<<<< HEAD
-export const postPost = (post) => {
-    return postRequest('discussion', post);
-}
-
-export const getPostBySubString = (substring) => {
-    return getRequest('api/discussion/partialString/'+substring)
-}
-
-export const getAllPosts = () => {
-    return getRequest('api/discussion/')
-}
-=======
 export const handleGetAllDiscussionInfos = () => {
     console.log(`Retrieving all discussion infos...`);
     return AXIOS.get(`/discussion_info`)
         .then(res => {return res.data});
 };
->>>>>>> master
 
 export const handleGetDiscussionInfoById = (discussionId) =>{
     console.log(`Retrieving discussion info with id ${discussionId}...`);
@@ -49,21 +35,20 @@ export const handleGetDiscussionInfoById = (discussionId) =>{
         .then(res => {return res.data})
 };
 
-<<<<<<< HEAD
-export const postComment = (comment) => {
-    return postRequest('/api/comment', comment)
-}
-
-export const postUser = (user) => {
-    return postRequest('/users', user)
-}
-export const login = (user) => {
-    return postRequest('/users/login', user);
-}
-=======
 export const handleGetUserById = (id) =>{
     console.log(`Retrieving user with id ${id}...`)
     return AXIOS.get(`/users/${id}`)
         .then(res => {return res.data})
 };
->>>>>>> master
+
+export const handleLogin = (user) => {
+    console.log("attempting to log in...")
+    return AXIOS.post("/users/login", user)
+        .then(res => {return res.data})
+}
+
+export const handlePostUser = (user) => {
+    console.log("attempting to register user")
+    return AXIOS.post("/users/", user)
+        .then(res => {return res.data})
+}

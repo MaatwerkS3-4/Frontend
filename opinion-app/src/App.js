@@ -4,18 +4,12 @@ import "./App.css";
 import HomePage from "./pages/home/home.page.jsx";
 import DiscussionsPage from "./pages/discussion-overview/discussion-overview.page.jsx";
 import DiscussionDetailPage from "./pages/discussion-detail/discussion-detail.page.jsx";
-<<<<<<< HEAD
-import NavBar from "./components/navigation-bar/navigation-bar.component.jsx";
-import {getAllPosts, postPost} from "./services/api.service";
-import DiscussionCreate from "./components/discussion-create/discussion-create.component.jsx";
-import {LoadOverlay} from "./components/load-overlay/load-overlay.component";
-import Register from "./pages/register/register.page";
-import Login from "./pages/login/login.page"
-=======
 import {Header} from "./components/header/header.component";
 import DiscussionCreate from "./components/discussion/discussion-create/discussion-create.component.jsx";
 import {LoadOverlay} from "./components/load-overlay/load-overlay.component";
 import {Footer} from "./components/footer/footer.component";
+import Login from "./pages/login/login.page"
+import Register from "./pages/register/register.page"
 import {
     handleGetAllDiscussionInfos,
     handleGetDiscussionById,
@@ -23,7 +17,6 @@ import {
     handlePostNewDiscussion, handlePostReply
 } from "./services/api.service";
 import {TestPage} from "./pages/test/test.page";
->>>>>>> master
 
 class App extends Component {
     constructor(props) {
@@ -34,9 +27,6 @@ class App extends Component {
                 id: undefined,
                 username: undefined,
             },
-<<<<<<< HEAD
-            loading: false
-=======
 
             //Overlay status
             showCreateDiscussion: false,
@@ -46,7 +36,6 @@ class App extends Component {
             //Discussions data
             discussionInfos: [],
             selectedDiscussion: undefined
->>>>>>> master
         };
     }
 
@@ -177,14 +166,11 @@ class App extends Component {
                                            handlePostComment={this.handlePostComment}
                                            handlePostReply={this.handlePostReply}
                                            {...props}/>}/>
-<<<<<<< HEAD
                                 <Route exact path="/register"
                                         component={Register}/>
                                 <Route exact path="/login"
                                         component={Login}/>
-=======
                                 <Route exact path={"/test"} component={TestPage}/>
->>>>>>> master
                             </Switch>
                         }
                     </div>

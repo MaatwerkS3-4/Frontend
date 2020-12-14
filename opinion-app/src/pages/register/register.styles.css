@@ -1,0 +1,13 @@
+#register-container {
+  width: 60%;
+  height: 20vh;
+  margin-top: 10vh;
+  text-align: center;
+}
+#register-container input {
+  margin-top: 2vh;
+  width: 60%;
+}
+#register-container button {
+  margin-top: 2vh;
+}
