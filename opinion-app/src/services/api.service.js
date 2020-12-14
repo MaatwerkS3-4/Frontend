@@ -22,7 +22,7 @@ const postRequest = (url, data) => {
 
 
 export const postPost = (post) => {
-    return postRequest('api/discussion', post);
+    return postRequest('discussion', post);
 }
 
 export const getPostBySubString = (substring) => {
@@ -43,4 +43,7 @@ export const postComment = (comment) => {
 
 export const postUser = (user) => {
     return postRequest('/users', user)
+}
+export const login = (user) => {
+    return postRequest('/users/login', user);
 }

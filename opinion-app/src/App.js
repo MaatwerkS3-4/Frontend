@@ -4,11 +4,12 @@ import "./App.css";
 import HomePage from "./pages/home/home.page.jsx";
 import DiscussionsPage from "./pages/discussion-overview/discussion-overview.page.jsx";
 import DiscussionDetailPage from "./pages/discussion-detail/discussion-detail.page.jsx";
-import {NavBar} from "./components/navigation-bar/navigation-bar.component.jsx";
+import NavBar from "./components/navigation-bar/navigation-bar.component.jsx";
 import {getAllPosts, postPost} from "./services/api.service";
 import DiscussionCreate from "./components/discussion-create/discussion-create.component.jsx";
 import {LoadOverlay} from "./components/load-overlay/load-overlay.component";
 import Register from "./pages/register/register.page";
+import Login from "./pages/login/login.page"
 
 class App extends Component {
     constructor(props) {
@@ -78,12 +79,6 @@ class App extends Component {
     handleToggleLoading = (status) => {
         this.setState({loading: status});
     }
-
-    handleRegisterClick = () => {
-        console.log("test")
-        this.props.history.push('/register');
-    }
-
     render() {
         return (
             <Router>
@@ -91,7 +86,7 @@ class App extends Component {
                     {this.state.loading ? <LoadOverlay/> :
                         <div>
 
-                            <NavBar handleToggleCreateDiscussion={this.handleToggleCreateDiscussion} handleRegisterClick={this.handleRegisterClick}/>
+                            <NavBar handleToggleCreateDiscussion={this.handleToggleCreateDiscussion}/>
                             <Switch>
                                 <Route exact path='/' component={HomePage}/>
                                 <Route path='/discussions/:criteria?'
@@ -107,6 +102,8 @@ class App extends Component {
                                            {...props}/>}/>
                                 <Route exact path="/register"
                                         component={Register}/>
+                                <Route exact path="/login"
+                                        component={Login}/>
                             </Switch>
                             {this.state.showCreateDiscussion ? <DiscussionCreate
                                 handleCreateDiscussion={this.handleCreateDiscussion}
