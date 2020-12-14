@@ -1,0 +1,20 @@
+header{
+    /** flex settings **/
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+header > div{
+    padding: 10pt;
+}
+
+#logo{
+    width: auto;
+}
+
+#menu{
+    width: 100%;
+}

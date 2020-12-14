@@ -1,0 +1,11 @@
+.button-attention{
+    background-color: var(--color-main-dark);
+    color: var(--color-white);
+    width: auto;
+}
+
+.button-attention:hover{
+    background-color: var(--color-main-light);
+    border-color: var(--color-main-light);
+    cursor: pointer;
+}

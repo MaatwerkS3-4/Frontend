@@ -1,0 +1,9 @@
+button{
+    border: none;
+    border-radius: var(--border-radius);
+    padding: calc(var(--basic-padding) * 3);
+    padding-top: 0;
+    padding-bottom: 0;
+    height: calc(var(--basic-height)* 0.75);
+    background-color: transparent;
+}

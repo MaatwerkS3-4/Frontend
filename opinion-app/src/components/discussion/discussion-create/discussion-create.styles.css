@@ -1,0 +1,49 @@
+.create-container{
+  width: 100%;
+  height: 100%;
+  top:0;
+  left: 0;
+  position: absolute;
+}
+
+.create-discussion-overlay{
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-background-opaque);
+}
+
+.create-discussion-container{
+  border: none;
+  width: 90%;
+  max-width: 650px;
+  height: auto;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: calc(var(--basic-padding) * 3);
+  background-color: var(--color-background);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.create-discussion-container > div{
+  padding-bottom: var(--basic-padding);
+}
+.create-discussion-container > div:first-child{
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.create-discussion-container > div:last-child{
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.create-discussion-options{
+  width: 100%;
+  text-align: right;
+}
+

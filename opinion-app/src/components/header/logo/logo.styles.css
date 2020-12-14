@@ -1,0 +1,29 @@
+#logo-container{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: left;
+    white-space: nowrap;
+}
+
+#logo-container:hover{
+    cursor: pointer;
+}
+
+#logo-container > div{
+    width: 100%;
+}
+
+#logo-title{
+    font-size: 38pt;
+    line-height: 78%;
+    white-space: nowrap;
+}
+#logo-slogan{
+    text-transform: uppercase;
+    font-size: 20pt;
+    line-height: 90%;
+    white-space: nowrap;
+}

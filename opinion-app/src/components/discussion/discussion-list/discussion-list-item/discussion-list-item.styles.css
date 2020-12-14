@@ -1,0 +1,13 @@
+.discussion-list-item-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-bottom: 5px;
+  width: calc(100% - var(--basic-padding) - var(--border-width));
+  height: auto;
+  text-align: left;
+}
+
+.discussion-list-item-container:hover{
+  cursor: pointer;
+}

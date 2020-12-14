@@ -1,0 +1,17 @@
+.comment-list-container{
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    border-left: var(--border-light);
+    padding-left: var(--basic-padding);
+}
+
+.comment-list-container > div{
+    margin-top: 30px;
+}
+
+/*.comment-list-container > div:last-child{*/
+/*    margin-bottom: 0;*/
+/*}*/

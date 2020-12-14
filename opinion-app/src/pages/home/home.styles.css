@@ -1,14 +1,16 @@
-#content {
-  width: 50%;
-  margin-left: 25%;
-}
-#search-form {
-  margin-right: 2vw;
-}
-#search-container {
-  margin-top: 35vh;
-  text-align: left;
-  width: 40%;
-  margin-left: 30%;
-  padding-left: 5%;
+#home-container{
+  width: 80%;
+  max-width: 700px;
+  height: 100%;
+
+  /* offset for footer height to center div */
+  margin-bottom: calc(var(--header-height) - var(--footer-height));
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  /*Align self in center of main container */
+  align-self: center;
 }

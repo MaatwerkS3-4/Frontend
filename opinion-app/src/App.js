@@ -1,114 +1,200 @@
 import React, {Component} from "react";
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import {BrowserRouter as Router, Redirect, Route, Switch} from 'react-router-dom';
 import "./App.css";
 import HomePage from "./pages/home/home.page.jsx";
 import DiscussionsPage from "./pages/discussion-overview/discussion-overview.page.jsx";
 import DiscussionDetailPage from "./pages/discussion-detail/discussion-detail.page.jsx";
+<<<<<<< HEAD
 import NavBar from "./components/navigation-bar/navigation-bar.component.jsx";
 import {getAllPosts, postPost} from "./services/api.service";
 import DiscussionCreate from "./components/discussion-create/discussion-create.component.jsx";
 import {LoadOverlay} from "./components/load-overlay/load-overlay.component";
 import Register from "./pages/register/register.page";
 import Login from "./pages/login/login.page"
+=======
+import {Header} from "./components/header/header.component";
+import DiscussionCreate from "./components/discussion/discussion-create/discussion-create.component.jsx";
+import {LoadOverlay} from "./components/load-overlay/load-overlay.component";
+import {Footer} from "./components/footer/footer.component";
+import {
+    handleGetAllDiscussionInfos,
+    handleGetDiscussionById,
+    handleGetUserById, handlePostNewComment,
+    handlePostNewDiscussion, handlePostReply
+} from "./services/api.service";
+import {TestPage} from "./pages/test/test.page";
+>>>>>>> master
 
 class App extends Component {
     constructor(props) {
         super(props);
-
         this.state = {
-            showCreateDiscussion: false,
-            discussions: [],
-            selectedDiscussion: undefined,
+            //Current user
             user: {
-                id: 1,
-                username: "Potatoman",
-                password: "Yes",
+                id: undefined,
+                username: undefined,
             },
+<<<<<<< HEAD
             loading: false
+=======
+
+            //Overlay status
+            showCreateDiscussion: false,
+            loading: true,
+            shouldRender: false,
+
+            //Discussions data
+            discussionInfos: [],
+            selectedDiscussion: undefined
+>>>>>>> master
         };
     }
 
-    componentDidMount() {
-        getAllPosts().then((response) => {
-            if (response !== undefined && response.data != null) {
-                console.log(response.data);
-                this.setState({discussions: response.data});
-                this.handleToggleLoading(false);
-            }
-        });
-    };
-
-    handleSelectDiscussion = (discussion) => {
-        console.log(discussion);
-        this.setState({selectedDiscussion: discussion});
-    };
-
-    handleCreateDiscussion = (discussion) => {
-        if (discussion !== undefined) {
-            this.handleToggleLoading(true);
-
-            //Create new discussion object
-            console.log("Creating new discussion...")
-            console.log(discussion);
-
-            //Send object to backend
-            console.log("Sending discussion to backend...")
-
-            postPost(discussion).then((result) => {
-                    this.addDiscussion(result.data);
-                }
-            ).finally(() =>this.handleToggleLoading(false));
-        }
-
-        //Close input field popup
-        console.log("Closing popup...")
-        this.handleToggleCreateDiscussion();
-    };
-
-    addDiscussion = (discussion) => {
-        const newDiscussions = [...this.state.discussions];
-        newDiscussions.push(discussion);
-        this.setState({discussions: newDiscussions});
+    handleSetState = (state, shouldRender = true) => {
+        this.setState({shouldRender: shouldRender})
+        this.setState(state);
     }
 
+    handleToggleLoading = (status) => {
+        console.log("Toggling loading status to " + status + "...");
+        if (this.state.loading === status && this.state.shouldRender === !status) return;
+
+        this.handleSetState({
+            loading: status,
+        }, !status);
+    }
 
     handleToggleCreateDiscussion = () => {
         this.setState({showCreateDiscussion: !this.state.showCreateDiscussion});
     }
 
-    handleToggleLoading = (status) => {
-        this.setState({loading: status});
+    shouldComponentUpdate(nextProps, nextState, nextContext) {
+        return this.state.shouldRender;
+    }
+
+    componentDidMount() {
+        this.handleToggleLoading(true);
+        //Retrieve User
+        handleGetUserById(1).then(user => {
+            this.handleSetState({user: user}, false);
+        }).finally(() => {
+            handleGetAllDiscussionInfos().then(infos => {
+                this.handleSetState({discussionInfos: infos}, false);
+            }).finally(() => {
+                this.handleToggleLoading(false);
+            });
+        });
+    };
+
+    handleSelectDiscussion = (id) => {
+        this.handleToggleLoading(true);
+        //Retrieve discussion
+        handleGetDiscussionById(id).then(d => {
+            this.handleSetState({selectedDiscussion: d}, false);
+        }).finally(() => {
+            this.handleToggleLoading(false);
+        })
+    };
+
+    handleCreateDiscussion = (subject, description) => {
+        this.handleToggleCreateDiscussion();
+        this.handleToggleLoading(true);
+        const createDiscussionDTO = {
+            description: description,
+            subject: subject,
+            userId: this.state.user.id
+        }
+
+        handlePostNewDiscussion(createDiscussionDTO).then(d => {
+            console.log("New discussion created:", d)
+        }).then(() => {
+                handleGetAllDiscussionInfos().then(i => {
+                    this.handleSetState({discussionInfos: i})
+                })
+            }
+        )
+            .finally(() => {
+                this.handleToggleLoading(false);
+            })
+    };
+
+    handlePostComment = (content) => {
+        this.handleToggleLoading(true);
+        const createCommentDTO = {
+            content: content,
+            posterId: this.state.user.id
+        }
+
+        handlePostNewComment(this.state.selectedDiscussion.id, createCommentDTO).then(c => {
+            console.log("New comment posted: ", c);
+            this.state.selectedDiscussion.comments.push(c);
+        }).finally(() => {
+            this.handleToggleLoading(false)
+        });
+    }
+
+    handlePostReply = (parent, content) => {
+        this.handleToggleLoading(true);
+        const createCommentDTO = {
+            content: content,
+            posterId: this.state.user.id
+        }
+
+        handlePostReply(this.state.selectedDiscussion.id, parent.id, createCommentDTO).then(c => {
+            console.log("New comment posted: ", c);
+            parent.replies.push(c);
+        }).finally(() => {
+            this.handleToggleLoading(false)
+        });
     }
     render() {
+        console.log("Rendering App...");
         return (
             <Router>
                 <div className="App">
-                    {this.state.loading ? <LoadOverlay/> :
-                        <div>
-
-                            <NavBar handleToggleCreateDiscussion={this.handleToggleCreateDiscussion}/>
+                    <Header
+                        menuEnabled={!this.state.loading}
+                        handleToggleCreateDiscussion={this.handleToggleCreateDiscussion}
+                    />
+                    <div id="content-container">
+                        {this.state.loading ?
+                            <LoadOverlay/>
+                            :
                             <Switch>
                                 <Route exact path='/' component={HomePage}/>
                                 <Route path='/discussions/:criteria?'
                                        render={(props) => <DiscussionsPage
-                                           discussions={this.state.discussions}
+                                           //filter discussions for search criteria
+                                           discussionInfos={this.state.discussionInfos}
                                            handleSelectDiscussion={this.handleSelectDiscussion}
                                            {...props}/>}/>
                                 <Route path='/discussion/:id'
                                        render={(props) => <DiscussionDetailPage
                                            selectedDiscussion={this.state.selectedDiscussion}
-                                           user={this.state.user}
-                                           handleToggleLoading={this.handleToggleLoading}
+                                           //find discussion info with selected discussion id
+                                           discussionInfo={this.state.discussionInfos.find(c =>
+                                               c.id === this.state.selectedDiscussion.id)}
+                                           handlePostComment={this.handlePostComment}
+                                           handlePostReply={this.handlePostReply}
                                            {...props}/>}/>
+<<<<<<< HEAD
                                 <Route exact path="/register"
                                         component={Register}/>
                                 <Route exact path="/login"
                                         component={Login}/>
+=======
+                                <Route exact path={"/test"} component={TestPage}/>
+>>>>>>> master
                             </Switch>
-                            {this.state.showCreateDiscussion ? <DiscussionCreate
-                                handleCreateDiscussion={this.handleCreateDiscussion}
-                                user={this.state.user}/> : ""}
-                        </div>}
+                        }
+                    </div>
+                    <div className="content-container">
+                        {this.state.showCreateDiscussion ? <DiscussionCreate
+                            handleCreateDiscussion={this.handleCreateDiscussion}
+                            handleToggleCreateDiscussion={this.handleToggleCreateDiscussion}
+                            user={this.state.user}/> : ""}
+                    </div>
+                    <Footer/>
                 </div>
             </Router>
         );

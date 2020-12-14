@@ -1,0 +1,12 @@
+.button-regular{
+    border: none;
+    width: auto;
+    padding-left: var(--basic-padding);
+    padding-right: var(--basic-padding);
+}
+
+.button-regular:hover{
+    color: var(--color-main-light);
+    cursor: pointer;
+    background-color: transparent;
+}
