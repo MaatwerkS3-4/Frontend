@@ -10,7 +10,6 @@ export const CommentList = ({parent, comments, handleShowPostReply}) => {
                 <CommentListItem
                     key={c.id}
                     content={c.content}
-                    username={c.poster.username}
                     replies={c.replies}
                     parent={c}
                     handleShowPostReply={handleShowPostReply}

@@ -9,7 +9,6 @@ export const CommentListItem = ({username, content, timeStamp, replies, parent, 
         <div className="comment-list-item-container">
             <div className="comment-content text-body">{content}</div>
             <div className="comment-list-item-info-container text-body-secondary">
-                <div><div className=" text-attention">{username}</div></div>
                 <div><div>{getTimeDifference(new Date(timeStamp))}</div></div>
                 <div className="button-reply"><ButtonRegular text="Antwoorden" handleOnClick={() => handleShowPostReply(parent)}/></div>
             </div>
