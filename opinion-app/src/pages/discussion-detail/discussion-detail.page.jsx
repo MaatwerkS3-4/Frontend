@@ -63,7 +63,8 @@ class DiscussionDetailPage extends Component {
                     <div className="discussion-info-extra">
                         <DiscussionInfo participantCount={discussionInfo.numberOfParticipants}
                                         commentCount={discussionInfo.numberOfComments}
-                                        timeStamp={discussionInfo.timeStamp}/>
+                                        timeStamp={discussionInfo.timeStamp}
+                                        tags={discussionInfo.tags}/>
                         <div className="discussion-options">
                             <ButtonRegular handleOnClick={this.handleBackToOverviewClick} text="terug naar overzicht"/>
                             <ButtonAttention handleOnClick={this.handleToggleCreateComment} text="Opmerking plaatsen"/>
