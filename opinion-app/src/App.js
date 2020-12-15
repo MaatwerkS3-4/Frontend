@@ -83,13 +83,14 @@ class App extends Component {
         })
     };
 
-    handleCreateDiscussion = (subject, description) => {
+    handleCreateDiscussion = (subject, description, tags) => {
         this.handleToggleCreateDiscussion();
         this.handleToggleLoading(true);
         const createDiscussionDTO = {
             description: description,
             subject: subject,
-            userId: this.state.user.id
+            userId: this.state.user.id,
+            tags: tags
         }
 
         handlePostNewDiscussion(createDiscussionDTO).then(d => {
