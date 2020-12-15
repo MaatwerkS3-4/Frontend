@@ -115,7 +115,7 @@ class App extends Component {
 
         handlePostNewComment(this.state.selectedDiscussion.id, createCommentDTO).then(c => {
             console.log("New comment posted: ", c);
-            this.state.selectedDiscussion.comments.push(c);
+            this.state.selectedDiscussion.comments.unshift(c);
         }).finally(() => {
             this.handleToggleLoading(false)
         });
@@ -130,7 +130,7 @@ class App extends Component {
 
         handlePostReply(this.state.selectedDiscussion.id, parent.id, createCommentDTO).then(c => {
             console.log("New comment posted: ", c);
-            parent.replies.push(c);
+            parent.replies.unshift(c);
         }).finally(() => {
             this.handleToggleLoading(false)
         });
