@@ -1,0 +1,53 @@
+.comment-list-item-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
+  height: auto;
+}
+.comment-content {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  margin-bottom: 5px;
+}
+.comment-list-item-info-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: center;
+}
+
+.comment-list-item-info-container > div > div {
+  padding: 5px 15px 5px 15px;
+  border-right: #d4d4d4 solid 1px;
+  width: auto;
+}
+
+.comment-list-item-info-container > div:first-child > div {
+  padding-left: 0;
+}
+
+.comment-list-item-info-container > div:last-child > div {
+  padding-right: 0;
+  border-right: none;
+}
+
+.button-reply > button {
+  height: auto;
+  color: var(--color-sec-light);
+}
+
+.gradcap :hover {
+  cursor: pointer;
+  color: lightseagreen;
+}
+.frown :hover {
+  cursor: pointer;
+  color: orangered;
+}
+.frown {
+  margin-left: 7px;
+}
