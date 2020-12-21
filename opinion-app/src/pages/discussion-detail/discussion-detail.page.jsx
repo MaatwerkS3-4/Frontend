@@ -31,7 +31,6 @@ class DiscussionDetailPage extends Component {
   };
 
   handleToggleCreateComment = (parentComment = null) => {
-    console.log("!" + parentComment);
     this.setState({
       showCreateComment: !this.state.showCreateComment,
       parentComment: parentComment,
@@ -71,7 +70,7 @@ class DiscussionDetailPage extends Component {
                 text="terug naar overzicht"
               />
               <ButtonAttention
-                handleOnClick={this.handleToggleCreateComment}
+                handleOnClick={() => this.handleToggleCreateComment(null)}
                 text="Opmerking plaatsen"
               />
             </div>

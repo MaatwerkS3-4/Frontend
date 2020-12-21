@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { handleLogin } from "../../services/api.service";
-import { TextBox } from "../../components/input/text-box/text-box.component";
+import { TextBoxTag } from "../../components/input/text-box-tag/text-box-tag.component";
 import { ButtonAttention } from "../../components/input/button/button-attention/button-attention.component";
+import { ButtonRegular } from "../../components/input/button/button-regular/button-regular.component";
 import "./login.styles.css";
 class Login extends Component {
   state = {
@@ -15,38 +16,49 @@ class Login extends Component {
     this.setState({ password: e.target.value });
   };
   handleLoginButtonClick = () => {
+    console.log("got here");
     const user = {
       username: this.state.username,
       password: this.state.password,
     };
-    handleLogin(user).then((response) => {
-      localStorage.setItem("Session", response.jwt);
-      localStorage.setItem("Username", response.username);
-      localStorage.setItem("Id", response.id);
-      console.log(response.data);
-    });
+    handleLogin(user)
+      .then((response) => {
+        localStorage.setItem("Session", response.jwt);
+        localStorage.setItem("Username", response.username);
+        localStorage.setItem("Id", response.id);
+        console.log(response.data);
+      })
+      .finally(() => {
+        window.location.href = "/";
+      });
+  };
+  handleBackButtonClick = () => {
+    window.location.href = "/";
   };
   render() {
     return (
       <div id="login-container">
-        <span className="text-title">Log In</span>
-        <br></br>
-        <TextBox
-          placeholder="USERNAME"
+        <span className="text-title">Ik wil inloggen...</span>
+        <TextBoxTag
+          placeholder="GEBRUIKERSNAAM"
+          tag="GEBRUIKERSNAAM"
           handleInputChange={this.handleUsernameChange}
           type="text"
-        ></TextBox>
-        <br></br>
-        <TextBox
-          placeholder="PASSWORD"
+        ></TextBoxTag>
+        <TextBoxTag
+          tag="WACHTWOORD"
+          placeholder="WACHTWOORD"
           handleInputChange={this.handlePasswordChange}
           type="password"
-        ></TextBox>
-        <br></br>
+        ></TextBoxTag>
         <ButtonAttention
           text="Log In"
-          handleClick={this.handleLoginButtonClick}
+          handleOnClick={() => this.handleLoginButtonClick()}
         ></ButtonAttention>
+        <ButtonRegular
+          text="Annuleren"
+          handleOnClick={this.handleBackButtonClick}
+        ></ButtonRegular>
       </div>
     );
   }
