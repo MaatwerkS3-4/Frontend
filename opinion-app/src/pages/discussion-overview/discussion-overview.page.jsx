@@ -14,6 +14,26 @@ class DiscussionOverviewPage extends Component {
         this.props.history.push(`/discussion/${id}`);
     }
 
+    filterDiscussions = (discussionInfos, criteria) => {
+        console.log(discussionInfos, criteria);
+        const filteredDiscussions = [];
+        discussionInfos.forEach(d => {
+            if(d.subject.toLowerCase().includes(criteria.toLowerCase())){
+                filteredDiscussions.push(d);
+                return;
+            }
+            let containersCriteria = false;
+            d.tags.forEach(t => {
+                if(containersCriteria) return;
+                containersCriteria = t.toLowerCase().includes(criteria.toLowerCase());
+                if(containersCriteria){
+                    filteredDiscussions.push(d);
+                }
+            })
+        })
+        return filteredDiscussions;
+    }
+
     render() {
         console.log("Rendering overview page")
 
@@ -30,8 +50,7 @@ class DiscussionOverviewPage extends Component {
                         <div>Discussies gefilterd voor: <span className="text-attention">{criteria}</span></div>}
                 </div>
                 <DiscussionList handleSelectDiscussion={this.props.handleSelectDiscussion}
-                                discussionInfos={discussionInfos.filter(d =>
-                                    d.subject.toLowerCase().includes(criteria.toLowerCase()))}
+                                discussionInfos={this.filterDiscussions(discussionInfos, criteria)}
                                 handleRedirect={this.handleRedirect}
                 />
             </div>

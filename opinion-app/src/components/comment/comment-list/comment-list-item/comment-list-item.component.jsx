@@ -5,6 +5,7 @@ import { CommentList } from "../comment-list.component";
 import { ButtonRegular } from "../../../input/button/button-regular/button-regular.component";
 
 export const CommentListItem = ({
+  username,
   content,
   timeStamp,
   replies,

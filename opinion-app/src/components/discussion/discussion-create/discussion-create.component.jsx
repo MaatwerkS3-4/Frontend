@@ -13,6 +13,7 @@ class DiscussionCreateComponent extends Component {
         this.state = {
             subject: '',
             description: '',
+            tags: ["", "", ""]
         }
     };
 
@@ -25,11 +26,29 @@ class DiscussionCreateComponent extends Component {
     };
 
     handleCreateClick = () => {
-        this.props.handleCreateDiscussion(this.state.subject, this.state.description);
+        this.props.handleCreateDiscussion(this.state.subject, this.state.description, this.state.tags);
     }
 
     handleCloseClick = () => {
         this.props.handleToggleCreateDiscussion();
+    }
+
+    handleTagInputChange = (value, index) => {
+        const newTags = [...this.state.tags];
+        newTags[index] = value;
+        this.setState({tags: newTags});
+    }
+
+    handleTagInputFirst = (e) => {
+        this.handleTagInputChange(e.target.value, 0);
+    }
+
+    handleTagInputSec = (e) => {
+        this.handleTagInputChange(e.target.value, 1);
+    }
+
+    handleTagInputThird = (e) => {
+        this.handleTagInputChange(e.target.value, 2);
     }
 
     render() {
@@ -41,10 +60,25 @@ class DiscussionCreateComponent extends Component {
                                 placeholder=""
                                 handleInputChange={this.handleSubjectInputChange}
                     />
+
                     <TextAreaTag tag="Toelichting"
                                  placeholder=""
                                  handleInputChange={this.handleDescriptionInputChange}
                     />
+                    <div className="create-discussion-tags-container">
+                        <TextBoxTag tag="Tag"
+                                    placeholder=""
+                                    handleInputChange={this.handleTagInputFirst}
+                        />
+                        <TextBoxTag tag="Tag"
+                                    placeholder=""
+                                    handleInputChange={this.handleTagInputSec}
+                        />
+                        <TextBoxTag tag="Tag"
+                                    placeholder=""
+                                    handleInputChange={this.handleTagInputThird}
+                        />
+                    </div>
                     <div className="create-discussion-options">
                         <ButtonRegular handleOnClick={this.handleCloseClick} text="Sluiten"/>
                         <ButtonAttention handleOnClick={this.handleCreateClick} text="Aanmaken"/>

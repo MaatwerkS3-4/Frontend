@@ -85,13 +85,14 @@ class App extends Component {
         })
     };
 
-    handleCreateDiscussion = (subject, description) => {
+    handleCreateDiscussion = (subject, description, tags) => {
         this.handleToggleCreateDiscussion();
         this.handleToggleLoading(true);
         const createDiscussionDTO = {
             description: description,
             subject: subject,
-            userId: localStorage.getItem("Id")
+            userId: localStorage.getItem("Id"),
+            tags: tags
         }
 
         handlePostNewDiscussion(createDiscussionDTO).then(d => {
@@ -116,7 +117,7 @@ class App extends Component {
 
         handlePostNewComment(this.state.selectedDiscussion.id, createCommentDTO).then(c => {
             console.log("New comment posted: ", c);
-            this.state.selectedDiscussion.comments.push(c);
+            this.state.selectedDiscussion.comments.unshift(c);
         }).finally(() => {
             this.handleToggleLoading(false)
         });
@@ -131,7 +132,7 @@ class App extends Component {
 
         handlePostReply(this.state.selectedDiscussion.id, parent.id, createCommentDTO).then(c => {
             console.log("New comment posted: ", c);
-            parent.replies.push(c);
+            parent.replies.unshift(c);
         }).finally(() => {
             this.handleToggleLoading(false)
         });

@@ -31,6 +31,7 @@ class DiscussionDetailPage extends Component {
   };
 
   handleToggleCreateComment = (parentComment = null) => {
+    console.log("!" + parentComment);
     this.setState({
       showCreateComment: !this.state.showCreateComment,
       parentComment: parentComment,
@@ -62,6 +63,7 @@ class DiscussionDetailPage extends Component {
               participantCount={discussionInfo.numberOfParticipants}
               commentCount={discussionInfo.numberOfComments}
               timeStamp={discussionInfo.timeStamp}
+              tags={discussionInfo.tags}
             />
             <div className="discussion-options">
               <ButtonRegular

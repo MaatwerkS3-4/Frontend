@@ -9,7 +9,7 @@
 }
 
 .discussion-list-container > div{
-  margin-bottom: 20px;
+  margin-bottom: calc(var(--basic-padding)*2);
 }
 
 
