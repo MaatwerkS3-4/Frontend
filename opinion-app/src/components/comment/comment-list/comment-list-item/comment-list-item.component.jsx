@@ -1,19 +1,35 @@
 import React from "react";
 import "./comment-list-item.styles.css";
-import {getTimeDifference} from "../../../../services/date.service";
-import {CommentList} from "../comment-list.component";
-import {ButtonRegular} from "../../../input/button/button-regular/button-regular.component";
+import { getTimeDifference } from "../../../../services/date.service";
+import { CommentList } from "../comment-list.component";
+import { ButtonRegular } from "../../../input/button/button-regular/button-regular.component";
 
-export const CommentListItem = ({username, content, timeStamp, replies, parent, handleShowPostReply}) => {
-    return (
-        <div className="comment-list-item-container">
-            <div className="comment-content text-body">{content}</div>
-            <div className="comment-list-item-info-container text-body-secondary">
-                <div><div className=" text-attention">{username}</div></div>
-                <div><div>{getTimeDifference(new Date(timeStamp))}</div></div>
-                <div className="button-reply"><ButtonRegular text="Antwoorden" handleOnClick={() => handleShowPostReply(parent)}/></div>
-            </div>
-            <CommentList comments={replies} parent={parent} handleShowPostReply={handleShowPostReply}/>
+export const CommentListItem = ({
+  content,
+  timeStamp,
+  replies,
+  parent,
+  handleShowPostReply,
+}) => {
+  return (
+    <div className="comment-list-item-container">
+      <div className="comment-content text-body">{content}</div>
+      <div className="comment-list-item-info-container text-body-secondary">
+        <div>
+          <div>{getTimeDifference(new Date(timeStamp))}</div>
         </div>
-    );
+        <div className="button-reply">
+          <ButtonRegular
+            text="Antwoorden"
+            handleOnClick={() => handleShowPostReply(parent)}
+          />
+        </div>
+      </div>
+      <CommentList
+        comments={replies}
+        parent={parent}
+        handleShowPostReply={handleShowPostReply}
+      />
+    </div>
+  );
 };

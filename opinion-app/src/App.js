@@ -91,7 +91,7 @@ class App extends Component {
         const createDiscussionDTO = {
             description: description,
             subject: subject,
-            userId: this.state.user.id
+            userId: localStorage.getItem("Id")
         }
 
         handlePostNewDiscussion(createDiscussionDTO).then(d => {
@@ -111,7 +111,7 @@ class App extends Component {
         this.handleToggleLoading(true);
         const createCommentDTO = {
             content: content,
-            posterId: this.state.user.id
+            posterId: localStorage.getItem("Id")
         }
 
         handlePostNewComment(this.state.selectedDiscussion.id, createCommentDTO).then(c => {
@@ -126,7 +126,7 @@ class App extends Component {
         this.handleToggleLoading(true);
         const createCommentDTO = {
             content: content,
-            posterId: this.state.user.id
+            posterId: localStorage.getItem("Id")
         }
 
         handlePostReply(this.state.selectedDiscussion.id, parent.id, createCommentDTO).then(c => {
