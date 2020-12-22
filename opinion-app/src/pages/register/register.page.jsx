@@ -20,6 +20,7 @@ class Register extends Component {
     this.setState({ repeat: e.target.value });
   };
   handleRegisterButtonClick = () => {
+    console.log(this.state.password + " " + this.state.repeat);
     if (this.state.password == this.state.repeat) {
       const user = {
         username: this.state.username,
@@ -29,7 +30,9 @@ class Register extends Component {
         localStorage.setItem("Session", response.jwt);
         localStorage.setItem("Username", response.username);
         localStorage.setItem("Id", response.id);
-        console.log(response.data);
+        if (response !== null) {
+          window.location.href = "/";
+        }
       });
     }
   };
@@ -51,7 +54,7 @@ class Register extends Component {
         ></TextBoxTag>
         <TextBoxTag
           placeholder="HERHALEN"
-          handleInputChange={this.handlePasswordChange}
+          handleInputChange={this.handleRepeatChange}
           type="password"
           tag="HERHALEN"
         ></TextBoxTag>
