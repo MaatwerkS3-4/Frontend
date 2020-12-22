@@ -10,6 +10,7 @@ import {LoadOverlay} from "./components/load-overlay/load-overlay.component";
 import {Footer} from "./components/footer/footer.component";
 import Login from "./pages/login/login.page"
 import Register from "./pages/register/register.page"
+import {PrivateRoute} from "./routing/protected-route"
 import {
     handleGetAllDiscussionInfos,
     handleGetDiscussionById,

@@ -3,6 +3,7 @@ import "./comment-list-item.styles.css";
 import { getTimeDifference } from "../../../../services/date.service";
 import { CommentList } from "../comment-list.component";
 import { ButtonRegular } from "../../../input/button/button-regular/button-regular.component";
+import { isLoggedIn } from "../../../../services/authentication.service";
 
 export const CommentListItem = ({
   username,
@@ -20,10 +21,12 @@ export const CommentListItem = ({
           <div>{getTimeDifference(new Date(timeStamp))}</div>
         </div>
         <div className="button-reply">
-          <ButtonRegular
-            text="Antwoorden"
-            handleOnClick={() => handleShowPostReply(parent)}
-          />
+          {isLoggedIn() && (
+            <ButtonRegular
+              text="Antwoorden"
+              handleOnClick={() => handleShowPostReply(parent)}
+            />
+          )}
         </div>
       </div>
       <CommentList

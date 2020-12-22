@@ -5,6 +5,7 @@ import { ButtonAttention } from "../../components/input/button/button-attention/
 import CommentCreate from "../../components/comment/comment-create/comment-create.component";
 import { ButtonRegular } from "../../components/input/button/button-regular/button-regular.component";
 import { CommentList } from "../../components/comment/comment-list/comment-list.component";
+import { isLoggedIn } from "../../services/authentication.service";
 
 class DiscussionDetailPage extends Component {
   constructor(props, context) {
@@ -69,10 +70,12 @@ class DiscussionDetailPage extends Component {
                 handleOnClick={this.handleBackToOverviewClick}
                 text="terug naar overzicht"
               />
-              <ButtonAttention
-                handleOnClick={() => this.handleToggleCreateComment(null)}
-                text="Opmerking plaatsen"
-              />
+              {isLoggedIn() && (
+                <ButtonAttention
+                  handleOnClick={() => this.handleToggleCreateComment(null)}
+                  text="Opmerking plaatsen"
+                />
+              )}
             </div>
           </div>
         </div>

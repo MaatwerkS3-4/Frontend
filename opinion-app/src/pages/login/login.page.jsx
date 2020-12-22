@@ -16,7 +16,6 @@ class Login extends Component {
     this.setState({ password: e.target.value });
   };
   handleLoginButtonClick = () => {
-    console.log("got here");
     const user = {
       username: this.state.username,
       password: this.state.password,
