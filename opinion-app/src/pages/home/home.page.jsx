@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./home.styles.css";
 import { SearchBox } from "../../components/search-box/search-box.component";
 import { TextArea } from "../../components/input/text-area/text-area.component";
+import { FormattedMessage, injectIntl } from "react-intl";
 
 class HomePage extends Component {
   constructor(props) {
@@ -24,14 +25,15 @@ class HomePage extends Component {
   };
 
   render() {
+    const { intl } = this.props;
     console.log("Rendering Homepage...");
     return (
       <div id="home-container">
         <div id="home-title" className="text-title">
-          Wat moet ik vinden van...
+          <FormattedMessage id="search.title" />
         </div>
         <SearchBox
-          placeholder="Zoeken..."
+          placeholder={intl.formatMessage({ id: "search" })}
           handleInputChange={this.handleSearchFieldChanged}
           handleSearchPress={this.handleSearchPress}
         />
@@ -40,4 +42,4 @@ class HomePage extends Component {
   }
 }
 
-export default HomePage;
+export default injectIntl(HomePage);

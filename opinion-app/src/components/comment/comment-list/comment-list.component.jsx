@@ -1,6 +1,6 @@
 import React from "react";
 import "./comment-list.styles.css";
-import { CommentListItem } from "./comment-list-item/comment-list-item.component";
+import CommentListItem from "./comment-list-item/comment-list-item.component";
 
 export const CommentList = ({ parent, comments, handleShowPostReply }) => {
   console.log("parent", parent);
