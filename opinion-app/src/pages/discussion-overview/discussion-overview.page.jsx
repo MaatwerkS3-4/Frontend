@@ -2,12 +2,15 @@ import React, {Component} from "react";
 import "./discussion-overview.styles.css";
 
 import {DiscussionList} from "../../components/discussion/discussion-list/discussion-list.component";
+import {SearchBox} from "../../components/search-box/search-box.component";
 
 class DiscussionOverviewPage extends Component {
     constructor(props) {
         super(props);
 
-        this.state = {};
+        this.state = {
+            tagCriteria: ""
+        };
     };
 
     handleRedirect = (id) => {
@@ -16,6 +19,8 @@ class DiscussionOverviewPage extends Component {
 
     filterDiscussions = (discussionInfos, criteria) => {
         console.log(discussionInfos, criteria);
+
+        //filter for search criteria
         const filteredDiscussions = [];
         discussionInfos.forEach(d => {
             if(d.subject.toLowerCase().includes(criteria.toLowerCase())){
@@ -31,7 +36,26 @@ class DiscussionOverviewPage extends Component {
                 }
             })
         })
-        return filteredDiscussions;
+
+        //filter for tags
+        const filteredForTags = [];
+        filteredDiscussions.forEach(d => {
+            let containsTag = false;
+            d.tags.forEach(t => {
+                if(containsTag) return;
+
+                if(t.toLowerCase().includes(this.state.tagCriteria.toLowerCase())){
+                    filteredForTags.push(d);
+                    containsTag = true;
+                }
+            });
+        });
+
+        return filteredForTags;
+    }
+
+    handleTagFieldChanged = (event) =>{
+        this.setState({tagCriteria: event.target.value});
     }
 
     render() {
@@ -44,11 +68,15 @@ class DiscussionOverviewPage extends Component {
 
         return (
             <div className="discussion-container">
-                <div className="discussion-overview-title text-title">
-                    {(criteria === "") ?
-                        <div>Alle discussies</div> :
-                        <div>Discussies gefilterd voor: <span className="text-attention">{criteria}</span></div>}
+                <div className="discussion-overview-info-container">
+                    <div className="discussion-overview-title text-title">
+                        {(criteria === "") ?
+                            <div>Alle discussies</div> :
+                            <div>Discussies gefilterd voor: <span className="text-attention">{criteria}</span></div>}
+                    </div>
+                    <SearchBox placeholder="Zoeken naar tags..." handleInputChange={this.handleTagFieldChanged} handleSearchPress={() => console.log("Search tag pressed")}/>
                 </div>
+
                 <DiscussionList handleSelectDiscussion={this.props.handleSelectDiscussion}
                                 discussionInfos={this.filterDiscussions(discussionInfos, criteria)}
                                 handleRedirect={this.handleRedirect}
