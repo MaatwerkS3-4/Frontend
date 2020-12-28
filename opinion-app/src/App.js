@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, {Component, useContext} from "react";
 import {BrowserRouter as Router, Redirect, Route, Switch} from 'react-router-dom';
 import "./App.css";
 import HomePage from "./pages/home/home.page.jsx";
@@ -18,8 +18,10 @@ import {
     handlePostNewDiscussion, handlePostReply
 } from "./services/api.service";
 import {TestPage} from "./pages/test/test.page";
+import {Context} from "./components/wrapper/wrapper"
 
 class App extends Component {
+    
     constructor(props) {
         super(props);
         this.state = {
