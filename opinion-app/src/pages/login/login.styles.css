@@ -1,0 +1,22 @@
+#login-container {
+  width: 60%;
+  height: 20vh;
+  margin-top: 10vh;
+  text-align: left;
+}
+#login-container button {
+  margin-top: 2vh;
+}
+#login-container .textbox-container {
+  margin-bottom: 2vh;
+  margin-top: 1vh;
+}
+#login-container .textbox-tag {
+  min-width: 115px;
+}
+#login-container .button-attention {
+  float: right;
+}
+#login-container .button-regular {
+  float: right;
+}

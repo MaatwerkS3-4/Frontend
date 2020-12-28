@@ -1,0 +1,21 @@
+#register-container {
+  width: 60%;
+  height: 20vh;
+  margin-top: 10vh;
+}
+#register-container button {
+  margin-top: 2vh;
+}
+#register-container .textbox-container {
+  margin-bottom: 2vh;
+  margin-top: 1vh;
+}
+#register-container .textbox-tag {
+  min-width: 115px;
+}
+#register-container .button-attention {
+  float: right;
+}
+#register-container .button-regular {
+  float: right;
+}

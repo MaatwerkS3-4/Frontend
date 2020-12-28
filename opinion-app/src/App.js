@@ -8,6 +8,9 @@ import {Header} from "./components/header/header.component";
 import DiscussionCreate from "./components/discussion/discussion-create/discussion-create.component.jsx";
 import {LoadOverlay} from "./components/load-overlay/load-overlay.component";
 import {Footer} from "./components/footer/footer.component";
+import Login from "./pages/login/login.page"
+import Register from "./pages/register/register.page"
+import {PrivateRoute} from "./routing/protected-route"
 import {
     handleGetAllDiscussionInfos,
     handleGetDiscussionById,
@@ -89,7 +92,7 @@ class App extends Component {
         const createDiscussionDTO = {
             description: description,
             subject: subject,
-            userId: this.state.user.id,
+            userId: localStorage.getItem("Id"),
             tags: tags
         }
 
@@ -110,7 +113,7 @@ class App extends Component {
         this.handleToggleLoading(true);
         const createCommentDTO = {
             content: content,
-            posterId: this.state.user.id
+            posterId: localStorage.getItem("Id")
         }
 
         handlePostNewComment(this.state.selectedDiscussion.id, createCommentDTO).then(c => {
@@ -125,7 +128,7 @@ class App extends Component {
         this.handleToggleLoading(true);
         const createCommentDTO = {
             content: content,
-            posterId: this.state.user.id
+            posterId: localStorage.getItem("Id")
         }
 
         handlePostReply(this.state.selectedDiscussion.id, parent.id, createCommentDTO).then(c => {
@@ -135,7 +138,6 @@ class App extends Component {
             this.handleToggleLoading(false)
         });
     }
-
     render() {
         console.log("Rendering App...");
         return (
@@ -166,6 +168,10 @@ class App extends Component {
                                            handlePostComment={this.handlePostComment}
                                            handlePostReply={this.handlePostReply}
                                            {...props}/>}/>
+                                <Route exact path="/register"
+                                        component={Register}/>
+                                <Route exact path="/login"
+                                        component={Login}/>
                                 <Route exact path={"/test"} component={TestPage}/>
                             </Switch>
                         }

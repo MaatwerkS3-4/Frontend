@@ -40,3 +40,15 @@ export const handleGetUserById = (id) =>{
     return AXIOS.get(`/users/${id}`)
         .then(res => {return res.data})
 };
+
+export const handleLogin = (user) => {
+    console.log("attempting to log in...")
+    return AXIOS.post("/users/login", user)
+        .then(res => {return res.data})
+}
+
+export const handlePostUser = (user) => {
+    console.log("attempting to register user")
+    return AXIOS.post("/users/", user)
+        .then(res => {return res.data})
+}
