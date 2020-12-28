@@ -1,10 +1,41 @@
+.searchbox-container{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: relative;
+}
+
+.searchbox-result{
+  position: absolute;
+  right: calc(60px - (var(--border-width) * 2) - 4px);
+  left: 0;
+  top: calc(var(--basic-height));
+  height: auto;
+  border: var(--border-light);
+  padding: var(--basic-padding);
+  background-color: var(--color-white);
+  border-bottom-left-radius: var(--border-radius);
+  border-bottom-right-radius: var(--border-radius);
+}
+
+.searchbox-result > div{
+  margin-top: calc(var(--basic-padding) * 0.5);
+  cursor: pointer;
+}
+
+.searchbox-result > div:first-child{
+  margin-top: 0;
+}
+
 .search-container{
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   justify-content: center;
   width:100%;
-  height: auto;
+  height: 100%;
 }
 
 .search-container > input{
@@ -15,7 +46,7 @@
 
 .search-container > button{
   width: 60px;
-  height: var(--basic-height);
+  height: 100%;
   background-color: var(--color-main-dark);
   color: var(--color-white);
   padding: 0;
@@ -23,8 +54,6 @@
   border-radius: var(--border-radius);
   border-bottom-left-radius: 0;
   border-top-left-radius: 0;
-  border: var(--border-light) var(--color-main-dark);
-  border-left: none;
 }
 
 .search-container > button:hover{

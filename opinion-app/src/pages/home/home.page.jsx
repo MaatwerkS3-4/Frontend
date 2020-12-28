@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./home.styles.css";
 import { SearchBox } from "../../components/search-box/search-box.component";
 import { TextArea } from "../../components/input/text-area/text-area.component";
+import {TextBox} from "../../components/input/text-box/text-box.component";
 
 class HomePage extends Component {
   constructor(props) {
@@ -23,6 +24,30 @@ class HomePage extends Component {
     this.setState({ searchField: event.target.value });
   };
 
+  handleRedirect = (id) => {
+    this.props.handleSelectDiscussion(id);
+    this.props.history.push(`/discussion/${id}`);
+  }
+
+  handleFilterRecommendations = () =>{
+    console.log(this.props.discussionInfos);
+    const filteredDiscussions = [];
+    if(this.state.searchField === "") return undefined;
+
+    this.props.discussionInfos.forEach(d => {
+      if(filteredDiscussions.length >= 10){
+        return;
+      }
+
+      if(d.subject.toLowerCase().includes(this.state.searchField.toLowerCase())){
+        filteredDiscussions.push(d);
+      }
+    })
+
+    if(filteredDiscussions.length < 1) return undefined;
+    return filteredDiscussions;
+  }
+
   render() {
     console.log("Rendering Homepage...");
     return (
@@ -34,6 +59,8 @@ class HomePage extends Component {
           placeholder="Zoeken..."
           handleInputChange={this.handleSearchFieldChanged}
           handleSearchPress={this.handleSearchPress}
+          recommendations={this.handleFilterRecommendations()}
+          handleRedirect={this.handleRedirect}
         />
       </div>
     );

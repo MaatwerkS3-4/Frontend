@@ -10,7 +10,6 @@
     display: flex;
     align-items: center;
     align-content: space-between;
-    justify-content: flex-start;
     flex-direction: row;
     width: 100%;
     padding-top: calc(var(--basic-padding) * 0.5);

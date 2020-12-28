@@ -152,7 +152,10 @@ class App extends Component {
                             <LoadOverlay/>
                             :
                             <Switch>
-                                <Route exact path='/' component={HomePage}/>
+                                <Route exact path='/' render={(props) => <HomePage
+                                    discussionInfos={this.state.discussionInfos}
+                                    handleSelectDiscussion={this.handleSelectDiscussion}
+                                    {...props}/>}/>
                                 <Route path='/discussions/:criteria?'
                                        render={(props) => <DiscussionsPage
                                            //filter discussions for search criteria
