@@ -8,18 +8,42 @@ export const handleGetDiscussionById = (id) =>{
 
 export const handlePostNewDiscussion = (createDiscussionDTO) =>{
     console.log(`Posting new discussion:`, createDiscussionDTO);
-    return AXIOS.post(`/discussion`, createDiscussionDTO)
+    return AXIOS.post(`/discussion`, createDiscussionDTO, {
+        method: 'POST',
+        mode: 'cors',
+        headers: {
+            'Content-type': 'application/json',
+            'Authorization': localStorage.getItem("Session")
+        }
+
+    })
         .then(res =>{ return res.data});
 };
 export const handlePostNewComment = (discussionId, createCommentDTO) =>{
     console.log(`Posting new comment on discussion with id ${discussionId}:`, createCommentDTO);
-    return AXIOS.post(`/comment/${discussionId}`, createCommentDTO)
+    return AXIOS.post(`/comment/${discussionId}`, createCommentDTO, {
+        method: 'POST',
+        mode: 'cors',
+        headers: {
+            'Content-type': 'application/json',
+            'Authorization': localStorage.getItem("Session")
+        }
+
+    })
         .then(res => {return res.data})
 };
 
 export const handlePostReply = (discussionId, parentId, createCommentDTO) => {
     console.log(`Posting a reply on comment with id ${parentId} on the discussion with id ${discussionId}`, createCommentDTO);
-    return AXIOS.post(`/comment/${discussionId}/reply/${parentId}`, createCommentDTO)
+    return AXIOS.post(`/comment/${discussionId}/reply/${parentId}`, createCommentDTO, {
+        method: 'POST',
+        mode: 'cors',
+        headers: {
+            'Content-type': 'application/json',
+            'Authorization': localStorage.getItem("Session")
+        }
+
+    })
         .then(res => {return res.data})
 };
 
