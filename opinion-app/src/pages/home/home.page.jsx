@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import "./home.styles.css";
 import { SearchBox } from "../../components/search-box/search-box.component";
 import { TextArea } from "../../components/input/text-area/text-area.component";
-import {TextBox} from "../../components/input/text-box/text-box.component";
+import { TextBox } from "../../components/input/text-box/text-box.component";
+import { FormattedMessage, injectIntl } from "react-intl";
 
 class HomePage extends Component {
   constructor(props) {
@@ -27,36 +28,39 @@ class HomePage extends Component {
   handleRedirect = (id) => {
     this.props.handleSelectDiscussion(id);
     this.props.history.push(`/discussion/${id}`);
-  }
+  };
 
-  handleFilterRecommendations = () =>{
+  handleFilterRecommendations = () => {
     console.log(this.props.discussionInfos);
     const filteredDiscussions = [];
-    if(this.state.searchField === "") return undefined;
+    if (this.state.searchField === "") return undefined;
 
-    this.props.discussionInfos.forEach(d => {
-      if(filteredDiscussions.length >= 10){
+    this.props.discussionInfos.forEach((d) => {
+      if (filteredDiscussions.length >= 10) {
         return;
       }
 
-      if(d.subject.toLowerCase().includes(this.state.searchField.toLowerCase())){
+      if (
+        d.subject.toLowerCase().includes(this.state.searchField.toLowerCase())
+      ) {
         filteredDiscussions.push(d);
       }
-    })
+    });
 
-    if(filteredDiscussions.length < 1) return undefined;
+    if (filteredDiscussions.length < 1) return undefined;
     return filteredDiscussions;
-  }
+  };
 
   render() {
+    const { intl } = this.props;
     console.log("Rendering Homepage...");
     return (
       <div id="home-container">
         <div id="home-title" className="text-title">
-          Wat moet ik vinden van...
+          <FormattedMessage id="search.title" />
         </div>
         <SearchBox
-          placeholder="Zoeken..."
+          placeholder={intl.formatMessage({ id: "search" })}
           handleInputChange={this.handleSearchFieldChanged}
           handleSearchPress={this.handleSearchPress}
           recommendations={this.handleFilterRecommendations()}
@@ -67,4 +71,4 @@ class HomePage extends Component {
   }
 }
 
-export default HomePage;
+export default injectIntl(HomePage);

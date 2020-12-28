@@ -4,6 +4,7 @@ import { ButtonAttention } from "../../input/button/button-attention/button-atte
 import { ButtonRegular } from "../../input/button/button-regular/button-regular.component";
 import { Component } from "react";
 import { isLoggedIn } from "../../../services/authentication.service";
+import { FormattedMessage, injectIntl } from "react-intl";
 
 class NavBarMenu extends Component {
   constructor(props) {
@@ -21,26 +22,30 @@ class NavBarMenu extends Component {
     window.location.href = "/";
   };
   render() {
+    const { intl } = this.props;
     return (
       <div id="menu">
         {!isLoggedIn() && (
           <ButtonRegular
-            text="registreren"
+            text={intl.formatMessage({ id: "navbar.register" })}
             handleOnClick={this.handleRegisterClick}
           ></ButtonRegular>
         )}
         {!isLoggedIn() && (
           <ButtonAttention
-            text="inloggen"
+            text={intl.formatMessage({ id: "navbar.login" })}
             handleOnClick={this.handleLoginClick}
           />
         )}
         {isLoggedIn() && (
-          <ButtonAttention text="log uit" handleOnClick={this.logOut} />
+          <ButtonAttention
+            text={intl.formatMessage({ id: "navbar.logout" })}
+            handleOnClick={this.logOut}
+          />
         )}
         {isLoggedIn() && (
           <ButtonRegular
-            text="discussie aanmaken"
+            text={intl.formatMessage({ id: "navbar.discussion.create" })}
             handleOnClick={() => this.props.handleToggleCreateDiscussion()}
           />
         )}
@@ -48,4 +53,4 @@ class NavBarMenu extends Component {
     );
   }
 }
-export default NavBarMenu;
+export default injectIntl(NavBarMenu);

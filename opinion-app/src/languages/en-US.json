@@ -1,0 +1,22 @@
+{
+    "search.title": "What should I think about...",
+    "search": "Search...",
+    "discussion.overview.title" : "All discussions",
+    "discussion.overview.filter" : "Discussions filtered for:",
+    "discussion.overiew.searchtags" : "Search for tags...",
+    "discussion.info.comments" : "Comments",
+    "discussion.info.participants" : "Participants",
+    "discussion.detail.back" : "Back to list",
+    "discussion.detail.placecomment" : "Place Comment",
+    "comment.reply" : "Reply",
+    "navbar.discussion.create": "Create Discussion",
+    "navbar.logout": "Log Out",
+    "navbar.login" : "Log In",
+    "navbar.register" : "Register",
+    "discussion.create.create": "Create",
+    "discussion.create.close": "Close",
+    "discussion.create.subject": "Subjects",
+    "discussion.create.explanation": "Explanation",
+    "discussion.create.title" : "What should I think about..."
+
+}

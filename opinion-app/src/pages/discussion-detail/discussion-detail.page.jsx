@@ -6,6 +6,7 @@ import CommentCreate from "../../components/comment/comment-create/comment-creat
 import { ButtonRegular } from "../../components/input/button/button-regular/button-regular.component";
 import { CommentList } from "../../components/comment/comment-list/comment-list.component";
 import { isLoggedIn } from "../../services/authentication.service";
+import { FormattedMessage, injectIntl } from "react-intl";
 
 class DiscussionDetailPage extends Component {
   constructor(props, context) {
@@ -51,6 +52,8 @@ class DiscussionDetailPage extends Component {
       this.props.history.push("/");
       return null;
     }
+    const { intl } = this.props;
+
     return (
       <div className="discussion-detail-container">
         <div className="discussion-info">
@@ -68,12 +71,14 @@ class DiscussionDetailPage extends Component {
             <div className="discussion-options">
               <ButtonRegular
                 handleOnClick={this.handleBackToOverviewClick}
-                text="terug naar overzicht"
+                text={intl.formatMessage({ id: "discussion.detail.back" })}
               />
               {isLoggedIn() && (
                 <ButtonAttention
                   handleOnClick={() => this.handleToggleCreateComment(null)}
-                  text="Opmerking plaatsen"
+                  text={intl.formatMessage({
+                    id: "discussion.detail.placecomment",
+                  })}
                 />
               )}
             </div>
@@ -101,4 +106,4 @@ class DiscussionDetailPage extends Component {
   }
 }
 
-export default DiscussionDetailPage;
+export default injectIntl(DiscussionDetailPage);

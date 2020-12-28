@@ -1,0 +1,21 @@
+{
+    "search.title": "Wat moet ik vinden van...",
+    "search" : "Zoeken...",
+    "discussion.overview.title" : "Alle discussies",
+    "discussion.overview.filter": "Discussies gefilterd voor:",
+    "discussion.overiew.searchtags" : "Zoeken naar tags...",
+    "discussion.info.comments" : "Opmerkingen",
+    "discussion.info.participants" : "Deelnemers",
+    "discussion.detail.back" : "Terug naar overzicht",
+    "discussion.detail.placecomment": "Opmerking Plaatsen",
+    "comment.reply": "Antwoorden",
+    "navbar.discussion.create": "Discussie Aanmaken",
+    "navbar.logout": "Log Uit",
+    "navbar.login" : "Log In",
+    "navbar.register" : "Aanmelden",
+    "discussion.create.create": "Aanmaken",
+    "discussion.create.close": "Sluiten",
+    "discussion.create.subject": "Onderwerp",
+    "discussion.create.explanation" : "Toelichting",
+    "discussion.create.title" : "Wat moet ik vinden van..."
+}
