@@ -19,5 +19,6 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - name: npm install, build, and test
       run: | 
-        npm install -f opinion-app/package.json package --file opinion-app\package.json
-        npm run build -f opinion-app/package.json package --file opinion-app\package.json --if-present
+        cd opinion-app/
+        npm install
+        npm run build
