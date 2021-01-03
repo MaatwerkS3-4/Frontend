@@ -55,18 +55,21 @@ class HomePage extends Component {
     const { intl } = this.props;
     console.log("Rendering Homepage...");
     return (
-      <div id="home-container">
-        <div id="home-title" className="text-title">
-          <FormattedMessage id="search.title" />
+        <div id="home-container">
+          <div id="searchbox">
+            <div id="home-title" className="text-title">
+              <FormattedMessage id="search.title" />
+            </div>
+            <SearchBox
+                placeholder={intl.formatMessage({ id: "search" })}
+                handleInputChange={this.handleSearchFieldChanged}
+                handleSearchPress={this.handleSearchPress}
+                recommendations={this.handleFilterRecommendations()}
+                handleRedirect={this.handleRedirect}
+            />
+          </div>
+          <div id="header-offset"/>
         </div>
-        <SearchBox
-          placeholder={intl.formatMessage({ id: "search" })}
-          handleInputChange={this.handleSearchFieldChanged}
-          handleSearchPress={this.handleSearchPress}
-          recommendations={this.handleFilterRecommendations()}
-          handleRedirect={this.handleRedirect}
-        />
-      </div>
     );
   }
 }
