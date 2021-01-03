@@ -26,4 +26,5 @@
     font-size: 20pt;
     line-height: 90%;
     white-space: nowrap;
+    color: var(--color-sec-medium)
 }

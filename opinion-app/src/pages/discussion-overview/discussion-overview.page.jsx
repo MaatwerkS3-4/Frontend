@@ -75,16 +75,7 @@ class DiscussionOverviewPage extends Component {
         <div className="discussion-overview-info-container">
           <PaddingItem/>
           <div className="discussion-overview-title text-title">
-            {criteria === "" ? (
-              <div>
-                <FormattedMessage id="discussion.overview.title"></FormattedMessage>
-              </div>
-            ) : (
-              <div>
-                <FormattedMessage id="discussion.overview.filter"></FormattedMessage>
-                : <span className="text-attention">{criteria}</span>
-              </div>
-            )}
+            <FormattedMessage id="discussion.overview.title"></FormattedMessage>
           </div>
           <div id="search">
             <SearchBox
