@@ -5,6 +5,7 @@ import { DiscussionList } from "../../components/discussion/discussion-list/disc
 import { SearchBox } from "../../components/search-box/search-box.component";
 import { FormattedMessage, injectIntl } from "react-intl";
 import {PaddingItem} from "../../components/layout/padding-item/padding-item.component";
+import { FaListUl } from "react-icons/fa";
 
 class DiscussionOverviewPage extends Component {
   constructor(props) {
@@ -74,6 +75,7 @@ class DiscussionOverviewPage extends Component {
         <div className="discussion-overview-info-container">
           <PaddingItem/>
           <div className="discussion-overview-title text-title">
+            <div id="icon-list"><FaListUl /></div>
             <FormattedMessage id="discussion.overview.title"></FormattedMessage>
           </div>
           <div id="search">
