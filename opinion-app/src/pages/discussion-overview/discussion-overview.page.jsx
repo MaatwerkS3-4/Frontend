@@ -5,6 +5,7 @@ import { DiscussionList } from "../../components/discussion/discussion-list/disc
 import { SearchBox } from "../../components/search-box/search-box.component";
 import { TextBox } from "../../components/input/text-box/text-box.component";
 import { FormattedMessage, injectIntl } from "react-intl";
+import {PaddingItem} from "../../components/layout/padding-item/padding-item.component";
 
 class DiscussionOverviewPage extends Component {
   constructor(props) {
@@ -72,6 +73,7 @@ class DiscussionOverviewPage extends Component {
     return (
       <div className="discussion-container">
         <div className="discussion-overview-info-container">
+          <PaddingItem/>
           <div className="discussion-overview-title text-title">
             {criteria === "" ? (
               <div>
@@ -84,19 +86,25 @@ class DiscussionOverviewPage extends Component {
               </div>
             )}
           </div>
-          <SearchBox
-              placeholder={intl.formatMessage({
-                id: "discussion.overiew.searchtags",
-              })}
-              handleInputChange={this.handleTagFieldChanged}
-          />
+          <div id="search">
+            <SearchBox
+                placeholder={intl.formatMessage({
+                  id: "discussion.overiew.searchtags",
+                })}
+                handleInputChange={this.handleTagFieldChanged}
+            />
+          </div>
+          <PaddingItem/>
         </div>
-
-        <DiscussionList
-          handleSelectDiscussion={this.props.handleSelectDiscussion}
-          discussionInfos={this.filterDiscussions(discussionInfos, criteria)}
-          handleRedirect={this.handleRedirect}
-        />
+        <div id="discussions">
+          <PaddingItem/>
+          <DiscussionList
+              handleSelectDiscussion={this.props.handleSelectDiscussion}
+              discussionInfos={this.filterDiscussions(discussionInfos, criteria)}
+              handleRedirect={this.handleRedirect}
+          />
+          <PaddingItem/>
+        </div>
       </div>
     );
   }

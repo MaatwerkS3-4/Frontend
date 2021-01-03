@@ -150,40 +150,36 @@ class App extends Component {
                         handleToggleCreateDiscussion={this.handleToggleCreateDiscussion}
                     />
                     <div id="content-container">
-                        <div className="padding-item"/>
-                        <div id="content">
-                            {this.state.loading ?
-                                <LoadOverlay/>
-                                :
-                                <Switch>
-                                    <Route exact path='/' render={(props) => <HomePage
-                                        discussionInfos={this.state.discussionInfos}
-                                        handleSelectDiscussion={this.handleSelectDiscussion}
-                                        {...props}/>}/>
-                                    <Route path='/discussions/:criteria?'
-                                           render={(props) => <DiscussionsPage
-                                               //filter discussions for search criteria
-                                               discussionInfos={this.state.discussionInfos}
-                                               handleSelectDiscussion={this.handleSelectDiscussion}
-                                               {...props}/>}/>
-                                    <Route path='/discussion/:id'
-                                           render={(props) => <DiscussionDetailPage
-                                               selectedDiscussion={this.state.selectedDiscussion}
-                                               //find discussion info with selected discussion id
-                                               discussionInfo={this.state.discussionInfos.find(c =>
-                                                   c.id === this.state.selectedDiscussion.id)}
-                                               handlePostComment={this.handlePostComment}
-                                               handlePostReply={this.handlePostReply}
-                                               {...props}/>}/>
-                                    <Route exact path="/register"
-                                           component={Register}/>
-                                    <Route exact path="/login"
-                                           component={Login}/>
-                                    <Route exact path={"/test"} component={TestPage}/>
-                                </Switch>
-                            }
-                        </div>
-                        <div className="padding-item"/>
+                        {this.state.loading ?
+                            <LoadOverlay/>
+                            :
+                            <Switch>
+                                <Route exact path='/' render={(props) => <HomePage
+                                    discussionInfos={this.state.discussionInfos}
+                                    handleSelectDiscussion={this.handleSelectDiscussion}
+                                    {...props}/>}/>
+                                <Route path='/discussions/:criteria?'
+                                       render={(props) => <DiscussionsPage
+                                           //filter discussions for search criteria
+                                           discussionInfos={this.state.discussionInfos}
+                                           handleSelectDiscussion={this.handleSelectDiscussion}
+                                           {...props}/>}/>
+                                <Route path='/discussion/:id'
+                                       render={(props) => <DiscussionDetailPage
+                                           selectedDiscussion={this.state.selectedDiscussion}
+                                           //find discussion info with selected discussion id
+                                           discussionInfo={this.state.discussionInfos.find(c =>
+                                               c.id === this.state.selectedDiscussion.id)}
+                                           handlePostComment={this.handlePostComment}
+                                           handlePostReply={this.handlePostReply}
+                                           {...props}/>}/>
+                                <Route exact path="/register"
+                                       component={Register}/>
+                                <Route exact path="/login"
+                                       component={Login}/>
+                                <Route exact path={"/test"} component={TestPage}/>
+                            </Switch>
+                        }
                     </div>
                     <div className="content-container">
                         {this.state.showCreateDiscussion ? <DiscussionCreate
