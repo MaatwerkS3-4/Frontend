@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
 :root{
   --color-main-dark: #46515D;
   /*--color-main-medium: #6F7F92;*/
@@ -8,10 +10,11 @@
   --color-sec-medium: #7F7F7F;
   --color-sec-light: #C2C2C2;
   --color-background: #F9F9F9;
+  /*--color-background: #F9F9F9;*/
   --color-background-opaque: rgba(0, 0, 0, 0.7);
   --color-white: white;
   --color-black: black;
-  --font: Arial;
+  --font: 'Roboto', sans-serif;
   --header-height: 120pt;
   --footer-height: 40pt;
   --border-light: solid var(--border-width) var(--color-sec-light);
@@ -31,11 +34,9 @@
 .text-headline{
   width: 100%;
   font-size: 48pt;
-  font-weight: bolder;
+  font-weight: 700;
   color: var(--color-main-dark);
-  letter-spacing: calc(40em / 1000);
   text-transform: uppercase;
-  line-height: 50pt;
   white-space: nowrap;
   text-align: left;
   text-decoration: none;
@@ -44,10 +45,8 @@
 .text-title{
   width: 100%;
   font-size: 22pt;
-  font-weight: bold;
+  font-weight: 500;
   color: var(--color-main-medium);
-  letter-spacing: 0;
-  line-height: 24pt;
   word-wrap: break-word;
   white-space: pre-line;
   text-align: left;
@@ -57,10 +56,8 @@
 .text-subheader{
   width: 100%;
   font-size: 20pt;
-  font-weight: normal;
+  font-weight: 500;
   color: var(--color-sec-medium);
-  letter-spacing: 0;
-  line-height: 30pt;
   word-wrap: break-word;
   white-space: pre-line;
   text-align: left;
@@ -71,10 +68,8 @@
   width: 100%;
   font-family: "Segoe UI";
   font-size: 20pt;
-  font-weight: normal;
+  font-weight: 300;
   color: var(--color-sec-medium);
-  letter-spacing: 0;
-  line-height: 35pt;
   text-align: center;
   text-decoration: none;
   font-style: italic;
@@ -85,10 +80,8 @@
 .text-body-large{
   width: 100%;
   font-size: 14pt;
-  font-weight: bolder;
+  font-weight: 500;
   color: var(--color-sec-dark);
-  letter-spacing: 0;
-  line-height: 16pt;
   word-wrap: break-word;
   white-space: pre-line;
   text-align: left;
@@ -98,10 +91,8 @@
 .text-body{
   width: 100%;
   font-size: 14pt;
-  font-weight: normal;
+  font-weight: 400;
   color: var(--color-sec-dark);
-  letter-spacing: 0;
-  line-height: 16pt;
   text-align: left;
   text-decoration: none;
   word-wrap: break-word;
@@ -111,10 +102,8 @@
 .text-body-secondary{
   width: 100%;
   font-size: 14pt;
-  font-weight: lighter;
+  font-weight: 100;
   color: var(--color-sec-medium);
-  letter-spacing: 0;
-  line-height: 14pt;
   text-align: left;
   text-decoration: none;
   word-wrap: break-word;
@@ -124,18 +113,12 @@
 .text-button{
   width: 100%;
   font-size: 10pt;
-  font-weight: bolder;
+  font-weight: 500;
   color: var(--color-sec-medium);
-  letter-spacing: 0;
-  line-height: 12pt;
   text-transform: uppercase;
   white-space: nowrap;
   text-align: center;
   text-decoration: none;
-}
-
-.text-title:first-letter, .text-subheader:first-letter, .text-body-large:first-letter{
-  text-transform: capitalize;
 }
 
 .text-attention{
