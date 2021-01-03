@@ -4,7 +4,7 @@ import { ButtonAttention } from "../../input/button/button-attention/button-atte
 import { ButtonRegular } from "../../input/button/button-regular/button-regular.component";
 import { Component } from "react";
 import { isLoggedIn } from "../../../services/authentication.service";
-import { FormattedMessage, injectIntl } from "react-intl";
+import { injectIntl } from "react-intl";
 
 class NavBarMenu extends Component {
   constructor(props) {

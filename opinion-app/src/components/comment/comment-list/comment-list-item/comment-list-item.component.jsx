@@ -4,7 +4,7 @@ import { getTimeDifference } from "../../../../services/date.service";
 import { CommentList } from "../comment-list.component";
 import { ButtonRegular } from "../../../input/button/button-regular/button-regular.component";
 import { isLoggedIn } from "../../../../services/authentication.service";
-import { FormattedMessage, injectIntl } from "react-intl";
+import { injectIntl } from "react-intl";
 import { Component } from "react";
 
 class CommentListItem extends Component {

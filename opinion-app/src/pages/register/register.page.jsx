@@ -21,7 +21,7 @@ class Register extends Component {
   };
   handleRegisterButtonClick = () => {
     console.log(this.state.password + " " + this.state.repeat);
-    if (this.state.password == this.state.repeat) {
+    if (this.state.password === this.state.repeat) {
       const user = {
         username: this.state.username,
         password: this.state.password,

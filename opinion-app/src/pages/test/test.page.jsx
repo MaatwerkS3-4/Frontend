@@ -1,5 +1,5 @@
 import React from "react";
-import {Headline, TextHeadline} from "../../components/text/text-headline.component";
+import {TextHeadline} from "../../components/text/text-headline.component";
 import {TextTitle} from "../../components/text/text-title.component";
 import {TextSubheader} from "../../components/text/text-subheader.component";
 import {TextQuote} from "../../components/text/text-quote.component";
@@ -8,7 +8,7 @@ import {TextBodyRegular} from "../../components/text/text-body-regular.component
 import {TextBodySecondary} from "../../components/text/text-body-secondary.component";
 import {TextButton} from "../../components/text/text-button.component";
 
-export const TestPage = ({}) =>{
+export const TestPage = () =>{
     return(
         <div>
             <TextHeadline content="headline test"/>

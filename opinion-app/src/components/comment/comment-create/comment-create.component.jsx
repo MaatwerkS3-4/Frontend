@@ -1,7 +1,6 @@
 import React, {Component} from "react";
 import "./comment-create.styles.css";
 import {TextAreaTag} from "../../input/text-area-tag/text-area-tag.component";
-import {TextBoxTag} from "../../input/text-box-tag/text-box-tag.component";
 import {ButtonAttention} from "../../input/button/button-attention/button-attention.component";
 import {ButtonRegular} from "../../input/button/button-regular/button-regular.component";
 

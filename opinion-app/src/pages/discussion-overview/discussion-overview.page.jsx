@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import "./discussion-overview.styles.css";
 
 import { DiscussionList } from "../../components/discussion/discussion-list/discussion-list.component";
-import { SearchBox } from "../../components/search-box/search-box.component";
 import { TextBox } from "../../components/input/text-box/text-box.component";
 import { FormattedMessage, injectIntl } from "react-intl";
 
