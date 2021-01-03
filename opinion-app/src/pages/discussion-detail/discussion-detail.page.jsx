@@ -6,6 +6,7 @@ import CommentCreate from "../../components/comment/comment-create/comment-creat
 import { ButtonRegular } from "../../components/input/button/button-regular/button-regular.component";
 import { CommentList } from "../../components/comment/comment-list/comment-list.component";
 import { isLoggedIn } from "../../services/authentication.service";
+import { injectIntl } from "react-intl";
 
 class DiscussionDetailPage extends Component {
   constructor(props, context) {
