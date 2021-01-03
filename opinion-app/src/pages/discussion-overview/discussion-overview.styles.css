@@ -5,6 +5,7 @@
     justify-content: flex-start;
     flex-direction: column;
     overflow: hidden;
+    width: 100%;
 }
 
 .discussion-overview-info-container{
@@ -16,8 +17,12 @@
     padding-bottom: calc(var(--basic-padding)*0.2);
 }
 
+.discussion-overview-title{
+    flex: 1;
+}
+
 #search{
-    flex-basis: 500px;
+    flex-basis: 400px;
 }
 
 #discussions{
