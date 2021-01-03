@@ -56,13 +56,13 @@ class DiscussionDetailPage extends Component {
     const { intl } = this.props;
 
     return (
-        <div id="content">
+        <div id="discussion-content">
           <div id="title-container">
             <PaddingItem/>
             <div className="text-title">{discussion.subject}</div>
             <PaddingItem/>
           </div>
-          <div id="content-container">
+          <div id="discussion-content-container">
             <PaddingItem/>
             <div className="discussion-detail-container">
               <div className="discussion-info">
