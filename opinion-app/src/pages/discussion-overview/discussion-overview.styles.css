@@ -12,5 +12,4 @@
     align-content: space-between;
     flex-direction: row;
     width: 100%;
-    padding-top: calc(var(--basic-padding) * 0.5);
 }
