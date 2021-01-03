@@ -84,11 +84,11 @@ class DiscussionOverviewPage extends Component {
               </div>
             )}
           </div>
-          <TextBox
-            placeholder={intl.formatMessage({
-              id: "discussion.overiew.searchtags",
-            })}
-            handleInputChange={this.handleTagFieldChanged}
+          <SearchBox
+              placeholder={intl.formatMessage({
+                id: "discussion.overiew.searchtags",
+              })}
+              handleInputChange={this.handleTagFieldChanged}
           />
         </div>
 

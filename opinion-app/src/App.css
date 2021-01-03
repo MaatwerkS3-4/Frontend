@@ -16,7 +16,7 @@
   --border-light: solid var(--border-width) var(--color-sec-light);
   --border-width: 1px;
   --border-radius: 5px;
-  --basic-height: 40pt;
+  --basic-height: 30pt;
   --basic-padding: 12pt;
   --basic-max-width: 1200pt;
 }

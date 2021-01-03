@@ -4,6 +4,6 @@ button{
     padding: calc(var(--basic-padding) * 3);
     padding-top: 0;
     padding-bottom: 0;
-    height: calc(var(--basic-height)* 0.75);
+    height: calc(var(--basic-height)* 1);
     background-color: transparent;
 }

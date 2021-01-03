@@ -1,6 +1,5 @@
 .textbox-field{
     width: calc(100% - 20px - (var(--border-width) * 2));
-    height: var(--basic-height);
     border-radius:var(--border-radius);
     border: var(--color-sec-light) var(--border-width) solid;
     padding: 0 0 0 20px;
