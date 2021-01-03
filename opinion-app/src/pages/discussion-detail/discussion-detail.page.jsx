@@ -6,8 +6,8 @@ import CommentCreate from "../../components/comment/comment-create/comment-creat
 import { ButtonRegular } from "../../components/input/button/button-regular/button-regular.component";
 import { CommentList } from "../../components/comment/comment-list/comment-list.component";
 import { isLoggedIn } from "../../services/authentication.service";
-import { FormattedMessage, injectIntl } from "react-intl";
 import {PaddingItem} from "../../components/layout/padding-item/padding-item.component";
+import { injectIntl } from "react-intl";
 
 class DiscussionDetailPage extends Component {
   constructor(props, context) {
@@ -45,7 +45,6 @@ class DiscussionDetailPage extends Component {
   };
 
   render() {
-    const id = this.props.match.params.id;
     const discussion = this.props.selectedDiscussion;
     const discussionInfo = this.props.discussionInfo;
 

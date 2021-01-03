@@ -21,7 +21,7 @@ class Register extends Component {
   };
   handleRegisterButtonClick = () => {
     console.log(this.state.password + " " + this.state.repeat);
-    if (this.state.password == this.state.repeat) {
+    if (this.state.password === this.state.repeat) {
       const user = {
         username: this.state.username,
         password: this.state.password,
@@ -30,9 +30,7 @@ class Register extends Component {
         localStorage.setItem("Session", response.jwt);
         localStorage.setItem("Username", response.username);
         localStorage.setItem("Id", response.id);
-        if (response !== null) {
           window.location.href = "/";
-        }
       });
     }
   };
@@ -41,27 +39,27 @@ class Register extends Component {
       <div id="register-container">
         <span className="text-title">Ik wil registreren...</span>
         <TextBoxTag
-          placeholder="GEBRUIKERSNAAM"
-          tag="GEBRUIKERSNAAM"
-          handleInputChange={this.handleUsernameChange}
-          type="text"
-        ></TextBoxTag>
+    placeholder="GEBRUIKERSNAAM"
+    tag="GEBRUIKERSNAAM"
+    handleInputChange={this.handleUsernameChange}
+    type="text"
+    />
         <TextBoxTag
-          placeholder="WACHTWOORD"
-          handleInputChange={this.handlePasswordChange}
-          type="password"
-          tag="WACHTWOORD"
-        ></TextBoxTag>
+    placeholder="WACHTWOORD"
+    handleInputChange={this.handlePasswordChange}
+    type="password"
+    tag="WACHTWOORD"
+    />
         <TextBoxTag
-          placeholder="HERHALEN"
-          handleInputChange={this.handleRepeatChange}
-          type="password"
-          tag="HERHALEN"
-        ></TextBoxTag>
+    placeholder="HERHALEN"
+    handleInputChange={this.handleRepeatChange}
+    type="password"
+    tag="HERHALEN"
+    />
         <ButtonAttention
-          text="Meld Je Aan"
-          handleOnClick={this.handleRegisterButtonClick}
-        ></ButtonAttention>
+    text="Meld Je Aan"
+    handleOnClick={this.handleRegisterButtonClick}
+    />
       </div>
     );
   }

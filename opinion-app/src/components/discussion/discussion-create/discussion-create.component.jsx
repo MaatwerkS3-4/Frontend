@@ -4,7 +4,6 @@ import "./discussion-create.styles.css";
 import { ButtonAttention } from "../../input/button/button-attention/button-attention.component";
 import { ButtonRegular } from "../../input/button/button-regular/button-regular.component";
 import { TextAreaTag } from "../../input/text-area-tag/text-area-tag.component";
-import { TextBox } from "../../input/text-box/text-box.component";
 import { FormattedMessage, injectIntl } from "react-intl";
 
 class DiscussionCreateComponent extends Component {
@@ -62,7 +61,7 @@ class DiscussionCreateComponent extends Component {
       <div className="create-container">
         <div className="create-discussion-container">
           <div className="text-title">
-            <FormattedMessage id="discussion.create.title"></FormattedMessage>
+            <FormattedMessage id="discussion.create.title"/>
           </div>
           <TextBoxTag
             tag={intl.formatMessage({ id: "discussion.create.subject" })}

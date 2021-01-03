@@ -1,5 +1,5 @@
-import React, {Component, useContext} from "react";
-import {BrowserRouter as Router, Redirect, Route, Switch} from 'react-router-dom';
+import React, {Component} from "react";
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import "./App.css";
 import HomePage from "./pages/home/home.page.jsx";
 import DiscussionsPage from "./pages/discussion-overview/discussion-overview.page.jsx";
@@ -10,7 +10,6 @@ import {LoadOverlay} from "./components/load-overlay/load-overlay.component";
 import {Footer} from "./components/footer/footer.component";
 import Login from "./pages/login/login.page"
 import Register from "./pages/register/register.page"
-import {PrivateRoute} from "./routing/protected-route"
 import {
     handleGetAllDiscussionInfos,
     handleGetDiscussionById,
@@ -18,7 +17,6 @@ import {
     handlePostNewDiscussion, handlePostReply
 } from "./services/api.service";
 import {TestPage} from "./pages/test/test.page";
-import {Context} from "./components/wrapper/wrapper"
 
 class App extends Component {
     

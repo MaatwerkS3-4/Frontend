@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import "./home.styles.css";
 import { SearchBox } from "../../components/search-box/search-box.component";
-import { TextArea } from "../../components/input/text-area/text-area.component";
-import { TextBox } from "../../components/input/text-box/text-box.component";
 import { FormattedMessage, injectIntl } from "react-intl";
 
 class HomePage extends Component {
@@ -14,7 +12,7 @@ class HomePage extends Component {
     };
   }
 
-  handleSearchPress = (e) => {
+  handleSearchPress = () => {
     console.log(
       `handle search press button pressed: ${this.state.searchField}`
     );
