@@ -16,7 +16,7 @@ import {
     handleGetUserById, handlePostNewComment,
     handlePostNewDiscussion, handlePostReply
 } from "./services/api.service";
-import {TestPage} from "./pages/test/test.page";
+import TestPage from "./pages/test/test.page";
 
 class App extends Component {
     

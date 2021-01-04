@@ -1,7 +1,6 @@
 .checkbox-group-container{
     display: flex;
     flex-direction: column;
-    width: 100%;
 }
 
 .checkbox-group-name-container{
@@ -26,19 +25,5 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    align-items: flex-start;
-    justify-content: stretch;
     background-color: var(--color-white);
-}
-
-.checkbox-group-content-container > div{
-    width: 100%;
-    border: var(--border-light);
-    border-bottom-right-radius: var(--border-radius);
-    border-bottom-left-radius: var(--border-radius);
-
-    display: flex;
-    flex-direction: row;
-
-    flex-wrap: wrap;
 }

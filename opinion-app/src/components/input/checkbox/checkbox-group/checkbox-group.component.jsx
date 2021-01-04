@@ -56,17 +56,15 @@ class CheckboxGroup extends Component{
                     <div className="checkbox-group-name text-button">{this.props.name}</div>
                 </div>
                 <div className="checkbox-group-content-container">
-                    <div>
-                        {this.props.checkboxes.map(b =>{
-                            return <Checkbox
-                                id={b.id}
-                                checked={b.checked}
-                                disabled={b.disabled}
-                                handleClick={this.handleClick}
-                                value={b.value}
-                            />
-                        })}
-                    </div>
+                    {this.props.checkboxes.map(b =>{
+                        return <Checkbox
+                            id={b.id}
+                            checked={b.checked}
+                            disabled={b.disabled}
+                            handleClick={this.handleClick}
+                            value={b.value}
+                        />
+                    })}
                 </div>
             </div>
         )
