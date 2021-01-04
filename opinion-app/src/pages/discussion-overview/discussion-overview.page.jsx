@@ -95,7 +95,7 @@ class DiscussionOverviewPage extends Component {
               <div id="overview-random-info">
                 <div className="overview-random-info-title text-subheader">
                   <div id="icon-random"><FaDice /></div>
-                  <div>Random</div>
+                  <div>Random Discussies</div>
                 </div>
               </div>
               <PaddingItem/>
