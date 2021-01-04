@@ -76,3 +76,9 @@ export const handlePostUser = (user) => {
     return AXIOS.post("/users/", user)
         .then(res => {return res.data})
 }
+
+export const handleGetAvailableCategories = () => {
+    console.log(`Retrieving all categories...`);
+    return AXIOS.get('/category')
+        .then(res => {return res.data})
+}

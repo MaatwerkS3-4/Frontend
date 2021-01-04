@@ -11,7 +11,7 @@ import {Footer} from "./components/footer/footer.component";
 import Login from "./pages/login/login.page"
 import Register from "./pages/register/register.page"
 import {
-    handleGetAllDiscussionInfos,
+    handleGetAllDiscussionInfos, handleGetAvailableCategories,
     handleGetDiscussionById,
     handleGetUserById, handlePostNewComment,
     handlePostNewDiscussion, handlePostReply
@@ -36,7 +36,9 @@ class App extends Component {
 
             //Discussions data
             discussionInfos: [],
-            selectedDiscussion: undefined
+            selectedDiscussion: undefined,
+
+            categories: []
         };
     }
 
@@ -71,7 +73,11 @@ class App extends Component {
             handleGetAllDiscussionInfos().then(infos => {
                 this.handleSetState({discussionInfos: infos}, false);
             }).finally(() => {
-                this.handleToggleLoading(false);
+                handleGetAvailableCategories().then(categories => {
+                    this.handleSetState({categories: categories});
+                }).finally(() =>{
+                    this.handleToggleLoading(false);
+                });
             });
         });
     };
@@ -86,15 +92,17 @@ class App extends Component {
         })
     };
 
-    handleCreateDiscussion = (subject, description, tags) => {
+    handleCreateDiscussion = (subject, description, categories) => {
         this.handleToggleCreateDiscussion();
         this.handleToggleLoading(true);
         const createDiscussionDTO = {
             description: description,
             subject: subject,
             userId: localStorage.getItem("Id"),
-            tags: tags
+            tags: categories
         }
+
+        console.log("created dto", createDiscussionDTO);
 
         handlePostNewDiscussion(createDiscussionDTO).then(d => {
             console.log("New discussion created:", d)
@@ -183,7 +191,8 @@ class App extends Component {
                         {this.state.showCreateDiscussion ? <DiscussionCreate
                             handleCreateDiscussion={this.handleCreateDiscussion}
                             handleToggleCreateDiscussion={this.handleToggleCreateDiscussion}
-                            user={this.state.user}/> : ""}
+                            user={this.state.user}
+                            categories={this.state.categories}/> : ""}
                     </div>
                     <Footer/>
                 </div>
