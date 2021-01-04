@@ -5,7 +5,7 @@ import { DiscussionList } from "../../components/discussion/discussion-list/disc
 import { SearchBox } from "../../components/search-box/search-box.component";
 import { FormattedMessage, injectIntl } from "react-intl";
 import {PaddingItem} from "../../components/layout/padding-item/padding-item.component";
-import { FaListUl } from "react-icons/fa";
+import { FaListUl, FaDice } from "react-icons/fa";
 
 class DiscussionOverviewPage extends Component {
   constructor(props) {
@@ -71,33 +71,48 @@ class DiscussionOverviewPage extends Component {
     const { intl } = this.props;
 
     return (
-      <div className="discussion-container">
-        <div className="discussion-overview-info-container">
-          <PaddingItem/>
-          <div className="discussion-overview-title text-title">
-            <div id="icon-list"><FaListUl /></div>
-            <FormattedMessage id="discussion.overview.title"></FormattedMessage>
+        <div id="overview-container">
+          <div className="discussion-container">
+
+            {/*Header info*/}
+            <div className="discussion-overview-info-container">
+              <PaddingItem/>
+              <div id="overview-result-info">
+                <div className="discussion-overview-title text-title">
+                  <div id="icon-list"><FaListUl /></div>
+                  <FormattedMessage id="discussion.overview.title"></FormattedMessage>
+                </div>
+                <div id="search">
+                  <SearchBox
+                      placeholder={intl.formatMessage({
+                        id: "discussion.overiew.searchtags",
+                      })}
+                      handleInputChange={this.handleTagFieldChanged}
+                  />
+                </div>
+              </div>
+              <PaddingItem/>
+              <div id="overview-random-info">
+                <div className="overview-random-info-title text-subheader">
+                  <div id="icon-random"><FaDice /></div>
+                  <div>Random</div>
+                </div>
+              </div>
+              <PaddingItem/>
+            </div>
+
+            {/*content containers */}
+            <div id="discussions">
+              <PaddingItem/>
+              <DiscussionList
+                  handleSelectDiscussion={this.props.handleSelectDiscussion}
+                  discussionInfos={this.filterDiscussions(discussionInfos, criteria)}
+                  handleRedirect={this.handleRedirect}
+              />
+              <PaddingItem/>
+            </div>
           </div>
-          <div id="search">
-            <SearchBox
-                placeholder={intl.formatMessage({
-                  id: "discussion.overiew.searchtags",
-                })}
-                handleInputChange={this.handleTagFieldChanged}
-            />
-          </div>
-          <PaddingItem/>
         </div>
-        <div id="discussions">
-          <PaddingItem/>
-          <DiscussionList
-              handleSelectDiscussion={this.props.handleSelectDiscussion}
-              discussionInfos={this.filterDiscussions(discussionInfos, criteria)}
-              handleRedirect={this.handleRedirect}
-          />
-          <PaddingItem/>
-        </div>
-      </div>
     );
   }
 }

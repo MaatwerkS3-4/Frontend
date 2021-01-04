@@ -2,8 +2,7 @@
 
 :root{
   --color-main-dark: #46515D;
-  /*--color-main-medium: #6F7F92;*/
-  --color-main-medium: #46515D;
+  --color-main-medium: #6F7F92;
   --color-main-light: #B9C1CA;
   --color-attention: #A79576;
   --color-sec-dark: #666666;
@@ -44,9 +43,9 @@
 
 .text-title{
   width: 100%;
-  font-size: 22pt;
-  font-weight: 500;
-  color: var(--color-main-medium);
+  font-size: 20pt;
+  font-weight: 700;
+  color: var(--color-main-dark);
   word-wrap: break-word;
   white-space: pre-line;
   text-align: left;
@@ -55,9 +54,9 @@
 
 .text-subheader{
   width: 100%;
-  font-size: 20pt;
+  font-size: 18pt;
   font-weight: 500;
-  color: var(--color-sec-medium);
+  color: var(--color-main-medium);
   word-wrap: break-word;
   white-space: pre-line;
   text-align: left;
