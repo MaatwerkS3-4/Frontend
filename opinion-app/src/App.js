@@ -16,7 +16,6 @@ import {
     handleGetUserById, handlePostNewComment,
     handlePostNewDiscussion, handlePostReply
 } from "./services/api.service";
-import TestPage from "./pages/test/test.page";
 
 class App extends Component {
     
@@ -190,7 +189,6 @@ class App extends Component {
                                        component={Register}/>
                                 <Route exact path="/login"
                                        component={Login}/>
-                                <Route exact path={"/test"} component={TestPage}/>
                             </Switch>
                         }
                     </div>

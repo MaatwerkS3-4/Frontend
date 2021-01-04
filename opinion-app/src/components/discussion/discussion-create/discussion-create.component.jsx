@@ -5,7 +5,6 @@ import { ButtonAttention } from "../../input/button/button-attention/button-atte
 import { ButtonRegular } from "../../input/button/button-regular/button-regular.component";
 import { TextAreaTag } from "../../input/text-area-tag/text-area-tag.component";
 import { FormattedMessage, injectIntl } from "react-intl";
-import {Checkbox} from "../../input/checkbox/checkbox.component";
 import CheckboxGroup from "../../input/checkbox/checkbox-group/checkbox-group.component";
 
 class DiscussionCreateComponent extends Component {
