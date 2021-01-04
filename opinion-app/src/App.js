@@ -74,7 +74,7 @@ class App extends Component {
                 this.handleSetState({discussionInfos: infos}, false);
             }).finally(() => {
                 handleGetAvailableCategories().then(categories => {
-                    this.handleSetState({categories: categories});
+                    this.handleSetState({categoriesAndReverse: categories});
                 }).finally(() =>{
                     this.handleToggleLoading(false);
                 });
@@ -148,6 +148,12 @@ class App extends Component {
     }
     render() {
         console.log("Rendering App...");
+        console.log("reverse", this.state.categoriesAndReverse);
+        let categories = [];
+        this.state.categoriesAndReverse.forEach(p =>{
+            categories.push(p.first);
+        })
+
         return (
             <Router>
                 <div className="App">
@@ -193,7 +199,7 @@ class App extends Component {
                             handleCreateDiscussion={this.handleCreateDiscussion}
                             handleToggleCreateDiscussion={this.handleToggleCreateDiscussion}
                             user={this.state.user}
-                            categories={this.state.categoriesAndReverse.keys()}/> : ""}
+                            categories={categories}/> : ""}
                     </div>
                     <Footer/>
                 </div>
