@@ -6,14 +6,14 @@ import {DiscussionListItem} from "./discussion-list-item/discussion-list-item.co
 export const DiscussionList = ({discussionInfos, handleSelectDiscussion, handleRedirect}) => {
     return (
         <div className="discussion-list-container">
-            {discussionInfos.map((d) => (
-                <DiscussionListItem
+            {discussionInfos.map((d) => {
+                return <DiscussionListItem
                     discussionInfo={d}
                     handleSelectDiscussion={handleSelectDiscussion}
                     handleRedirect={handleRedirect}
                     key={d.id}
                 />
-            ))}
+            })}
         </div>
     );
 };

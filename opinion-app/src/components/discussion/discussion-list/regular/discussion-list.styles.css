@@ -1,0 +1,33 @@
+.discussion-list-container{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  overflow-y: auto;
+}
+
+.discussion-list-container > div{
+  padding-bottom: calc(var(--basic-padding));
+}
+
+.discussion-list-container > div:first-child{
+  margin-top: calc(var(--basic-padding));
+}
+
+
+
+/*#post-list {*/
+/*  list-style: none;*/
+/*  width: 60%;*/
+/*  background-color: red;*/
+/*  width: 100%;*/
+/*}*/
+/*.post-list-item {*/
+/*  background-color: green;*/
+/*  height: 6vh;*/
+/*  padding-left: 1vw;*/
+/*}*/
+/*.post-list-item :hover {*/
+/*  cursor: pointer;*/
+/*}*/

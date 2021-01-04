@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import "./discussion-overview.styles.css";
 
-import { DiscussionList } from "../../components/discussion/discussion-list/discussion-list.component";
+import { DiscussionList } from "../../components/discussion/discussion-list/regular/discussion-list.component";
 import { SearchBox } from "../../components/search-box/search-box.component";
 import { FormattedMessage, injectIntl } from "react-intl";
 import {PaddingItem} from "../../components/layout/padding-item/padding-item.component";
 import { FaListUl, FaDice } from "react-icons/fa";
+import {DiscussionListSmall} from "../../components/discussion/discussion-list/small/discussion-list-small.component";
 
 class DiscussionOverviewPage extends Component {
   constructor(props) {
@@ -13,7 +14,20 @@ class DiscussionOverviewPage extends Component {
 
     this.state = {
       tagCriteria: "",
+      randomSelection: []
     };
+  }
+
+  componentDidMount() {
+    const randomDiscussions = [...this.props.discussionInfos]
+    randomDiscussions.sort(() => Math.random() - 0.5);
+    let n = 5;
+
+    if(randomDiscussions.size < n){
+      n = randomDiscussions.size;
+    }
+
+    this.setState({randomSelection: randomDiscussions.slice(0, n)});
   }
 
   handleRedirect = (id) => {
@@ -104,11 +118,21 @@ class DiscussionOverviewPage extends Component {
             {/*content containers */}
             <div id="discussions">
               <PaddingItem/>
-              <DiscussionList
+              <div id="discussions-container-main">
+                <DiscussionList
+                    handleSelectDiscussion={this.props.handleSelectDiscussion}
+                    discussionInfos={this.filterDiscussions(discussionInfos, criteria)}
+                    handleRedirect={this.handleRedirect}
+                />
+              </div>
+              <PaddingItem/>
+              <div id="discussions-container-side">
+                <DiscussionListSmall
                   handleSelectDiscussion={this.props.handleSelectDiscussion}
-                  discussionInfos={this.filterDiscussions(discussionInfos, criteria)}
+                  discussionInfos={this.state.randomSelection}
                   handleRedirect={this.handleRedirect}
-              />
+                  />
+              </div>
               <PaddingItem/>
             </div>
           </div>

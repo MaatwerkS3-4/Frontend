@@ -1,6 +1,6 @@
 import React from "react";
 import "./discussion-list-item.styles.css";
-import {DiscussionInfo} from "../../discussion-info/discussion-info.component";
+import {DiscussionInfo} from "../../../discussion-info/discussion-info.component";
 
 export const DiscussionListItem = ({discussionInfo, handleSelectDiscussion, handleRedirect}) => {
     return (
@@ -11,7 +11,7 @@ export const DiscussionListItem = ({discussionInfo, handleSelectDiscussion, hand
                  handleRedirect(discussionInfo.id);
              }}
         >
-            <div className="text-body-large">
+            <div className="discussion-list-item-title text-subheader">
                 {discussionInfo.subject}
             </div>
             <DiscussionInfo
