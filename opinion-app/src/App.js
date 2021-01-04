@@ -38,7 +38,7 @@ class App extends Component {
             discussionInfos: [],
             selectedDiscussion: undefined,
 
-            categories: []
+            categoriesAndReverse: []
         };
     }
 
@@ -169,6 +169,7 @@ class App extends Component {
                                            //filter discussions for search criteria
                                            discussionInfos={this.state.discussionInfos}
                                            handleSelectDiscussion={this.handleSelectDiscussion}
+                                           reverseRecommendations={this.state.categoriesAndReverse}
                                            {...props}/>}/>
                                 <Route path='/discussion/:id'
                                        render={(props) => <DiscussionDetailPage
@@ -192,7 +193,7 @@ class App extends Component {
                             handleCreateDiscussion={this.handleCreateDiscussion}
                             handleToggleCreateDiscussion={this.handleToggleCreateDiscussion}
                             user={this.state.user}
-                            categories={this.state.categories}/> : ""}
+                            categories={this.state.categoriesAndReverse.keys()}/> : ""}
                     </div>
                     <Footer/>
                 </div>

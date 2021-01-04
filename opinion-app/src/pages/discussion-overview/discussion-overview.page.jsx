@@ -14,7 +14,12 @@ class DiscussionOverviewPage extends Component {
 
     this.state = {
       tagCriteria: "",
-      randomSelection: []
+      randomSelection: [],
+      prominentCategory: undefined,
+      filteredDiscussions: [],
+
+      discussionInfos: this.props.discussionInfos,
+      criteria: this.props.match.params.criteria
     };
   }
 
@@ -27,19 +32,12 @@ class DiscussionOverviewPage extends Component {
       n = randomDiscussions.size;
     }
 
-    this.setState({randomSelection: randomDiscussions.slice(0, n)});
-  }
-
-  handleRedirect = (id) => {
-    this.props.history.push(`/discussion/${id}`);
-  };
-
-  filterDiscussions = (discussionInfos, criteria) => {
-    console.log(discussionInfos, criteria);
+    let criteria = this.state.criteria;
+    if (criteria === undefined) criteria = "";
 
     //filter for search criteria
     const filteredDiscussions = [];
-    discussionInfos.forEach((d) => {
+    this.state.discussionInfos.forEach((d) => {
       if (d.subject.toLowerCase().includes(criteria.toLowerCase())) {
         filteredDiscussions.push(d);
         return;
@@ -53,6 +51,31 @@ class DiscussionOverviewPage extends Component {
         }
       });
     });
+
+    //Get most prominent category
+    let pairs = new Map();
+    filteredDiscussions.forEach(d => {
+      d.tags.forEach(t =>{
+        if(!pairs.has(t)){
+          pairs.set(t, 1)
+        }
+        else{
+          let value = pairs.get(t);
+          pairs.set(t, value++);
+        }
+      })
+    })
+    console.log("pairs", pairs);
+    let maxValue = 0;
+    let category = undefined;
+
+    pairs.forEach((v, k) => {
+      if(category === undefined || v > maxValue){
+        category = k;
+        maxValue = v;
+      }
+    })
+    console.log("Most prominent: ", category);
 
     //filter for tags
     const filteredForTags = [];
@@ -68,7 +91,17 @@ class DiscussionOverviewPage extends Component {
       });
     });
 
-    return filteredForTags;
+    this.setState({randomSelection: randomDiscussions.slice(0, n),
+    filteredDiscussions: filteredForTags,
+    prominentCategory: category});
+  }
+
+  handleRedirect = (id) => {
+    this.props.history.push(`/discussion/${id}`);
+  };
+
+  filterDiscussions = (discussionInfos, criteria) => {
+
   };
 
   handleTagFieldChanged = (event) => {
@@ -77,11 +110,6 @@ class DiscussionOverviewPage extends Component {
 
   render() {
     console.log("Rendering overview page");
-
-    //Get data passed from previous page
-    const { discussionInfos } = this.props;
-    let criteria = this.props.match.params.criteria;
-    if (criteria === undefined) criteria = "";
     const { intl } = this.props;
 
     return (
@@ -121,7 +149,7 @@ class DiscussionOverviewPage extends Component {
               <div id="discussions-container-main">
                 <DiscussionList
                     handleSelectDiscussion={this.props.handleSelectDiscussion}
-                    discussionInfos={this.filterDiscussions(discussionInfos, criteria)}
+                    discussionInfos={this.state.filteredDiscussions}
                     handleRedirect={this.handleRedirect}
                 />
               </div>
