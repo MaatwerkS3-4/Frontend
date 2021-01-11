@@ -1,4 +1,4 @@
-.discussion-list-item-container{
+.discussion-list-item-container {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -6,7 +6,6 @@
   height: auto;
   text-align: left;
 }
-
-.discussion-list-item-container:hover{
+.is-link:hover {
   cursor: pointer;
 }

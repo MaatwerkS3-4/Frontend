@@ -11,14 +11,16 @@ export const DiscussionListItem = ({
   upvoted,
 }) => {
   return (
-    <div
-      className="discussion-list-item-container"
-      onClick={() => {
-        handleSelectDiscussion(discussionInfo.id);
-        handleRedirect(discussionInfo.id);
-      }}
-    >
-      <div className="text-body-large">{discussionInfo.subject}</div>
+    <div className="discussion-list-item-container">
+      <div
+        className="text-body-large is-link"
+        onClick={() => {
+          handleSelectDiscussion(discussionInfo.id);
+          handleRedirect(discussionInfo.id);
+        }}
+      >
+        {discussionInfo.subject}
+      </div>
       <DiscussionInfo
         commentCount={discussionInfo.numberOfComments}
         participantCount={discussionInfo.numberOfParticipants}
