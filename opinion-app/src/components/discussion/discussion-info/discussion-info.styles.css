@@ -33,16 +33,16 @@
 
 .tag{
     color: var(--color-main-medium);
-    font-weight: bold;
-    border: solid var(--color-main-medium) calc(var(--border-width) * 2);
+    border: solid var(--color-main-medium) 2px;
+    font-weight: 500;
     border-radius: 15px;
     width: auto;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding-left: calc(var(--basic-padding)*0.75);
-    padding-right: calc(var(--basic-padding) * 0.75);
+    padding-left: calc(var(--basic-padding)*0.85);
+    padding-right: calc(var(--basic-padding) * 0.85);
     margin-right: calc(var(--basic-padding) * 0.25);
-    font-size: 11pt;
+    font-size: 9pt;
 }

@@ -4,5 +4,5 @@
     justify-content: flex-start;
     flex-direction: row-reverse;
     flex-wrap: wrap;
-    align-items: start;
+    align-items: flex-start;
 }

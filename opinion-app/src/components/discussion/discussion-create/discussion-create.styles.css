@@ -56,13 +56,63 @@
 
 .create-discussion-tags-container{
   width: 100%;
-}
-.create-discussion-tags-container > div{
-  padding-bottom: calc(var(--basic-padding) * 0.25);
+  height: auto;
+  display: flex;
+  flex-direction: column;
 }
 
-.create-discussion-tags-container> div > input{
-  max-width: 250px;
+.create-discussion-tags-tag-container{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  height: var(--basic-height);
+  background-color: var(--color-main-medium);
+  border-top-right-radius: var(--border-radius);
+  border-top-left-radius: var(--border-radius);
 }
+
+.create-discussion-tags-tag-container > div{
+  color: white;
+  width: 100%;
+  text-align: left;
+  padding-left: var(--basic-padding);
+}
+
+.create-discussion-tags-content-container{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+  background-color: var(--color-white);
+}
+
+.create-discussion-tags-content-container > div{
+  width: 100%;
+  border: var(--border-light);
+  border-bottom-right-radius: var(--border-radius);
+  border-bottom-left-radius: var(--border-radius);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: calc(var(--basic-padding) * 0.5);
+}
+
+.category-item{
+  flex: 1;
+  margin:calc(var(--basic-padding) * 0.5);
+  padding: var(--basic-padding);
+  border-radius: var(--border-radius);
+  border: var(--border-light);
+
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
 
 

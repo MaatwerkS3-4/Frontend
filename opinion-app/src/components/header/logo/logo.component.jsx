@@ -1,7 +1,7 @@
 import React from "react";
 import "./logo.styles.css"
 
-export const Logo = ({}) =>{
+export const Logo = () =>{
     return(
         <div id="logo-container" onClick={() => window.location.href="/"}>
             <div id="logo-title" className="text-headline">Viewpoint</div>

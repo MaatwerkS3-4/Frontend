@@ -115,4 +115,9 @@ export const handleCommentUpvote = (commentId) => {
             'Content-type': 'application/json',
             'Authorization': localStorage.getItem("Session")
         }});
+    }
+export const handleGetAvailableCategories = () => {
+    console.log(`Retrieving all categories...`);
+    return AXIOS.get('/category/reverse')
+        .then(res => {return res.data})
 }

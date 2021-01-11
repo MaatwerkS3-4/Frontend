@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import "./home.styles.css";
 import { SearchBox } from "../../components/search-box/search-box.component";
-import { TextArea } from "../../components/input/text-area/text-area.component";
-import { TextBox } from "../../components/input/text-box/text-box.component";
 import { FormattedMessage, injectIntl } from "react-intl";
 
 class HomePage extends Component {
@@ -14,7 +12,7 @@ class HomePage extends Component {
     };
   }
 
-  handleSearchPress = (e) => {
+  handleSearchPress = () => {
     console.log(
       `handle search press button pressed: ${this.state.searchField}`
     );
@@ -55,18 +53,21 @@ class HomePage extends Component {
     const { intl } = this.props;
     console.log("Rendering Homepage...");
     return (
-      <div id="home-container">
-        <div id="home-title" className="text-title">
-          <FormattedMessage id="search.title" />
+        <div id="home-container">
+          <div id="searchbox">
+            <div id="home-title" className="text-title">
+              <FormattedMessage id="search.title" />
+            </div>
+            <SearchBox
+                placeholder={intl.formatMessage({ id: "search" })}
+                handleInputChange={this.handleSearchFieldChanged}
+                handleSearchPress={this.handleSearchPress}
+                recommendations={this.handleFilterRecommendations()}
+                handleRedirect={this.handleRedirect}
+            />
+          </div>
+          <div id="header-offset"/>
         </div>
-        <SearchBox
-          placeholder={intl.formatMessage({ id: "search" })}
-          handleInputChange={this.handleSearchFieldChanged}
-          handleSearchPress={this.handleSearchPress}
-          recommendations={this.handleFilterRecommendations()}
-          handleRedirect={this.handleRedirect}
-        />
-      </div>
     );
   }
 }

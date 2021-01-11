@@ -9,3 +9,7 @@
 .is-link:hover {
   cursor: pointer;
 }
+
+.discussion-list-item-title {
+  color: var(--color-sec-dark);
+}

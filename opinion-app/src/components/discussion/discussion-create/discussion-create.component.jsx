@@ -4,8 +4,8 @@ import "./discussion-create.styles.css";
 import { ButtonAttention } from "../../input/button/button-attention/button-attention.component";
 import { ButtonRegular } from "../../input/button/button-regular/button-regular.component";
 import { TextAreaTag } from "../../input/text-area-tag/text-area-tag.component";
-import { TextBox } from "../../input/text-box/text-box.component";
 import { FormattedMessage, injectIntl } from "react-intl";
+import CheckboxGroup from "../../input/checkbox/checkbox-group/checkbox-group.component";
 
 class DiscussionCreateComponent extends Component {
   constructor(props, context) {
@@ -13,7 +13,7 @@ class DiscussionCreateComponent extends Component {
     this.state = {
       subject: "",
       description: "",
-      tags: ["", "", ""],
+      checkboxes: []
     };
   }
 
@@ -26,10 +26,14 @@ class DiscussionCreateComponent extends Component {
   };
 
   handleCreateClick = () => {
+    const categories = [];
+    this.state.checkboxes.forEach(c => {
+      if(c.checked) categories.push(c.value)
+    })
     this.props.handleCreateDiscussion(
       this.state.subject,
       this.state.description,
-      this.state.tags
+      categories
     );
   };
 
@@ -37,23 +41,10 @@ class DiscussionCreateComponent extends Component {
     this.props.handleToggleCreateDiscussion();
   };
 
-  handleTagInputChange = (value, index) => {
-    const newTags = [...this.state.tags];
-    newTags[index] = value;
-    this.setState({ tags: newTags });
-  };
-
-  handleTagInputFirst = (e) => {
-    this.handleTagInputChange(e.target.value, 0);
-  };
-
-  handleTagInputSec = (e) => {
-    this.handleTagInputChange(e.target.value, 1);
-  };
-
-  handleTagInputThird = (e) => {
-    this.handleTagInputChange(e.target.value, 2);
-  };
+  handleCheckboxChange = (checkboxes) => {
+    console.log("checkboxes changed", checkboxes);
+    this.setState({checkboxes: checkboxes});
+  }
 
   render() {
     const { intl } = this.props;
@@ -62,7 +53,7 @@ class DiscussionCreateComponent extends Component {
       <div className="create-container">
         <div className="create-discussion-container">
           <div className="text-title">
-            <FormattedMessage id="discussion.create.title"></FormattedMessage>
+            <FormattedMessage id="discussion.create.title"/>
           </div>
           <TextBoxTag
             tag={intl.formatMessage({ id: "discussion.create.subject" })}
@@ -75,23 +66,15 @@ class DiscussionCreateComponent extends Component {
             placeholder=""
             handleInputChange={this.handleDescriptionInputChange}
           />
-          <div className="create-discussion-tags-container">
-            <TextBoxTag
-              tag="Tag"
-              placeholder=""
-              handleInputChange={this.handleTagInputFirst}
-            />
-            <TextBoxTag
-              tag="Tag"
-              placeholder=""
-              handleInputChange={this.handleTagInputSec}
-            />
-            <TextBoxTag
-              tag="Tag"
-              placeholder=""
-              handleInputChange={this.handleTagInputThird}
-            />
-          </div>
+
+          <CheckboxGroup
+              name="Tags"
+              maxAmountChecked={3}
+              values={this.props.categories}
+              handleCheckboxChange={this.handleCheckboxChange}
+              checkboxes={this.state.checkboxes}
+          />
+
           <div className="create-discussion-options">
             <ButtonRegular
               handleOnClick={this.handleCloseClick}

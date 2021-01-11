@@ -1,5 +1,5 @@
-import React, {Component, useContext} from "react";
-import {BrowserRouter as Router, Redirect, Route, Switch} from 'react-router-dom';
+import React, {Component} from "react";
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import "./App.css";
 import HomePage from "./pages/home/home.page.jsx";
 import DiscussionsPage from "./pages/discussion-overview/discussion-overview.page.jsx";
@@ -10,16 +10,13 @@ import {LoadOverlay} from "./components/load-overlay/load-overlay.component";
 import {Footer} from "./components/footer/footer.component";
 import Login from "./pages/login/login.page"
 import Register from "./pages/register/register.page"
-import {PrivateRoute} from "./routing/protected-route"
 import {
-    handleGetAllDiscussionInfos,
+    handleGetAllDiscussionInfos, handleGetAvailableCategories,
     handleGetDiscussionById,
     handleGetUserById, handlePostNewComment,
     handlePostNewDiscussion, handlePostReply, 
     handleDiscussionUpvote, handleCommentUpvote
 } from "./services/api.service";
-import {TestPage} from "./pages/test/test.page";
-import {Context} from "./components/wrapper/wrapper"
 
 class App extends Component {
     
@@ -39,7 +36,9 @@ class App extends Component {
 
             //Discussions data
             discussionInfos: [],
-            selectedDiscussion: undefined
+            selectedDiscussion: undefined,
+
+            categoriesAndReverse: []
         };
     }
 
@@ -74,7 +73,11 @@ class App extends Component {
             handleGetAllDiscussionInfos().then(infos => {
                 this.handleSetState({discussionInfos: infos}, false);
             }).finally(() => {
-                this.handleToggleLoading(false);
+                handleGetAvailableCategories().then(categories => {
+                    this.handleSetState({categoriesAndReverse: categories});
+                }).finally(() =>{
+                    this.handleToggleLoading(false);
+                });
             });
         });
     };
@@ -90,15 +93,17 @@ class App extends Component {
         })
     };
 
-    handleCreateDiscussion = (subject, description, tags) => {
+    handleCreateDiscussion = (subject, description, categories) => {
         this.handleToggleCreateDiscussion();
         this.handleToggleLoading(true);
         const createDiscussionDTO = {
             description: description,
             subject: subject,
             userId: localStorage.getItem("Id"),
-            tags: tags
+            tags: categories
         }
+
+        console.log("created dto", createDiscussionDTO);
 
         handlePostNewDiscussion(createDiscussionDTO).then(d => {
             console.log("New discussion created:", d)
@@ -165,6 +170,12 @@ class App extends Component {
     }
     render() {
         console.log("Rendering App...");
+        console.log("reverse", this.state.categoriesAndReverse);
+        let categories = [];
+        this.state.categoriesAndReverse.forEach(p =>{
+            categories.push(p.first);
+        })
+
         return (
             <Router>
                 <div className="App">
@@ -186,6 +197,7 @@ class App extends Component {
                                            //filter discussions for search criteria
                                            discussionInfos={this.state.discussionInfos}
                                            handleSelectDiscussion={this.handleSelectDiscussion}
+                                           reverseRecommendations={this.state.categoriesAndReverse}
                                            {...props}/>}/>
                                 <Route path='/discussion/:id'
                                        render={(props) => <DiscussionDetailPage
@@ -199,10 +211,9 @@ class App extends Component {
                                            handleDiscussionUpvote={this.handleDiscussionUpvote}
                                            {...props}/>}/>
                                 <Route exact path="/register"
-                                        component={Register}/>
+                                       component={Register}/>
                                 <Route exact path="/login"
-                                        component={Login}/>
-                                <Route exact path={"/test"} component={TestPage}/>
+                                       component={Login}/>
                             </Switch>
                         }
                     </div>
@@ -210,7 +221,8 @@ class App extends Component {
                         {this.state.showCreateDiscussion ? <DiscussionCreate
                             handleCreateDiscussion={this.handleCreateDiscussion}
                             handleToggleCreateDiscussion={this.handleToggleCreateDiscussion}
-                            user={this.state.user}/> : ""}
+                            user={this.state.user}
+                            categories={categories}/> : ""}
                     </div>
                     <Footer/>
                 </div>

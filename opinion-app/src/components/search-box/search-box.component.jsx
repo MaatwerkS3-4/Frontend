@@ -11,13 +11,14 @@ export const SearchBox = ({
     handleRedirect
 }) => {
   return (
+
       <div className="searchbox-container">
           <div className="search-container">
               <TextBox
                   placeholder={placeholder}
                   handleInputChange={handleInputChange}
               />
-              <button onClick={handleSearchPress} className="center">
+              <button onClick={handleSearchPress} className="center" disabled={handleSearchPress === undefined}>
                   <FaSearch className="search-button-icon"/>
               </button>
           </div>

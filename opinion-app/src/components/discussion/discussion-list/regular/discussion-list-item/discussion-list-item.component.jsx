@@ -1,7 +1,7 @@
 import React from "react";
 import "./discussion-list-item.styles.css";
-import { DiscussionInfo } from "../../discussion-info/discussion-info.component";
-import { handleDiscussionUpvote } from "../../../../services/api.service";
+import { DiscussionInfo } from "../../../discussion-info/discussion-info.component";
+import { handleDiscussionUpvote } from "../../../../../services/api.service";
 
 export const DiscussionListItem = ({
   discussionInfo,
@@ -13,7 +13,7 @@ export const DiscussionListItem = ({
   return (
     <div className="discussion-list-item-container">
       <div
-        className="text-body-large is-link"
+        className="discussion-list-item-title text-subheader"
         onClick={() => {
           handleSelectDiscussion(discussionInfo.id);
           handleRedirect(discussionInfo.id);
