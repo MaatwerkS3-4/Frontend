@@ -6,6 +6,7 @@ import { ButtonRegular } from "../../../input/button/button-regular/button-regul
 import { isLoggedIn } from "../../../../services/authentication.service";
 import { FormattedMessage, injectIntl } from "react-intl";
 import { Component } from "react";
+import Score from "../../../score/score.component";
 
 class CommentListItem extends Component {
   constructor(props) {
@@ -19,6 +20,14 @@ class CommentListItem extends Component {
       <div className="comment-list-item-container">
         <div className="comment-content text-body">{this.props.content}</div>
         <div className="comment-list-item-info-container text-body-secondary">
+          <div className="icon-container-1">
+            <Score
+              handleUpvote={this.props.handleUpvote}
+              score={this.props.score}
+              commentId={this.props.id}
+              upvoted={this.props.upvoted}
+            />
+          </div>
           <div>
             <div>{getTimeDifference(new Date(this.props.timeStamp))}</div>
           </div>
@@ -37,6 +46,7 @@ class CommentListItem extends Component {
           comments={this.props.replies}
           parent={this.props.parent}
           handleShowPostReply={this.props.handleShowPostReply}
+          handleUpvote={this.props.handleUpvote}
         />
       </div>
     );

@@ -15,7 +15,8 @@ import {
     handleGetAllDiscussionInfos,
     handleGetDiscussionById,
     handleGetUserById, handlePostNewComment,
-    handlePostNewDiscussion, handlePostReply
+    handlePostNewDiscussion, handlePostReply, 
+    handleDiscussionUpvote, handleCommentUpvote
 } from "./services/api.service";
 import {TestPage} from "./pages/test/test.page";
 import {Context} from "./components/wrapper/wrapper"
@@ -81,6 +82,7 @@ class App extends Component {
     handleSelectDiscussion = (id) => {
         this.handleToggleLoading(true);
         //Retrieve discussion
+        console.log("got here!")
         handleGetDiscussionById(id).then(d => {
             this.handleSetState({selectedDiscussion: d}, false);
         }).finally(() => {
@@ -124,6 +126,14 @@ class App extends Component {
         }).finally(() => {
             this.handleToggleLoading(false)
         });
+    }
+
+    handleDiscussionUpvote = () => {
+        handleDiscussionUpvote(this.state.selectedDiscussion.id);
+    }
+
+    handleCommentUpvote = (commentId) => {
+        handleCommentUpvote(commentId);
     }
 
     handlePostReply = (parent, content) => {
@@ -172,6 +182,8 @@ class App extends Component {
                                                c.id === this.state.selectedDiscussion.id)}
                                            handlePostComment={this.handlePostComment}
                                            handlePostReply={this.handlePostReply}
+                                           handleCommentUpvote={this.handleCommentUpvote}
+                                           handleDiscussionUpvote={this.handleDiscussionUpvote}
                                            {...props}/>}/>
                                 <Route exact path="/register"
                                         component={Register}/>

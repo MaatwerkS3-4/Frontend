@@ -67,6 +67,9 @@ class DiscussionDetailPage extends Component {
               commentCount={discussionInfo.numberOfComments}
               timeStamp={discussionInfo.timeStamp}
               tags={discussionInfo.tags}
+              handleUpvote={this.props.handleDiscussionUpvote}
+              score={discussionInfo.score}
+              upvoted={discussionInfo.upvotedByUser}
             />
             <div className="discussion-options">
               <ButtonRegular
@@ -88,6 +91,7 @@ class DiscussionDetailPage extends Component {
           <CommentList
             comments={discussion.comments}
             handleShowPostReply={this.handleToggleCreateComment}
+            handleUpvote={this.props.handleCommentUpvote}
           />
         </div>
 

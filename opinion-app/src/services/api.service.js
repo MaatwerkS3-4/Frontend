@@ -2,7 +2,14 @@ import {AXIOS} from "../http-common"
 
 export const handleGetDiscussionById = (id) =>{
     console.log(`Retrieving discussion with id ${id}...`)
-    return AXIOS.get(`/discussion/${id}`)
+    return AXIOS.get(`/discussion/${id}`, {
+        method: 'GET',
+        mode: 'cors',
+        headers: {
+            'Content-type': 'application/json',
+            'Authorization': localStorage.getItem("Session")
+        }
+    })
         .then(response =>{return response.data});
 };
 
@@ -49,13 +56,25 @@ export const handlePostReply = (discussionId, parentId, createCommentDTO) => {
 
 export const handleGetAllDiscussionInfos = () => {
     console.log(`Retrieving all discussion infos...`);
-    return AXIOS.get(`/discussion_info`)
+    return AXIOS.get(`/discussion_info`, {
+        method: 'POST',
+        mode: 'cors',
+        headers: {
+            'Content-type': 'application/json',
+            'Authorization': localStorage.getItem("Session")
+        }})
         .then(res => {return res.data});
 };
 
 export const handleGetDiscussionInfoById = (discussionId) =>{
     console.log(`Retrieving discussion info with id ${discussionId}...`);
-    return AXIOS.get(`/discussion_info/id/${discussionId}`)
+    return AXIOS.get(`/discussion_info/id/${discussionId}`, {
+        method: 'POST',
+        mode: 'cors',
+        headers: {
+            'Content-type': 'application/json',
+            'Authorization': localStorage.getItem("Session")
+        }})
         .then(res => {return res.data})
 };
 
@@ -75,4 +94,25 @@ export const handlePostUser = (user) => {
     console.log("attempting to register user")
     return AXIOS.post("/users/", user)
         .then(res => {return res.data})
+}
+
+export const handleDiscussionUpvote = (discussionId) => {
+    return AXIOS.post("/discussion/"+discussionId+"/upvote", null, {
+        method:'POST',
+        mode:'cors',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization':localStorage.getItem("Session")
+        }
+    })
+}
+
+export const handleCommentUpvote = (commentId) => {
+    return AXIOS.post("/comment/"+commentId+"/upvote", null, {
+        method: 'POST',
+        mode: 'cors',
+        headers: {
+            'Content-type': 'application/json',
+            'Authorization': localStorage.getItem("Session")
+        }});
 }
