@@ -130,6 +130,19 @@ class App extends Component {
 
     handleDiscussionUpvote = () => {
         handleDiscussionUpvote(this.state.selectedDiscussion.id);
+
+        const dInfos = [...this.state.discussionInfos];
+        dInfos.forEach(d => {
+            if(d.id === this.state.selectedDiscussion.id){
+                d.upvotedByUser = true;
+                d.score = d.score+1;
+                return;
+            }
+        });
+
+        this.setState({
+            discussionInfos: dInfos
+        });
     }
 
     handleCommentUpvote = (commentId) => {
