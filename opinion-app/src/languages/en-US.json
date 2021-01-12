@@ -13,10 +13,11 @@
     "navbar.logout": "Log Out",
     "navbar.login" : "Log In",
     "navbar.register" : "Register",
+    "navbar.profile" : "Profile",
     "discussion.create.create": "Create",
     "discussion.create.close": "Close",
     "discussion.create.subject": "Subjects",
     "discussion.create.explanation": "Explanation",
-    "discussion.create.title" : "What should I think about..."
-
+    "discussion.create.title" : "What should I think about...",
+    "profile.yourposts" : "Your posts"
 }

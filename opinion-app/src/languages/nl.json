@@ -13,9 +13,11 @@
     "navbar.logout": "Uitloggen",
     "navbar.login" : "Inloggen",
     "navbar.register" : "Aanmelden",
+    "navbar.profile" : "Profiel",
     "discussion.create.create": "Aanmaken",
     "discussion.create.close": "Sluiten",
     "discussion.create.subject": "Onderwerp",
     "discussion.create.explanation" : "Toelichting",
-    "discussion.create.title" : "Wat moet ik vinden van..."
+    "discussion.create.title" : "Wat moet ik vinden van...",
+    "profile.yourposts" : "Jouw posts"
 }

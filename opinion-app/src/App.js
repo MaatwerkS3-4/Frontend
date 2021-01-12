@@ -17,6 +17,7 @@ import {
     handlePostNewDiscussion, handlePostReply, 
     handleDiscussionUpvote, handleCommentUpvote
 } from "./services/api.service";
+import Profile from "./pages/profile/profile.page";
 
 class App extends Component {
     
@@ -214,6 +215,9 @@ class App extends Component {
                                        component={Register}/>
                                 <Route exact path="/login"
                                        component={Login}/>
+                                       <Route path="/profile" render={(props) => <Profile handleSelectDiscussion={this.handleSelectDiscussion} {...props}/>
+
+                                       }/>
                             </Switch>
                         }
                     </div>

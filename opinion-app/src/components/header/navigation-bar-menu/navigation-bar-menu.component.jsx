@@ -21,20 +21,29 @@ class NavBarMenu extends Component {
     localStorage.clear();
     window.location.href = "/";
   };
+  handleProfileClick = () => {
+    window.location.href = "profile";
+  };
   render() {
     const { intl } = this.props;
     return (
       <div id="menu">
         {!isLoggedIn() && (
           <ButtonRegular
-    text={intl.formatMessage({id: "navbar.register"})}
-    handleOnClick={this.handleRegisterClick}
-    />
+            text={intl.formatMessage({ id: "navbar.register" })}
+            handleOnClick={this.handleRegisterClick}
+          />
         )}
         {!isLoggedIn() && (
           <ButtonAttention
             text={intl.formatMessage({ id: "navbar.login" })}
             handleOnClick={this.handleLoginClick}
+          />
+        )}
+        {isLoggedIn() && (
+          <ButtonRegular
+            text={intl.formatMessage({ id: "navbar.profile" })}
+            handleOnClick={this.handleProfileClick}
           />
         )}
         {isLoggedIn() && (
