@@ -1,7 +1,7 @@
 import React from "react";
 import "./discussion-info.styles.css";
 import { getTimeDifference } from "../../../services/date.service";
-import { FormattedMessage } from "react-intl";
+import { FormattedMessage, FormattedRelativeTime } from "react-intl";
 import Score from "../../score/score.component";
 
 export const DiscussionInfo = ({
@@ -20,7 +20,14 @@ export const DiscussionInfo = ({
         <Score score={score} handleUpvote={handleUpvote} upvoted={upvoted} />
       </div>
       <div>
-        <div>{getTimeDifference(new Date(timeStamp))}</div>
+        <div>
+          <FormattedRelativeTime
+            value={-1 * getTimeDifference(new Date(timeStamp))}
+            numeric="auto"
+            style="short"
+            updateIntervalInSeconds="10"
+          ></FormattedRelativeTime>
+        </div>
       </div>
       <div>
         <div>
