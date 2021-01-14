@@ -4,9 +4,9 @@ import "./discussion-overview.styles.css";
 import { DiscussionList } from "../../components/discussion/discussion-list/regular/discussion-list.component";
 import { SearchBox } from "../../components/search-box/search-box.component";
 import { FormattedMessage, injectIntl } from "react-intl";
-import {PaddingItem} from "../../components/layout/padding-item/padding-item.component";
-import {FaListUl, FaDice, FaQuestionCircle} from "react-icons/fa";
-import {DiscussionListSmall} from "../../components/discussion/discussion-list/small/discussion-list-small.component";
+import { PaddingItem } from "../../components/layout/padding-item/padding-item.component";
+import { FaListUl, FaDice, FaQuestionCircle } from "react-icons/fa";
+import { DiscussionListSmall } from "../../components/discussion/discussion-list/small/discussion-list-small.component";
 
 class DiscussionOverviewPage extends Component {
   constructor(props) {
@@ -20,13 +20,13 @@ class DiscussionOverviewPage extends Component {
       reverseDiscussions: [],
 
       discussionInfos: this.props.discussionInfos,
-      criteria: this.props.match.params.criteria
+      criteria: this.props.match.params.criteria,
     };
   }
 
   componentDidMount() {
     //Randomize discussions
-    const randomDiscussions = [...this.props.discussionInfos]
+    const randomDiscussions = [...this.props.discussionInfos];
     randomDiscussions.sort(() => Math.random() - 0.5);
 
     //Set amount to show in side overviews
@@ -55,74 +55,75 @@ class DiscussionOverviewPage extends Component {
 
     //Get the most prominent category in the search result
     let pairs = new Map();
-    filteredDiscussions.forEach(d => {
-      d.tags.forEach(t =>{
-        if(!pairs.has(t)){
-          pairs.set(t, 1)
-        }
-        else{
+    filteredDiscussions.forEach((d) => {
+      d.tags.forEach((t) => {
+        if (!pairs.has(t)) {
+          pairs.set(t, 1);
+        } else {
           let value = pairs.get(t);
           pairs.set(t, value++);
         }
-      })
-    })
+      });
+    });
     console.log("pairs", pairs);
     let maxValue = 0;
     let category = undefined;
 
     pairs.forEach((v, k) => {
-      if(category === undefined || v > maxValue){
+      if (category === undefined || v > maxValue) {
         category = k;
         maxValue = v;
       }
-    })
+    });
 
     console.log("Most prominent: ", category);
 
     //Retrieve the reverse of the most prominent category
-    const reverseCategory = this.props.reverseRecommendations.find(c =>
-        c.first === category).second;
+    const reverseCategory = this.props.reverseRecommendations.find(
+      (c) => c.first === category
+    ).second;
 
     //Randomize the existing discussions and get a short list of reverse recommendations
     randomDiscussions.sort(() => Math.random() - 0.5);
     const reverseDiscussions = [];
 
     let count = 0;
-    randomDiscussions.forEach(d => {
-      if(count >= n) return;
-      if(d.tags.includes(reverseCategory)){
+    randomDiscussions.forEach((d) => {
+      if (count >= n) return;
+      if (d.tags.includes(reverseCategory)) {
         reverseDiscussions.push(d);
-        count++
+        count++;
       }
-    })
+    });
 
     //Create a short list of random discussions for side overview
     randomDiscussions.sort(() => Math.random() - 0.5);
     const randomSelection = [];
 
     count = 0;
-    randomDiscussions.forEach(d => {
-      if(count >= n) return;
+    randomDiscussions.forEach((d) => {
+      if (count >= n) return;
       randomSelection.push(d);
       count++;
-    })
+    });
 
     //Update state with created overviews
-    this.setState({randomSelection: randomSelection,
-    filteredDiscussions: filteredDiscussions,
-    reverseDiscussions: reverseDiscussions});
+    this.setState({
+      randomSelection: randomSelection,
+      filteredDiscussions: filteredDiscussions,
+      reverseDiscussions: reverseDiscussions,
+    });
   }
 
   handleRedirect = (id) => {
     this.props.history.push(`/discussion/${id}`);
   };
 
-
   handleTagFieldChanged = (event) => {
-    this.setState({tagCriteria: event.target.value})
+    this.setState({ tagCriteria: event.target.value });
   };
 
-  filterForTags = () =>{
+  filterForTags = () => {
     //filter the criteria-filtered discussions for the tag search box
     console.log("Filter for tag:", this.state.tagCriteria);
     const filteredForTags = [];
@@ -139,82 +140,90 @@ class DiscussionOverviewPage extends Component {
     });
 
     return filteredForTags;
-  }
+  };
 
   render() {
     console.log("Rendering overview page");
     const { intl } = this.props;
 
     return (
-        <div id="overview-container">
-          <div className="discussion-container">
-
-            {/*Header info*/}
-            <div className="discussion-overview-info-container">
-              <PaddingItem/>
-              <div id="overview-result-info">
-                <div className="discussion-overview-title text-title">
-                  <div id="icon-list"><FaListUl /></div>
-                  <FormattedMessage id="discussion.overview.title"></FormattedMessage>
+      <div id="overview-container">
+        <div className="discussion-container">
+          {/*Header info*/}
+          <div className="discussion-overview-info-container">
+            <PaddingItem />
+            <div id="overview-result-info">
+              <div className="discussion-overview-title text-title">
+                <div id="icon-list">
+                  <FaListUl />
                 </div>
-                <div id="search">
-                  <SearchBox
-                      placeholder={intl.formatMessage({
-                        id: "discussion.overiew.searchtags",
-                      })}
-                      handleInputChange={this.handleTagFieldChanged}
-                  />
-                </div>
+                <FormattedMessage id="discussion.overview.title"></FormattedMessage>
               </div>
-              <PaddingItem/>
-              <div id="overview-random-info">
-                <div className="overview-random-info-title text-subheader">
-                  <div id="icon-random"><FaDice /></div>
-                  <div>Random Discussies</div>
-                </div>
-              </div>
-              <PaddingItem/>
-            </div>
-
-            {/*content containers */}
-            <div id="discussions">
-              <PaddingItem/>
-              <div id="discussions-container-main">
-                <DiscussionList
-                    handleSelectDiscussion={this.props.handleSelectDiscussion}
-                    discussionInfos={this.filterForTags()}
-                    handleRedirect={this.handleRedirect}
+              <div id="search">
+                <SearchBox
+                  placeholder={intl.formatMessage({
+                    id: "discussion.overiew.searchtags",
+                  })}
+                  handleInputChange={this.handleTagFieldChanged}
                 />
               </div>
-              <PaddingItem/>
+            </div>
+            <PaddingItem />
+            <div id="overview-random-info">
+              <div className="overview-random-info-title text-subheader">
+                <div id="icon-random">
+                  <FaDice />
+                </div>
+                <div>
+                  <FormattedMessage id="discussion.overview.random"></FormattedMessage>
+                </div>
+              </div>
+            </div>
+            <PaddingItem />
+          </div>
 
-              <div id="discussions-container-side">
+          {/*content containers */}
+          <div id="discussions">
+            <PaddingItem />
+            <div id="discussions-container-main">
+              <DiscussionList
+                handleSelectDiscussion={this.props.handleSelectDiscussion}
+                discussionInfos={this.filterForTags()}
+                handleRedirect={this.handleRedirect}
+              />
+            </div>
+            <PaddingItem />
+
+            <div id="discussions-container-side">
+              <DiscussionListSmall
+                handleSelectDiscussion={this.props.handleSelectDiscussion}
+                discussionInfos={this.state.randomSelection}
+                handleRedirect={this.handleRedirect}
+              />
+
+              <div className="overview-reverse-container">
+                <div id="overview-reverse-info">
+                  <div className="overview-reverse-info-title text-subheader">
+                    <div id="icon-random">
+                      <FaQuestionCircle />
+                    </div>
+                    <div>
+                      <FormattedMessage id="discussions.overview.interesting"></FormattedMessage>
+                    </div>
+                  </div>
+                </div>
                 <DiscussionListSmall
                   handleSelectDiscussion={this.props.handleSelectDiscussion}
-                  discussionInfos={this.state.randomSelection}
+                  discussionInfos={this.state.reverseDiscussions}
                   handleRedirect={this.handleRedirect}
-                  />
-
-                  <div className="overview-reverse-container">
-                    <div id="overview-reverse-info">
-                      <div className="overview-reverse-info-title text-subheader">
-                        <div id="icon-random"><FaQuestionCircle /></div>
-                        <div>Vind je dit ook interessant?</div>
-                      </div>
-                    </div>
-                    <DiscussionListSmall
-                      handleSelectDiscussion={this.props.handleSelectDiscussion}
-                      discussionInfos={this.state.reverseDiscussions}
-                      handleRedirect={this.handleRedirect}
-                      />
-                  </div>
-
+                />
               </div>
-
-              <PaddingItem/>
             </div>
+
+            <PaddingItem />
           </div>
         </div>
+      </div>
     );
   }
 }

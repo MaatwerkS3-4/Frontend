@@ -13,7 +13,7 @@ export const DiscussionListItem = ({
   return (
     <div className="discussion-list-item-container">
       <div
-        className="discussion-list-item-title text-subheader"
+        className="discussion-list-item-title text-subheader is-link"
         onClick={() => {
           handleSelectDiscussion(discussionInfo.id);
           handleRedirect(discussionInfo.id);

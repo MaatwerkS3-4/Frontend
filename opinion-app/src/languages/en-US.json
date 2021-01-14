@@ -4,6 +4,8 @@
     "discussion.overview.title" : "Search results",
     "discussion.overview.filter" : "Discussions filtered for:",
     "discussion.overiew.searchtags" : "Search for tags...",
+    "discussion.overview.random" : "Random Discussions",
+    "discussions.overview.interesting" : "Is this interesting to you?",
     "discussion.info.comments" : "Comments",
     "discussion.info.participants" : "Participants",
     "discussion.detail.back" : "Back to list",
