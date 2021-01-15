@@ -11,11 +11,15 @@ import {Footer} from "./components/footer/footer.component";
 import Login from "./pages/login/login.page"
 import Register from "./pages/register/register.page"
 import {
-    handleGetAllDiscussionInfos, handleGetAvailableCategories,
+    handleCommentUpvote,
+    handleDiscussionUpvote,
+    handleGetAllDiscussionInfos,
+    handleGetAvailableCategories,
     handleGetDiscussionById,
-    handleGetUserById, handlePostNewComment,
-    handlePostNewDiscussion, handlePostReply, 
-    handleDiscussionUpvote, handleCommentUpvote
+    handleGetUserById,
+    handlePostNewComment,
+    handlePostNewDiscussion,
+    handlePostReply
 } from "./services/api.service";
 import Profile from "./pages/profile/profile.page";
 
@@ -49,7 +53,6 @@ class App extends Component {
     }
 
     handleToggleLoading = (status) => {
-        console.log("Toggling loading status to " + status + "...");
         if (this.state.loading === status && this.state.shouldRender === !status) return;
 
         this.handleSetState({
@@ -86,7 +89,6 @@ class App extends Component {
     handleSelectDiscussion = (id) => {
         this.handleToggleLoading(true);
         //Retrieve discussion
-        console.log("got here!")
         handleGetDiscussionById(id).then(d => {
             this.handleSetState({selectedDiscussion: d}, false);
         }).finally(() => {
@@ -104,10 +106,7 @@ class App extends Component {
             tags: categories
         }
 
-        console.log("created dto", createDiscussionDTO);
-
         handlePostNewDiscussion(createDiscussionDTO).then(d => {
-            console.log("New discussion created:", d)
         }).then(() => {
                 handleGetAllDiscussionInfos().then(i => {
                     this.handleSetState({discussionInfos: i})
@@ -127,7 +126,6 @@ class App extends Component {
         }
 
         handlePostNewComment(this.state.selectedDiscussion.id, createCommentDTO).then(c => {
-            console.log("New comment posted: ", c);
             this.state.selectedDiscussion.comments.unshift(c);
         }).finally(() => {
             this.handleToggleLoading(false)
@@ -163,14 +161,12 @@ class App extends Component {
         }
 
         handlePostReply(this.state.selectedDiscussion.id, parent.id, createCommentDTO).then(c => {
-            console.log("New comment posted: ", c);
             parent.replies.unshift(c);
         }).finally(() => {
             this.handleToggleLoading(false)
         });
     }
     render() {
-        console.log("Rendering App...");
         console.log("reverse", this.state.categoriesAndReverse);
         let categories = [];
         this.state.categoriesAndReverse.forEach(p =>{
@@ -215,7 +211,10 @@ class App extends Component {
                                        component={Register}/>
                                 <Route exact path="/login"
                                        component={Login}/>
-                                       <Route path="/profile" render={(props) => <Profile handleSelectDiscussion={this.handleSelectDiscussion} {...props}/>
+                                       <Route path="/profile" render={(props) => <Profile
+                                           handleSelectDiscussion={this.handleSelectDiscussion}
+                                           userId={this.state.user.id}
+                                           {...props}/>
 
                                        }/>
                             </Switch>

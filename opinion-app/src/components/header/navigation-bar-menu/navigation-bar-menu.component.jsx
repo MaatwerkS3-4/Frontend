@@ -1,10 +1,9 @@
-import React from "react";
+import React, {Component} from "react";
 import "./navigation-bar-menu.styles.css";
-import { ButtonAttention } from "../../input/button/button-attention/button-attention.component";
-import { ButtonRegular } from "../../input/button/button-regular/button-regular.component";
-import { Component } from "react";
-import { isLoggedIn } from "../../../services/authentication.service";
-import { injectIntl } from "react-intl";
+import {ButtonAttention} from "../../input/button/button-attention/button-attention.component";
+import {ButtonRegular} from "../../input/button/button-regular/button-regular.component";
+import {isLoggedIn} from "../../../services/authentication.service";
+import {injectIntl} from "react-intl";
 
 class NavBarMenu extends Component {
   constructor(props) {
@@ -29,22 +28,16 @@ class NavBarMenu extends Component {
     return (
       <div id="menu">
         {!isLoggedIn() && (
-          <ButtonRegular
-            text={intl.formatMessage({ id: "navbar.register" })}
-            handleOnClick={this.handleRegisterClick}
-          />
-        )}
-        {!isLoggedIn() && (
           <ButtonAttention
             text={intl.formatMessage({ id: "navbar.login" })}
             handleOnClick={this.handleLoginClick}
           />
         )}
-        {isLoggedIn() && (
-          <ButtonRegular
-            text={intl.formatMessage({ id: "navbar.profile" })}
-            handleOnClick={this.handleProfileClick}
-          />
+        {!isLoggedIn() && (
+            <ButtonRegular
+                text={intl.formatMessage({ id: "navbar.register" })}
+                handleOnClick={this.handleRegisterClick}
+            />
         )}
         {isLoggedIn() && (
           <ButtonAttention
@@ -57,6 +50,12 @@ class NavBarMenu extends Component {
             text={intl.formatMessage({ id: "navbar.discussion.create" })}
             handleOnClick={() => this.props.handleToggleCreateDiscussion()}
           />
+        )}
+        {isLoggedIn() && (
+            <ButtonRegular
+                text={intl.formatMessage({ id: "navbar.profile" })}
+                handleOnClick={this.handleProfileClick}
+            />
         )}
       </div>
     );

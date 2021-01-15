@@ -1,6 +1,7 @@
-import React, { Component } from "react";
-import { FaGraduationCap } from "react-icons/fa";
+import React, {Component} from "react";
+import {FaGraduationCap} from "react-icons/fa";
 import "./score.styles.css";
+
 class Score extends Component {
   constructor(props) {
     super(props);
@@ -18,7 +19,7 @@ class Score extends Component {
     this.setState({ showVoteCount: true });
   };
   componentDidMount = () => {
-    if (this.props.upvoted == true) this.setState({ showVoteCount: true });
+    if (this.props.upvoted === true) this.setState({ showVoteCount: true });
     this.setState({ score: this.props.score });
   };
   render() {

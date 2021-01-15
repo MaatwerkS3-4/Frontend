@@ -1,7 +1,7 @@
 import React from "react";
 import "./discussion-list.styles.css";
 
-import { DiscussionListItem } from "./discussion-list-item/discussion-list-item.component";
+import {DiscussionListItem} from "./discussion-list-item/discussion-list-item.component";
 
 export const DiscussionList = ({
   discussionInfos,

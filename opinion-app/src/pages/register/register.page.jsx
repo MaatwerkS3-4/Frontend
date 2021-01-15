@@ -1,8 +1,8 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 import "./register.styles.css";
-import { TextBoxTag } from "../../components/input/text-box-tag/text-box-tag.component";
-import { ButtonAttention } from "../../components/input/button/button-attention/button-attention.component";
-import { handlePostUser } from "../../services/api.service";
+import {TextBoxTag} from "../../components/input/text-box-tag/text-box-tag.component";
+import {ButtonAttention} from "../../components/input/button/button-attention/button-attention.component";
+import {handlePostUser} from "../../services/api.service";
 
 class Register extends Component {
   state = {
@@ -41,19 +41,19 @@ class Register extends Component {
 
   handleButtonStateChange = (userTxt, passwordTxt, repeatTxt) => {
     if (
-      userTxt != "" &&
+      userTxt !== "" &&
       userTxt != null &&
-      passwordTxt != "" &&
+      passwordTxt !== "" &&
       passwordTxt != null &&
-      repeatTxt != "" &&
+      repeatTxt !== "" &&
       repeatTxt != null
     ) {
       if (passwordTxt === repeatTxt) {
-        this.state.buttonDisabled = false;
+        this.setState({buttonDisabled: false});
         return;
       }
     }
-    this.state.buttonDisabled = true;
+    this.setState({buttonDisabled: true});
   };
 
   handleRegisterButtonClick = () => {

@@ -8,7 +8,6 @@ export const CommentList = ({
   handleShowPostReply,
   handleUpvote,
 }) => {
-  console.log("parent", parent);
   return (
     <div className="comment-list-container">
       {comments.map((c) => (

@@ -1,5 +1,4 @@
-import React from "react";
-import { Component } from "react";
+import React, {Component} from "react";
 import "./text-box.styles.css";
 
 class TextBox extends Component {
@@ -8,7 +7,7 @@ class TextBox extends Component {
     this.state = {};
   }
   handleKeyDown = (e) => {
-    if (this.props.handleEnterPress && e.keyCode == 13) {
+    if (this.props.handleEnterPress && e.keyCode === 13) {
       this.props.handleEnterPress();
     }
   };

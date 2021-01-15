@@ -20,7 +20,6 @@ class DiscussionDetailPage extends Component {
   }
 
   componentDidCatch(error, errorInfo) {
-    console.log("error caught");
     this.props.history.push("/");
   }
 
@@ -54,7 +53,7 @@ class DiscussionDetailPage extends Component {
     }
     const { intl } = this.props;
 
-    if (discussion.description == null || discussion.description == "") {
+    if (discussion.description == null || discussion.description === "") {
       return (
         <div id="discussion-content">
           <div id="title-container">

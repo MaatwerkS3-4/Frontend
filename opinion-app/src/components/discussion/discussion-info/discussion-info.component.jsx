@@ -1,9 +1,9 @@
 import React from "react";
 import "./discussion-info.styles.css";
-import { getTimeDifference } from "../../../services/date.service";
-import { FormattedMessage, FormattedRelativeTime } from "react-intl";
+import {getTimeDifference} from "../../../services/date.service";
+import {FormattedMessage, FormattedRelativeTime} from "react-intl";
 import Score from "../../score/score.component";
-import { isLoggedIn } from "../../../services/authentication.service";
+import {isLoggedIn} from "../../../services/authentication.service";
 
 export const DiscussionInfo = ({
   commentCount,
@@ -27,9 +27,8 @@ export const DiscussionInfo = ({
           <FormattedRelativeTime
             value={-1 * getTimeDifference(new Date(timeStamp))}
             numeric="auto"
-            style="short"
             updateIntervalInSeconds="10"
-          ></FormattedRelativeTime>
+          />
         </div>
       </div>
       <div>

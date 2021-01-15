@@ -5,7 +5,7 @@ import { DiscussionList } from "../../components/discussion/discussion-list/regu
 import { SearchBox } from "../../components/search-box/search-box.component";
 import { FormattedMessage, injectIntl } from "react-intl";
 import { PaddingItem } from "../../components/layout/padding-item/padding-item.component";
-import { FaListUl, FaDice, FaQuestionCircle } from "react-icons/fa";
+import { FaDice, FaListUl, FaQuestionCircle } from "react-icons/fa";
 import { DiscussionListSmall } from "../../components/discussion/discussion-list/small/discussion-list-small.component";
 
 class DiscussionOverviewPage extends Component {
@@ -76,45 +76,54 @@ class DiscussionOverviewPage extends Component {
           maxValue = v;
         }
       });
-
-      console.log("Most prominent: ", category);
-
-      //Retrieve the reverse of the most prominent category
-      const reverseCategory = this.props.reverseRecommendations.find(
-        (c) => c.first === category
-      ).second;
-
-      //Randomize the existing discussions and get a short list of reverse recommendations
-      randomDiscussions.sort(() => Math.random() - 0.5);
-      const reverseDiscussions = [];
-
-      let count = 0;
-      randomDiscussions.forEach((d) => {
-        if (count >= n) return;
-        if (d.tags.includes(reverseCategory)) {
-          reverseDiscussions.push(d);
-          count++;
-        }
-      });
-
-      //Create a short list of random discussions for side overview
-      randomDiscussions.sort(() => Math.random() - 0.5);
-      const randomSelection = [];
-
-      count = 0;
-      randomDiscussions.forEach((d) => {
-        if (count >= n) return;
-        randomSelection.push(d);
-        count++;
-      });
-
-      //Update state with created overviews
-      this.setState({
-        randomSelection: randomSelection,
-        filteredDiscussions: filteredDiscussions,
-        reverseDiscussions: reverseDiscussions,
-      });
     }
+    let maxValue = 0;
+    let category = undefined;
+
+    pairs.forEach((v, k) => {
+      if (category === undefined || v > maxValue) {
+        category = k;
+        maxValue = v;
+      }
+    });
+
+    console.log("Most prominent: ", category);
+
+    //Retrieve the reverse of the most prominent category
+    const reverseCategory = this.props.reverseRecommendations.find(
+      (c) => c.first === category
+    ).second;
+
+    //Randomize the existing discussions and get a short list of reverse recommendations
+    randomDiscussions.sort(() => Math.random() - 0.5);
+    const reverseDiscussions = [];
+
+    let count = 0;
+    randomDiscussions.forEach((d) => {
+      if (count >= n) return;
+      if (d.tags.includes(reverseCategory)) {
+        reverseDiscussions.push(d);
+        count++;
+      }
+    });
+
+    //Create a short list of random discussions for side overview
+    randomDiscussions.sort(() => Math.random() - 0.5);
+    const randomSelection = [];
+
+    count = 0;
+    randomDiscussions.forEach((d) => {
+      if (count >= n) return;
+      randomSelection.push(d);
+      count++;
+    });
+
+    //Update state with created overviews
+    this.setState({
+      randomSelection: randomSelection,
+      filteredDiscussions: filteredDiscussions,
+      reverseDiscussions: reverseDiscussions,
+    });
   }
 
   handleRedirect = (id) => {
@@ -127,7 +136,6 @@ class DiscussionOverviewPage extends Component {
 
   filterForTags = () => {
     //filter the criteria-filtered discussions for the tag search box
-    console.log("Filter for tag:", this.state.tagCriteria);
     const filteredForTags = [];
     this.state.filteredDiscussions.forEach((d) => {
       let containsTag = false;
@@ -145,7 +153,6 @@ class DiscussionOverviewPage extends Component {
   };
 
   render() {
-    console.log("Rendering overview page");
     const { intl } = this.props;
 
     return (

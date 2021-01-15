@@ -16,7 +16,6 @@ class CommentCreate extends Component {
     }
 
     handleContentInputChange = (e) => {
-        console.log("char typed:", e.target.value);
         this.setState({content: e.target.value});
         
         this.handleButtonStateChange(e.target.value);
@@ -31,12 +30,11 @@ class CommentCreate extends Component {
     }
 
     handleButtonStateChange = (contentText) =>{
-        if (contentText != "" && contentText != null) {
-          this.state.buttonDisabled = false;
+        if (contentText !== "" && contentText != null) {
+            this.setState({buttonDisabled: false});
           return
         }
-    
-        this.state.buttonDisabled = true;
+        this.setState({buttonDisabled: true});
       }
 
     render() {

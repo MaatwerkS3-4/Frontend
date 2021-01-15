@@ -1,7 +1,7 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 import "./home.styles.css";
-import { SearchBox } from "../../components/search-box/search-box.component";
-import { FormattedMessage, injectIntl } from "react-intl";
+import {SearchBox} from "../../components/search-box/search-box.component";
+import {FormattedMessage, injectIntl} from "react-intl";
 
 class HomePage extends Component {
   constructor(props) {
@@ -13,9 +13,6 @@ class HomePage extends Component {
   }
 
   handleSearchPress = () => {
-    console.log(
-      `handle search press button pressed: ${this.state.searchField}`
-    );
     this.props.history.push(`/discussions/${this.state.searchField}`);
   };
 
@@ -29,7 +26,6 @@ class HomePage extends Component {
   };
 
   handleFilterRecommendations = () => {
-    console.log(this.props.discussionInfos);
     const filteredDiscussions = [];
     if (this.state.searchField === "") return undefined;
 
@@ -51,7 +47,6 @@ class HomePage extends Component {
 
   render() {
     const { intl } = this.props;
-    console.log("Rendering Homepage...");
     return (
         <div id="home-container">
           <div id="searchbox">

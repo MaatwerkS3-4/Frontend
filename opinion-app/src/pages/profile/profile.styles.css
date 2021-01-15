@@ -1,19 +1,38 @@
 #profile-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-start;
+  justify-content: flex-start;
   height: calc(100% - var(--border-width) * 2);
   border-bottom: var(--border-light);
-  border-top: var(--border-light);
+  overflow: hidden;
 }
-#profile-headlines {
-  align-items: left;
-  justify-content: left;
-  text-align: left;
+#profile-container > div:first-child{
+  width: 100%;
+  padding-left: var(--basic-padding);
   border-bottom: var(--border-light);
-  width: 50%;
 }
+
+#profile-content-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex: 1;
+  width: 100%;
+  overflow: hidden;
+}
+
+#profile-content{
+  flex: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  overflow-y: auto;
+}
+
 #profile-list {
   width: 50%;
 }
