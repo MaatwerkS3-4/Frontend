@@ -159,7 +159,7 @@ class DiscussionOverviewPage extends Component {
                 <div id="icon-list">
                   <FaListUl />
                 </div>
-                <FormattedMessage id="discussion.overview.title"></FormattedMessage>
+                <FormattedMessage id="discussion.overview.title"/>
               </div>
               <div id="search">
                 <SearchBox
@@ -177,7 +177,7 @@ class DiscussionOverviewPage extends Component {
                   <FaDice />
                 </div>
                 <div>
-                  <FormattedMessage id="discussion.overview.random"></FormattedMessage>
+                  <FormattedMessage id="discussion.overview.random"/>
                 </div>
               </div>
             </div>
@@ -210,7 +210,7 @@ class DiscussionOverviewPage extends Component {
                       <FaQuestionCircle />
                     </div>
                     <div>
-                      <FormattedMessage id="discussions.overview.interesting"></FormattedMessage>
+                      <FormattedMessage id="discussions.overview.interesting"/>
                     </div>
                   </div>
                 </div>

@@ -50,7 +50,7 @@ class Profile extends Component {
                         <div className="text-subheader">
                             <FormattedMessage id="profile.yourcomments"/>
                         </div>
-                        <div id="profile-content-discussions">
+                        <div id="profile-content-comments">
                             {this.state.comments.map(c =>{
                                 return <div>{c.content}</div>
                             })
