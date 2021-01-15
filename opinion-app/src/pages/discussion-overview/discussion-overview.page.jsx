@@ -52,67 +52,69 @@ class DiscussionOverviewPage extends Component {
         }
       });
     });
+    console.log(filteredDiscussions);
+    if (filteredDiscussions.length > 0) {
+      //Get the most prominent category in the search result
+      let pairs = new Map();
+      filteredDiscussions.forEach((d) => {
+        d.tags.forEach((t) => {
+          if (!pairs.has(t)) {
+            pairs.set(t, 1);
+          } else {
+            let value = pairs.get(t);
+            pairs.set(t, value++);
+          }
+        });
+      });
+      console.log("pairs", pairs);
+      let maxValue = 0;
+      let category = undefined;
 
-    //Get the most prominent category in the search result
-    let pairs = new Map();
-    filteredDiscussions.forEach((d) => {
-      d.tags.forEach((t) => {
-        if (!pairs.has(t)) {
-          pairs.set(t, 1);
-        } else {
-          let value = pairs.get(t);
-          pairs.set(t, value++);
+      pairs.forEach((v, k) => {
+        if (category === undefined || v > maxValue) {
+          category = k;
+          maxValue = v;
         }
       });
-    });
-    console.log("pairs", pairs);
-    let maxValue = 0;
-    let category = undefined;
 
-    pairs.forEach((v, k) => {
-      if (category === undefined || v > maxValue) {
-        category = k;
-        maxValue = v;
-      }
-    });
+      console.log("Most prominent: ", category);
 
-    console.log("Most prominent: ", category);
+      //Retrieve the reverse of the most prominent category
+      const reverseCategory = this.props.reverseRecommendations.find(
+        (c) => c.first === category
+      ).second;
 
-    //Retrieve the reverse of the most prominent category
-    const reverseCategory = this.props.reverseRecommendations.find(
-      (c) => c.first === category
-    ).second;
+      //Randomize the existing discussions and get a short list of reverse recommendations
+      randomDiscussions.sort(() => Math.random() - 0.5);
+      const reverseDiscussions = [];
 
-    //Randomize the existing discussions and get a short list of reverse recommendations
-    randomDiscussions.sort(() => Math.random() - 0.5);
-    const reverseDiscussions = [];
+      let count = 0;
+      randomDiscussions.forEach((d) => {
+        if (count >= n) return;
+        if (d.tags.includes(reverseCategory)) {
+          reverseDiscussions.push(d);
+          count++;
+        }
+      });
 
-    let count = 0;
-    randomDiscussions.forEach((d) => {
-      if (count >= n) return;
-      if (d.tags.includes(reverseCategory)) {
-        reverseDiscussions.push(d);
+      //Create a short list of random discussions for side overview
+      randomDiscussions.sort(() => Math.random() - 0.5);
+      const randomSelection = [];
+
+      count = 0;
+      randomDiscussions.forEach((d) => {
+        if (count >= n) return;
+        randomSelection.push(d);
         count++;
-      }
-    });
+      });
 
-    //Create a short list of random discussions for side overview
-    randomDiscussions.sort(() => Math.random() - 0.5);
-    const randomSelection = [];
-
-    count = 0;
-    randomDiscussions.forEach((d) => {
-      if (count >= n) return;
-      randomSelection.push(d);
-      count++;
-    });
-
-    //Update state with created overviews
-    this.setState({
-      randomSelection: randomSelection,
-      filteredDiscussions: filteredDiscussions,
-      reverseDiscussions: reverseDiscussions,
-    });
+      //Update state with created overviews
+      this.setState({
+        randomSelection: randomSelection,
+        filteredDiscussions: filteredDiscussions,
+        reverseDiscussions: reverseDiscussions,
+      });
+    }
   }
 
   handleRedirect = (id) => {
