@@ -10,13 +10,16 @@ class CommentCreate extends Component {
         super(props, context);
 
         this.state = {
-            content: ""
+            content: "",
+            buttonDisabled: true
         };
     }
 
     handleContentInputChange = (e) => {
         console.log("char typed:", e.target.value);
         this.setState({content: e.target.value});
+        
+        this.handleButtonStateChange(e.target.value);
     }
 
     handlePostClick = () => {
@@ -26,6 +29,15 @@ class CommentCreate extends Component {
     handleCloseClick = () => {
         this.props.handleToggleCreateComment();
     }
+
+    handleButtonStateChange = (contentText) =>{
+        if (contentText != "" && contentText != null) {
+          this.state.buttonDisabled = false;
+          return
+        }
+    
+        this.state.buttonDisabled = true;
+      }
 
     render() {
         return (
@@ -37,7 +49,7 @@ class CommentCreate extends Component {
                                  handleInputChange={this.handleContentInputChange}/>
                     <div className="create-comment-options">
                         <ButtonRegular handleOnClick={this.handleCloseClick} text="Sluiten"/>
-                        <ButtonAttention handleOnClick={this.handlePostClick} text="Plaatsen"/>
+                        <ButtonAttention handleOnClick={this.handlePostClick} text="Plaatsen" disabled={this.state.buttonDisabled}/>
                     </div>
                 </div>
                 <div className="create-comment-overlay" onClick={() => this.handleCloseClick()}/>
