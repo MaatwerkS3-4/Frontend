@@ -207,7 +207,10 @@ class App extends Component {
                                        component={Register}/>
                                 <Route exact path="/login"
                                        component={Login}/>
-                                       <Route path="/profile" render={(props) => <Profile handleSelectDiscussion={this.handleSelectDiscussion} {...props}/>
+                                       <Route path="/profile" render={(props) => <Profile
+                                           handleSelectDiscussion={this.handleSelectDiscussion}
+                                           userId={this.state.user.id}
+                                           {...props}/>
 
                                        }/>
                             </Switch>

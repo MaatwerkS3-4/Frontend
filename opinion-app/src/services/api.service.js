@@ -125,3 +125,12 @@ export const handleGetDiscussionInfosByUser = () => {
         return res.data
     })
 }
+
+export const handleGetCommentsByUserId = (posterId) =>{
+    return AXIOS.get("/comment/"+posterId, {
+        method: 'GET',
+        mode: 'cors'
+    }).then(res =>{
+        return res.data
+    })
+}
