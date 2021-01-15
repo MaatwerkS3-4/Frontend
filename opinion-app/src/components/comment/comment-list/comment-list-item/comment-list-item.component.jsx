@@ -4,7 +4,7 @@ import { getTimeDifference } from "../../../../services/date.service";
 import { CommentList } from "../comment-list.component";
 import { ButtonRegular } from "../../../input/button/button-regular/button-regular.component";
 import { isLoggedIn } from "../../../../services/authentication.service";
-import { injectIntl } from "react-intl";
+import { injectIntl, FormattedRelativeTime } from "react-intl";
 import { Component } from "react";
 import Score from "../../../score/score.component";
 
@@ -21,15 +21,25 @@ class CommentListItem extends Component {
         <div className="comment-content text-body">{this.props.content}</div>
         <div className="comment-list-item-info-container text-body-secondary">
           <div className="icon-container-1">
-            <Score
-              handleUpvote={this.props.handleUpvote}
-              score={this.props.score}
-              commentId={this.props.id}
-              upvoted={this.props.upvoted}
-            />
+            {isLoggedIn() && (
+              <Score
+                handleUpvote={this.props.handleUpvote}
+                score={this.props.score}
+                commentId={this.props.id}
+                upvoted={this.props.upvoted}
+              />
+            )}
           </div>
           <div>
-            <div>{getTimeDifference(new Date(this.props.timeStamp))}</div>
+            <div>
+              {" "}
+              <FormattedRelativeTime
+                value={-1 * getTimeDifference(new Date(this.props.timeStamp))}
+                numeric="auto"
+                style="short"
+                updateIntervalInSeconds="10"
+              ></FormattedRelativeTime>
+            </div>
           </div>
           <div className="button-reply">
             {isLoggedIn() && (
