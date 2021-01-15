@@ -53,7 +53,7 @@ class DiscussionDetailPage extends Component {
       return null;
     }
     const { intl } = this.props;
-    
+
     if (discussion.description == null || discussion.description == "") {
       return (
         <div id="discussion-content">
@@ -79,11 +79,15 @@ class DiscussionDetailPage extends Component {
                   <div className="discussion-options">
                     <ButtonRegular
                       handleOnClick={this.handleBackToOverviewClick}
-                      text={intl.formatMessage({ id: "discussion.detail.back" })}
+                      text={intl.formatMessage({
+                        id: "discussion.detail.back",
+                      })}
                     />
                     {isLoggedIn() && (
                       <ButtonAttention
-                        handleOnClick={() => this.handleToggleCreateComment(null)}
+                        handleOnClick={() =>
+                          this.handleToggleCreateComment(null)
+                        }
                         text={intl.formatMessage({
                           id: "discussion.detail.placecomment",
                         })}
@@ -115,7 +119,6 @@ class DiscussionDetailPage extends Component {
         </div>
       );
     }
-
 
     return (
       <div id="discussion-content">
