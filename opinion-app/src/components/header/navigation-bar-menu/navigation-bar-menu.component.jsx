@@ -12,17 +12,17 @@ class NavBarMenu extends Component {
     this.state = {};
   }
   handleLoginClick = () => {
-    window.location.href = "login";
+    window.location.href = "/login";
   };
   handleRegisterClick = () => {
-    window.location.href = "register";
+    window.location.href = "/register";
   };
   logOut = () => {
     localStorage.clear();
     window.location.href = "/";
   };
   handleProfileClick = () => {
-    window.location.href = "profile";
+    window.location.href = "/profile";
   };
   render() {
     const { intl } = this.props;
