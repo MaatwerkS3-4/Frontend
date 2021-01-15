@@ -13,7 +13,6 @@ class Profile extends Component {
     handleGetDiscussionInfosByUser().then((res) => {
       this.setState({ discussionInfos: res });
     });
-    console.log(this.state.discussionInfos);
   };
   handleRedirect = (id) => {
     this.props.history.push(`/discussion/${id}`);

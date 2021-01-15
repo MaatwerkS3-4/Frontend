@@ -14,7 +14,6 @@ export const Checkbox = ({id, checked, disabled, handleClick, value}) => {
     return (
         <div className={`checkbox-container`}
              onClick={() => {
-                 console.log("Clicked on checkbox:", id);
                  handleClick(id);
              }
         }>

@@ -31,7 +31,6 @@ class Login extends Component {
         localStorage.setItem("Session", response.jwt);
         localStorage.setItem("Username", response.username);
         localStorage.setItem("Id", response.id);
-        console.log(response.data);
         if (response !== null) {
           window.location.href = "/";
         }

@@ -45,7 +45,6 @@ class DiscussionCreateComponent extends Component {
   };
 
   handleCheckboxChange = (checkboxes) => {
-    console.log("checkboxes changed", checkboxes);
 
     this.handleButtonStateChange(this.state.subject);
 

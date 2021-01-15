@@ -29,22 +29,16 @@ class NavBarMenu extends Component {
     return (
       <div id="menu">
         {!isLoggedIn() && (
-          <ButtonRegular
-            text={intl.formatMessage({ id: "navbar.register" })}
-            handleOnClick={this.handleRegisterClick}
-          />
-        )}
-        {!isLoggedIn() && (
           <ButtonAttention
             text={intl.formatMessage({ id: "navbar.login" })}
             handleOnClick={this.handleLoginClick}
           />
         )}
-        {isLoggedIn() && (
-          <ButtonRegular
-            text={intl.formatMessage({ id: "navbar.profile" })}
-            handleOnClick={this.handleProfileClick}
-          />
+        {!isLoggedIn() && (
+            <ButtonRegular
+                text={intl.formatMessage({ id: "navbar.register" })}
+                handleOnClick={this.handleRegisterClick}
+            />
         )}
         {isLoggedIn() && (
           <ButtonAttention
@@ -57,6 +51,12 @@ class NavBarMenu extends Component {
             text={intl.formatMessage({ id: "navbar.discussion.create" })}
             handleOnClick={() => this.props.handleToggleCreateDiscussion()}
           />
+        )}
+        {isLoggedIn() && (
+            <ButtonRegular
+                text={intl.formatMessage({ id: "navbar.profile" })}
+                handleOnClick={this.handleProfileClick}
+            />
         )}
       </div>
     );

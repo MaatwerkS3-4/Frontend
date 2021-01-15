@@ -65,7 +65,6 @@ class DiscussionOverviewPage extends Component {
         }
       });
     });
-    console.log("pairs", pairs);
     let maxValue = 0;
     let category = undefined;
 
@@ -125,7 +124,6 @@ class DiscussionOverviewPage extends Component {
 
   filterForTags = () => {
     //filter the criteria-filtered discussions for the tag search box
-    console.log("Filter for tag:", this.state.tagCriteria);
     const filteredForTags = [];
     this.state.filteredDiscussions.forEach((d) => {
       let containsTag = false;
@@ -143,7 +141,6 @@ class DiscussionOverviewPage extends Component {
   };
 
   render() {
-    console.log("Rendering overview page");
     const { intl } = this.props;
 
     return (

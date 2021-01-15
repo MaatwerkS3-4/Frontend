@@ -20,7 +20,6 @@ class DiscussionDetailPage extends Component {
   }
 
   componentDidCatch(error, errorInfo) {
-    console.log("error caught");
     this.props.history.push("/");
   }
 
