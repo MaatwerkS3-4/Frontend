@@ -3,6 +3,7 @@ import "./discussion-info.styles.css";
 import { getTimeDifference } from "../../../services/date.service";
 import { FormattedMessage, FormattedRelativeTime } from "react-intl";
 import Score from "../../score/score.component";
+import { isLoggedIn } from "../../../services/authentication.service";
 
 export const DiscussionInfo = ({
   commentCount,
@@ -17,7 +18,9 @@ export const DiscussionInfo = ({
     <div className="discussion-info-container text-body-secondary">
       {/*Wrapped in second div to make sure separators are sized properly*/}
       <div>
-        <Score score={score} handleUpvote={handleUpvote} upvoted={upvoted} />
+        {isLoggedIn() && (
+          <Score score={score} handleUpvote={handleUpvote} upvoted={upvoted} />
+        )}
       </div>
       <div>
         <div>
