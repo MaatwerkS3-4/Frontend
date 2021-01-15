@@ -55,13 +55,15 @@ export const handlePostReply = (discussionId, parentId, createCommentDTO) => {
 };
 
 export const handleGetAllDiscussionInfos = () => {
+    const jwt = localStorage.getItem("Session");
+    console.log("JWT", jwt);
     console.log(`Retrieving all discussion infos...`);
     return AXIOS.get(`/discussion_info`, {
         method: 'POST',
         mode: 'cors',
         headers: {
             'Content-type': 'application/json',
-            'Authorization': localStorage.getItem("Session")
+            'Authorization': jwt
         }})
         .then(res => {return res.data});
 };
