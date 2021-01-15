@@ -3,6 +3,8 @@ import { DiscussionList } from "../../components/discussion/discussion-list/regu
 import { handleGetDiscussionInfosByUser } from "../../services/api.service";
 import { useParams } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
+import { PaddingItem } from "../../components/layout/padding-item/padding-item.component";
+import "./profile.styles.css";
 class Profile extends Component {
   state = {
     discussionInfos: [],
@@ -18,16 +20,24 @@ class Profile extends Component {
   };
   render() {
     return (
-      <div>
-        <div className="text-headline">{localStorage.getItem("Username")}</div>
-        <div className="text-title">
-          <FormattedMessage id="profile.yourposts"></FormattedMessage>
+      <div id="profile-container">
+        <div id="profile-headlines">
+          <div className="text-headline">
+            {localStorage.getItem("Username")}
+          </div>
+          <br></br>
+          <div className="text-title">
+            <FormattedMessage id="profile.yourposts"></FormattedMessage>
+          </div>
         </div>
-        <DiscussionList
-          discussionInfos={this.state.discussionInfos}
-          handleSelectDiscussion={this.props.handleSelectDiscussion}
-          handleRedirect={this.handleRedirect}
-        />
+        <PaddingItem></PaddingItem>
+        <div id="profile-list">
+          <DiscussionList
+            discussionInfos={this.state.discussionInfos}
+            handleSelectDiscussion={this.props.handleSelectDiscussion}
+            handleRedirect={this.handleRedirect}
+          />
+        </div>
       </div>
     );
   }
