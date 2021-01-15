@@ -4,7 +4,12 @@
     width: auto;
 }
 
-.button-attention:hover{
+.button-attention:disabled{
+    background-color: var(--color-main-light);
+    border-color: var(--color-main-light);
+}
+
+.button-attention:hover:enabled{
     background-color: var(--color-main-light);
     border-color: var(--color-main-light);
     cursor: pointer;
