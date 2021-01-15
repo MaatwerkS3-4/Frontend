@@ -54,7 +54,7 @@ class DiscussionDetailPage extends Component {
     }
     const { intl } = this.props;
     
-    if (discussion.description == null || discussion.description == "") {
+    if (discussion.description == null || discussion.description === "") {
       return (
         <div id="discussion-content">
           <div id="title-container">

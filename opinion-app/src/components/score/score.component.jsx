@@ -18,7 +18,7 @@ class Score extends Component {
     this.setState({ showVoteCount: true });
   };
   componentDidMount = () => {
-    if (this.props.upvoted == true) this.setState({ showVoteCount: true });
+    if (this.props.upvoted === true) this.setState({ showVoteCount: true });
     this.setState({ score: this.props.score });
   };
   render() {

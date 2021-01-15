@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { DiscussionList } from "../../components/discussion/discussion-list/regular/discussion-list.component";
 import { handleGetDiscussionInfosByUser } from "../../services/api.service";
-import { useParams } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
 class Profile extends Component {
   state = {

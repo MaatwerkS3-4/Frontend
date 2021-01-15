@@ -28,7 +28,7 @@ class Register extends Component {
     };
 
     handleButtonStateChange = (userTxt, passwordTxt, repeatTxt) =>{
-        if (userTxt != "" && userTxt != null && passwordTxt != "" && passwordTxt != null && repeatTxt != "" && repeatTxt != null) {
+        if (userTxt !== "" && userTxt !== null && passwordTxt !== "" && passwordTxt !== null && repeatTxt !== "" && repeatTxt !== null) {
             if (passwordTxt === repeatTxt){
                 this.state.buttonDisabled = false;
                 return

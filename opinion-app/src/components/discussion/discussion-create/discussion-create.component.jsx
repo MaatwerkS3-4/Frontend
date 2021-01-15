@@ -58,7 +58,7 @@ class DiscussionCreateComponent extends Component {
       if(c.checked) checkedCount++
     })
 
-    if (checkedCount > 0 && descript != "" && descript != null) {
+    if (checkedCount > 0 && descript !== "" && descript != null) {
       this.state.buttonDisabled = false;
       return
     }

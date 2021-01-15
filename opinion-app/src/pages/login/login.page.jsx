@@ -38,7 +38,7 @@ class Login extends Component {
   };
 
   handleButtonStateChange = (userTxt, passwordTxt) =>{
-    if (userTxt != "" && userTxt != null && passwordTxt != "" && passwordTxt != null) {
+    if (userTxt !== "" && userTxt != null && passwordTxt !== "" && passwordTxt != null) {
       this.state.buttonDisabled = false;
       return
     }

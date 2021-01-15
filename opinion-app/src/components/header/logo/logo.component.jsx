@@ -1,8 +1,8 @@
 import React from "react";
 import "./logo.styles.css"
-import { FormattedMessage, injectIntl } from "react-intl";
+import { FormattedMessage } from "react-intl";
 
-export const Logo = ({intl}) =>{
+export const Logo = () =>{
     return(
         <div id="logo-container" onClick={() => window.location.href="/"}>
             <div id="logo-title" className="text-headline">Viewpoint</div>
