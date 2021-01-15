@@ -53,6 +53,69 @@ class DiscussionDetailPage extends Component {
       return null;
     }
     const { intl } = this.props;
+    
+    if (discussion.description == null || discussion.description == "") {
+      return (
+        <div id="discussion-content">
+          <div id="title-container">
+            <PaddingItem />
+            <div className="text-title">{discussion.subject}</div>
+            <PaddingItem />
+          </div>
+          <div id="discussion-content-container">
+            <PaddingItem />
+            <div className="discussion-detail-container">
+              <div className="discussion-info">
+                <div className="discussion-info-extra">
+                  <DiscussionInfo
+                    participantCount={discussionInfo.numberOfParticipants}
+                    commentCount={discussionInfo.numberOfComments}
+                    timeStamp={discussionInfo.timeStamp}
+                    tags={discussionInfo.tags}
+                    handleUpvote={this.props.handleDiscussionUpvote}
+                    score={discussionInfo.score}
+                    upvoted={discussionInfo.upvotedByUser}
+                  />
+                  <div className="discussion-options">
+                    <ButtonRegular
+                      handleOnClick={this.handleBackToOverviewClick}
+                      text={intl.formatMessage({ id: "discussion.detail.back" })}
+                    />
+                    {isLoggedIn() && (
+                      <ButtonAttention
+                        handleOnClick={() => this.handleToggleCreateComment(null)}
+                        text={intl.formatMessage({
+                          id: "discussion.detail.placecomment",
+                        })}
+                      />
+                    )}
+                  </div>
+                </div>
+              </div>
+              <div id="discussion-comments-container">
+                <CommentList
+                  comments={discussion.comments}
+                  handleShowPostReply={this.handleToggleCreateComment}
+                  handleUpvote={this.props.handleCommentUpvote}
+                />
+              </div>
+            </div>
+            <PaddingItem />
+          </div>
+          {this.state.showCreateComment ? (
+            <CommentCreate
+              handlePostComment={this.handleCreateComment}
+              handleToggleCreateComment={this.handleToggleCreateComment}
+              user={this.props.user}
+              parentDiscussion={discussion}
+            />
+          ) : (
+            ""
+          )}
+        </div>
+      );
+    }
+
 
     return (
       <div id="discussion-content">
