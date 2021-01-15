@@ -1,9 +1,10 @@
-import React, { Component } from "react";
-import { handleLogin } from "../../services/api.service";
-import { TextBoxTag } from "../../components/input/text-box-tag/text-box-tag.component";
-import { ButtonAttention } from "../../components/input/button/button-attention/button-attention.component";
-import { ButtonRegular } from "../../components/input/button/button-regular/button-regular.component";
+import React, {Component} from "react";
+import {handleLogin} from "../../services/api.service";
+import {TextBoxTag} from "../../components/input/text-box-tag/text-box-tag.component";
+import {ButtonAttention} from "../../components/input/button/button-attention/button-attention.component";
+import {ButtonRegular} from "../../components/input/button/button-regular/button-regular.component";
 import "./login.styles.css";
+
 class Login extends Component {
   state = {
     username: "",
@@ -31,24 +32,22 @@ class Login extends Component {
         localStorage.setItem("Session", response.jwt);
         localStorage.setItem("Username", response.username);
         localStorage.setItem("Id", response.id);
-        if (response !== null) {
-          window.location.href = "/";
-        }
+        window.location.href = "/";
       });
     }
   };
 
   handleButtonStateChange = (userTxt, passwordTxt) => {
     if (
-      userTxt != "" &&
+      userTxt !== "" &&
       userTxt != null &&
-      passwordTxt != "" &&
+      passwordTxt !== "" &&
       passwordTxt != null
     ) {
-      this.state.buttonDisabled = false;
+      this.setState({buttonDisabled: false});
       return;
     }
-    this.state.buttonDisabled = true;
+    this.setState({buttonDisabled: true});
   };
 
   handleBackButtonClick = () => {

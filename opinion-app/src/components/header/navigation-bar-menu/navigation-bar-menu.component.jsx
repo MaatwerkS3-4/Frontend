@@ -1,10 +1,9 @@
-import React from "react";
+import React, {Component} from "react";
 import "./navigation-bar-menu.styles.css";
-import { ButtonAttention } from "../../input/button/button-attention/button-attention.component";
-import { ButtonRegular } from "../../input/button/button-regular/button-regular.component";
-import { Component } from "react";
-import { isLoggedIn } from "../../../services/authentication.service";
-import { injectIntl } from "react-intl";
+import {ButtonAttention} from "../../input/button/button-attention/button-attention.component";
+import {ButtonRegular} from "../../input/button/button-regular/button-regular.component";
+import {isLoggedIn} from "../../../services/authentication.service";
+import {injectIntl} from "react-intl";
 
 class NavBarMenu extends Component {
   constructor(props) {

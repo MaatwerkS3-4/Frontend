@@ -1,7 +1,7 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 import "./home.styles.css";
-import { SearchBox } from "../../components/search-box/search-box.component";
-import { FormattedMessage, injectIntl } from "react-intl";
+import {SearchBox} from "../../components/search-box/search-box.component";
+import {FormattedMessage, injectIntl} from "react-intl";
 
 class HomePage extends Component {
   constructor(props) {

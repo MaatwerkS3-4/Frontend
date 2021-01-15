@@ -1,12 +1,12 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 import "./discussion-overview.styles.css";
 
-import { DiscussionList } from "../../components/discussion/discussion-list/regular/discussion-list.component";
-import { SearchBox } from "../../components/search-box/search-box.component";
-import { FormattedMessage, injectIntl } from "react-intl";
-import { PaddingItem } from "../../components/layout/padding-item/padding-item.component";
-import { FaListUl, FaDice, FaQuestionCircle } from "react-icons/fa";
-import { DiscussionListSmall } from "../../components/discussion/discussion-list/small/discussion-list-small.component";
+import {DiscussionList} from "../../components/discussion/discussion-list/regular/discussion-list.component";
+import {SearchBox} from "../../components/search-box/search-box.component";
+import {FormattedMessage, injectIntl} from "react-intl";
+import {PaddingItem} from "../../components/layout/padding-item/padding-item.component";
+import {FaDice, FaListUl, FaQuestionCircle} from "react-icons/fa";
+import {DiscussionListSmall} from "../../components/discussion/discussion-list/small/discussion-list-small.component";
 
 class DiscussionOverviewPage extends Component {
   constructor(props) {

@@ -1,6 +1,6 @@
-import React, { useContext } from "react";
+import React, {useContext} from "react";
 import "./footer.styles.css";
-import { Context } from "../wrapper/wrapper";
+import {Context} from "../wrapper/wrapper";
 
 export const Footer = () => {
   const context = useContext(Context);

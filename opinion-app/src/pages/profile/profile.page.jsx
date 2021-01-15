@@ -1,11 +1,9 @@
 import React, {Component} from "react";
 import {DiscussionList} from "../../components/discussion/discussion-list/regular/discussion-list.component";
 import {handleGetCommentsByUserId, handleGetDiscussionInfosByUser} from "../../services/api.service";
-import {useParams} from "react-router-dom";
 import {FormattedMessage} from "react-intl";
 import {PaddingItem} from "../../components/layout/padding-item/padding-item.component";
 import "./profile.styles.css";
-import {CommentList} from "../../components/comment/comment-list/comment-list.component";
 
 class Profile extends Component {
     state = {

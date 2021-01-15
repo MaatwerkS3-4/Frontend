@@ -1,13 +1,13 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 import "./discussion-detail.styles.css";
-import { DiscussionInfo } from "../../components/discussion/discussion-info/discussion-info.component";
-import { ButtonAttention } from "../../components/input/button/button-attention/button-attention.component";
+import {DiscussionInfo} from "../../components/discussion/discussion-info/discussion-info.component";
+import {ButtonAttention} from "../../components/input/button/button-attention/button-attention.component";
 import CommentCreate from "../../components/comment/comment-create/comment-create.component";
-import { ButtonRegular } from "../../components/input/button/button-regular/button-regular.component";
-import { CommentList } from "../../components/comment/comment-list/comment-list.component";
-import { isLoggedIn } from "../../services/authentication.service";
-import { PaddingItem } from "../../components/layout/padding-item/padding-item.component";
-import { injectIntl } from "react-intl";
+import {ButtonRegular} from "../../components/input/button/button-regular/button-regular.component";
+import {CommentList} from "../../components/comment/comment-list/comment-list.component";
+import {isLoggedIn} from "../../services/authentication.service";
+import {PaddingItem} from "../../components/layout/padding-item/padding-item.component";
+import {injectIntl} from "react-intl";
 
 class DiscussionDetailPage extends Component {
   constructor(props, context) {
@@ -53,7 +53,7 @@ class DiscussionDetailPage extends Component {
     }
     const { intl } = this.props;
     
-    if (discussion.description == null || discussion.description == "") {
+    if (discussion.description == null || discussion.description === "") {
       return (
         <div id="discussion-content">
           <div id="title-container">

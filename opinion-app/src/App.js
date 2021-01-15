@@ -11,11 +11,15 @@ import {Footer} from "./components/footer/footer.component";
 import Login from "./pages/login/login.page"
 import Register from "./pages/register/register.page"
 import {
-    handleGetAllDiscussionInfos, handleGetAvailableCategories,
+    handleCommentUpvote,
+    handleDiscussionUpvote,
+    handleGetAllDiscussionInfos,
+    handleGetAvailableCategories,
     handleGetDiscussionById,
-    handleGetUserById, handlePostNewComment,
-    handlePostNewDiscussion, handlePostReply, 
-    handleDiscussionUpvote, handleCommentUpvote
+    handleGetUserById,
+    handlePostNewComment,
+    handlePostNewDiscussion,
+    handlePostReply
 } from "./services/api.service";
 import Profile from "./pages/profile/profile.page";
 

@@ -1,11 +1,10 @@
-import React from "react";
+import React, {Component} from "react";
 import "./comment-list-item.styles.css";
-import { getTimeDifference } from "../../../../services/date.service";
-import { CommentList } from "../comment-list.component";
-import { ButtonRegular } from "../../../input/button/button-regular/button-regular.component";
-import { isLoggedIn } from "../../../../services/authentication.service";
-import { injectIntl, FormattedRelativeTime } from "react-intl";
-import { Component } from "react";
+import {getTimeDifference} from "../../../../services/date.service";
+import {CommentList} from "../comment-list.component";
+import {ButtonRegular} from "../../../input/button/button-regular/button-regular.component";
+import {isLoggedIn} from "../../../../services/authentication.service";
+import {FormattedRelativeTime, injectIntl} from "react-intl";
 import Score from "../../../score/score.component";
 
 class CommentListItem extends Component {
@@ -36,9 +35,8 @@ class CommentListItem extends Component {
               <FormattedRelativeTime
                 value={-1 * getTimeDifference(new Date(this.props.timeStamp))}
                 numeric="auto"
-                style="short"
                 updateIntervalInSeconds="10"
-              ></FormattedRelativeTime>
+             />
             </div>
           </div>
           <div className="button-reply">

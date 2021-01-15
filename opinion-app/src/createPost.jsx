@@ -1,7 +1,7 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 import "./createPost.css";
-import { postPost } from "./apiRequests.js";
-import { getPostBySubString } from "./apiRequests.js";
+import {getPostBySubString, postPost} from "./apiRequests.js";
+
 class createPost extends Component {
   constructor(props) {
     super(props);

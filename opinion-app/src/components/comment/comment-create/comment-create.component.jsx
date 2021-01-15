@@ -30,12 +30,11 @@ class CommentCreate extends Component {
     }
 
     handleButtonStateChange = (contentText) =>{
-        if (contentText != "" && contentText != null) {
-          this.state.buttonDisabled = false;
+        if (contentText !== "" && contentText != null) {
+            this.setState({buttonDisabled: false});
           return
         }
-    
-        this.state.buttonDisabled = true;
+        this.setState({buttonDisabled: true});
       }
 
     render() {

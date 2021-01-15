@@ -1,6 +1,6 @@
 import React from "react";
 import "./search-box.styles.css";
-import { FaSearch } from "react-icons/fa";
+import {FaSearch} from "react-icons/fa";
 import TextBox from "../input/text-box/text-box.component";
 
 export const SearchBox = ({

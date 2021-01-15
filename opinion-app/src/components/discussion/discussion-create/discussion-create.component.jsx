@@ -1,10 +1,10 @@
-import React, { Component } from "react";
-import { TextBoxTag } from "../../input/text-box-tag/text-box-tag.component";
+import React, {Component} from "react";
+import {TextBoxTag} from "../../input/text-box-tag/text-box-tag.component";
 import "./discussion-create.styles.css";
-import { ButtonAttention } from "../../input/button/button-attention/button-attention.component";
-import { ButtonRegular } from "../../input/button/button-regular/button-regular.component";
-import { TextAreaTag } from "../../input/text-area-tag/text-area-tag.component";
-import { FormattedMessage, injectIntl } from "react-intl";
+import {ButtonAttention} from "../../input/button/button-attention/button-attention.component";
+import {ButtonRegular} from "../../input/button/button-regular/button-regular.component";
+import {TextAreaTag} from "../../input/text-area-tag/text-area-tag.component";
+import {FormattedMessage, injectIntl} from "react-intl";
 import CheckboxGroup from "../../input/checkbox/checkbox-group/checkbox-group.component";
 
 class DiscussionCreateComponent extends Component {
@@ -57,11 +57,11 @@ class DiscussionCreateComponent extends Component {
       if(c.checked) checkedCount++
     })
 
-    if (checkedCount > 0 && descript != "" && descript != null) {
-      this.state.buttonDisabled = false;
+    if (checkedCount > 0 && descript !== "" && descript != null) {
+      this.setState({buttonDisabled: false});
       return
     }
-    this.state.buttonDisabled = true;
+    this.setState({buttonDisabled: true});
   }
 
   render() {
