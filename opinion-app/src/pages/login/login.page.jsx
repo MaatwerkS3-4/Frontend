@@ -8,31 +8,54 @@ class Login extends Component {
   state = {
     username: "",
     password: "",
+    buttonDisabled: true,
   };
+
   handleUsernameChange = (e) => {
     this.setState({ username: e.target.value });
+    this.handleButtonStateChange(e.target.value, this.state.password);
   };
+
   handlePasswordChange = (e) => {
     this.setState({ password: e.target.value });
+    this.handleButtonStateChange(this.state.username, e.target.value);
   };
+
   handleLoginButtonClick = () => {
-    const user = {
-      username: this.state.username,
-      password: this.state.password,
-    };
-    handleLogin(user).then((response) => {
-      localStorage.setItem("Session", response.jwt);
-      localStorage.setItem("Username", response.username);
-      localStorage.setItem("Id", response.id);
-      console.log(response.data);
-      if (response !== null) {
-        window.location.href = "/";
-      }
-    });
+    if (!this.state.buttonDisabled) {
+      const user = {
+        username: this.state.username,
+        password: this.state.password,
+      };
+      handleLogin(user).then((response) => {
+        localStorage.setItem("Session", response.jwt);
+        localStorage.setItem("Username", response.username);
+        localStorage.setItem("Id", response.id);
+        console.log(response.data);
+        if (response !== null) {
+          window.location.href = "/";
+        }
+      });
+    }
   };
+
+  handleButtonStateChange = (userTxt, passwordTxt) => {
+    if (
+      userTxt != "" &&
+      userTxt != null &&
+      passwordTxt != "" &&
+      passwordTxt != null
+    ) {
+      this.state.buttonDisabled = false;
+      return;
+    }
+    this.state.buttonDisabled = true;
+  };
+
   handleBackButtonClick = () => {
     window.location.href = "/";
   };
+
   render() {
     return (
       <div id="login-container">
@@ -50,14 +73,15 @@ class Login extends Component {
               tag="WACHTWOORD"
               placeholder="WACHTWOORD"
               handleInputChange={this.handlePasswordChange}
-              handleEnterPress={this.handleLoginButtonClick}
               type="password"
+              handleEnterPress={this.handleLoginButtonClick}
             ></TextBoxTag>
           </div>
           <div id="login-content-buttons">
             <ButtonAttention
               text="Log In"
               handleOnClick={() => this.handleLoginButtonClick()}
+              disabled={this.state.buttonDisabled}
             ></ButtonAttention>
             <ButtonRegular
               text="Annuleren"

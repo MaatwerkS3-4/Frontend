@@ -13,16 +13,19 @@ class DiscussionCreateComponent extends Component {
     this.state = {
       subject: "",
       description: "",
-      checkboxes: []
+      checkboxes: [],
+      buttonDisabled: true
     };
   }
 
   handleSubjectInputChange = (e) => {
     this.setState({ subject: e.target.value });
+    this.handleButtonStateChange(e.target.value);
   };
 
   handleDescriptionInputChange = (e) => {
     this.setState({ description: e.target.value });
+    this.handleButtonStateChange(this.state.subject);
   };
 
   handleCreateClick = () => {
@@ -43,7 +46,23 @@ class DiscussionCreateComponent extends Component {
 
   handleCheckboxChange = (checkboxes) => {
     console.log("checkboxes changed", checkboxes);
+
+    this.handleButtonStateChange(this.state.subject);
+
     this.setState({checkboxes: checkboxes});
+  }
+
+  handleButtonStateChange = (descript) =>{
+    var checkedCount = 0;
+    this.state.checkboxes.forEach(c => {
+      if(c.checked) checkedCount++
+    })
+
+    if (checkedCount > 0 && descript != "" && descript != null) {
+      this.state.buttonDisabled = false;
+      return
+    }
+    this.state.buttonDisabled = true;
   }
 
   render() {
@@ -83,6 +102,7 @@ class DiscussionCreateComponent extends Component {
             <ButtonAttention
               handleOnClick={this.handleCreateClick}
               text={intl.formatMessage({ id: "discussion.create.create" })}
+              disabled={this.state.buttonDisabled}
             />
           </div>
         </div>
