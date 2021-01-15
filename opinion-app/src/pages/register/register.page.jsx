@@ -9,16 +9,34 @@ class Register extends Component {
         username: "",
         password: "",
         repeat: "",
+        buttonDisabled: true
     };
+
     handleUsernameChange = (e) => {
         this.setState({username: e.target.value});
+        this.handleButtonStateChange(e.target.value, this.state.password, this.state.repeat);
     };
+
     handlePasswordChange = (e) => {
         this.setState({password: e.target.value});
+        this.handleButtonStateChange(this.state.username, e.target.value, this.state.repeat);
     };
+
     handleRepeatChange = (e) => {
         this.setState({repeat: e.target.value});
+        this.handleButtonStateChange(this.state.username, this.state.password, e.target.value);
     };
+
+    handleButtonStateChange = (userTxt, passwordTxt, repeatTxt) =>{
+        if (userTxt != "" && userTxt != null && passwordTxt != "" && passwordTxt != null && repeatTxt != "" && repeatTxt != null) {
+            if (passwordTxt === repeatTxt){
+                this.state.buttonDisabled = false;
+                return
+            }   
+        }
+        this.state.buttonDisabled = true;
+    };
+
     handleRegisterButtonClick = () => {
         console.log(this.state.password + " " + this.state.repeat);
         if (this.state.password === this.state.repeat) {
@@ -64,6 +82,7 @@ class Register extends Component {
                         <ButtonAttention
                             text="Meld Je Aan"
                             handleOnClick={this.handleRegisterButtonClick}
+                            disabled={this.state.buttonDisabled}
                         />
                     </div>
                 </div>

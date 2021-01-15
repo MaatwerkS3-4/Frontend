@@ -62,7 +62,6 @@ class DiscussionCreateComponent extends Component {
       this.state.buttonDisabled = false;
       return
     }
-
     this.state.buttonDisabled = true;
   }
 
