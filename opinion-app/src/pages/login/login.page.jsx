@@ -36,27 +36,33 @@ class Login extends Component {
   render() {
     return (
       <div id="login-container">
-        <span className="text-title">Ik wil inloggen...</span>
-        <TextBoxTag
-          placeholder="GEBRUIKERSNAAM"
-          tag="GEBRUIKERSNAAM"
-          handleInputChange={this.handleUsernameChange}
-          type="text"
-        ></TextBoxTag>
-        <TextBoxTag
-          tag="WACHTWOORD"
-          placeholder="WACHTWOORD"
-          handleInputChange={this.handlePasswordChange}
-          type="password"
-        ></TextBoxTag>
-        <ButtonAttention
-          text="Log In"
-          handleOnClick={() => this.handleLoginButtonClick()}
-        ></ButtonAttention>
-        <ButtonRegular
-          text="Annuleren"
-          handleOnClick={this.handleBackButtonClick}
-        ></ButtonRegular>
+          <div id="login-content">
+              <span className="text-title">Ik wil inloggen...</span>
+              <div id="login-content-input">
+                  <TextBoxTag
+                      placeholder="GEBRUIKERSNAAM"
+                      tag="GEBRUIKERSNAAM"
+                      handleInputChange={this.handleUsernameChange}
+                      type="text"
+                  ></TextBoxTag>
+                  <TextBoxTag
+                      tag="WACHTWOORD"
+                      placeholder="WACHTWOORD"
+                      handleInputChange={this.handlePasswordChange}
+                      type="password"
+                  ></TextBoxTag>
+              </div>
+              <div id="login-content-buttons">
+                  <ButtonAttention
+                      text="Log In"
+                      handleOnClick={() => this.handleLoginButtonClick()}
+                  ></ButtonAttention>
+                  <ButtonRegular
+                      text="Annuleren"
+                      handleOnClick={this.handleBackButtonClick}
+                  ></ButtonRegular>
+              </div>
+          </div>
       </div>
     );
   }
